@@ -2,6 +2,13 @@
 ##################
 node_modules
 
+# IDEA ignores #
+##################
+*.iml
+misc.xml
+modules.xml
+vcs.xml
+workspace.xml
 
 # Compiled source #
 ###################

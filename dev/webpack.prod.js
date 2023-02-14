@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './src/index.html',
   output: {
     filename: 'app.js',
@@ -10,12 +10,21 @@ module.exports = {
   module: {
     rules: [
       {
-        loader: 'css-loader',
-        test: '/\.(css)$/',
+        test: /\.(css)$/,
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+            },
+          },
+          { loader: 'sass-loader' },
+        ],
       },
       {
         test: /\.html$/i,
-        loader: "html-loader",
+        use: 'html-loader',
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,

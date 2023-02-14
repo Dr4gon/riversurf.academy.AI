@@ -1,8 +1,9 @@
 {
   "name": "dev",
-  "version": "0.0.0",
+  "version": "0.1",
   "scripts": {
-    "build": "webpack --config webpack.config.js"
+    "start": "webpack serve --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
   },
   "private": true,
   "dependencies": {

@@ -38,10 +38,11 @@ module.exports = {
   },
   devServer:
     {
+      historyApiFallback: true,
+      compress: true,
+      port: 9090,
       headers: {
-        'Keep-Alive': 'Randomtest',
-        'Content-Security-Policy': 'font-src \'self\' data:; img-src \'self\' data:; default-src \'self\'',
-        'blubb': 'awdawdawdawd',
+        'Content-Security-Policy': 'font-src \'self\' data:; img-src \'self\' data:',
       },
     },
 };

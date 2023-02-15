@@ -2,6 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack'); //to access built-in plugins
 
+// environment dependent configuration
+const PUBLIC_PATH = '/assets';
+
 module.exports = {
   mode: 'development',
   devtool: 'eval-source-map',
@@ -9,6 +12,7 @@ module.exports = {
   output: {
     filename: 'app.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: PUBLIC_PATH,
   },
   module: {
     rules: [
@@ -49,7 +53,7 @@ module.exports = {
       devMiddleware: {
         index: true,
         mimeTypes: { phtml: 'text/html' },
-        publicPath: '/woho',
+        publicPath: PUBLIC_PATH,
         serverSideRender: true,
         writeToDisk: true,
       },

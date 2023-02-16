@@ -4,11 +4,12 @@ const webpack = require('webpack'); //to access built-in plugins
 
 // environment dependent configuration
 const PUBLIC_PATH = '/assets';
+const ENTRY_POINT = './src/index.html';
 
 module.exports = {
   mode: 'development',
   devtool: 'eval-source-map',
-  entry: './src/index.html',
+  entry: ENTRY_POINT,
   output: {
     filename: 'app.js',
     path: path.resolve(__dirname, 'dist'),
@@ -58,7 +59,7 @@ module.exports = {
         writeToDisk: true,
       },
     },
-  plugins: [ new HtmlWebpackPlugin({ template: './src/index.html' }) ],
+  plugins: [ new HtmlWebpackPlugin({ template: ENTRY_POINT }) ],
 };
 
 

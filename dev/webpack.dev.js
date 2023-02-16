@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack'); //to access built-in plugins
 
 // environment dependent configuration
 const PUBLIC_PATH = '/assets';

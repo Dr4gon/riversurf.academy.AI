@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 // environment dependent configuration
 const PUBLIC_PATH = '/assets';
@@ -58,7 +59,10 @@ module.exports = {
         writeToDisk: true,
       },
     },
-  plugins: [ new HtmlWebpackPlugin({ template: ENTRY_POINT }) ],
+  plugins: [
+    new HtmlWebpackPlugin({ template: ENTRY_POINT }),
+    new CleanWebpackPlugin({}), // clean local dist folder
+  ],
 };
 
 

@@ -9,11 +9,14 @@ const ENTRY_POINT = './src/index.html';
 module.exports = {
   mode: 'development',
   devtool: 'eval-source-map',
-  entry: ENTRY_POINT,
+  entry: './src/main.ts',
   output: {
     filename: 'app.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: PUBLIC_PATH,
+  },
+  resolve: {
+    extensions: ['', '.ts',  '.js']
   },
   module: {
     rules: [
@@ -29,6 +32,10 @@ module.exports = {
           },
           { loader: 'sass-loader' },
         ],
+      },
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader'
       },
       {
         test: /\.html$/i,

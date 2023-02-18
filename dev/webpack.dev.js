@@ -9,14 +9,17 @@ const ENTRY_POINT = './src/index.html';
 module.exports = {
   mode: 'development',
   devtool: 'eval-source-map',
-  entry: './src/main.ts',
+  entry: {
+    polyfills: './src/polyfills.ts', // necessary for delivery of zone.js to the bundle
+    main: './src/main.ts',
+  },
   output: {
-    filename: 'app.js',
+    filename: '[name].js', // the name tag avoids conflicts in the chunking optimization
     path: path.resolve(__dirname, 'dist'),
     publicPath: PUBLIC_PATH,
   },
   resolve: {
-    extensions: ['', '.ts',  '.js']
+    extensions: [ '', '.ts', '.js' ]
   },
   module: {
     rules: [

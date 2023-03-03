@@ -18,7 +18,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: PUBLIC_PATH,
   },
-  resolve: { // the resolve order https://stackoverflow.com/questions/40565361/what-does-resolve-extensions-do-in-webpack
+  resolve: { // https://stackoverflow.com/questions/40565361/what-does-resolve-extensions-do-in-webpack
     extensions: [ '', '.mts', '.ts','.mjs','.js', '.html', '.json','.sass', '.css' ]
   },
   module: {

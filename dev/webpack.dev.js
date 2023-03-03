@@ -18,8 +18,8 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: PUBLIC_PATH,
   },
-  resolve: {
-    extensions: [ '', '.ts', '.js' ]
+  resolve: { // the resolve order https://stackoverflow.com/questions/40565361/what-does-resolve-extensions-do-in-webpack
+    extensions: [ '', '.mts', '.ts','.mjs','.js', '.html', '.json','.sass', '.css' ]
   },
   module: {
     rules: [
@@ -32,7 +32,19 @@ module.exports = {
         ],
       },
       {
-        test: /\.ts$/,
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              [ '@babel/preset-env', { targets: "defaults" } ]
+            ]
+          }
+        }
+      },
+      {
+        test: /\.m?ts$/,
         loader: 'ts-loader'
       },
       {

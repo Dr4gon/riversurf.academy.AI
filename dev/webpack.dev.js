@@ -11,7 +11,10 @@ module.exports = {
   devtool: 'eval-source-map',
   entry: {
     polyfills: './src/polyfills.ts', // necessary for delivery of zone.js to the bundle
-    main: './src/main.ts',
+    main: [
+      './src/main.ts',
+      './src/styles.sass'
+    ],
   },
   output: {
     filename: '[name].js', // the name tag avoids conflicts in the chunking optimization
@@ -24,11 +27,20 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(css)$/,
+        test: /\.s[ac]ss$/i,
         use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-          { loader: 'sass-loader' },
+          {
+            loader: "raw-loader",
+            options: {
+              esModule: false,
+            }
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
         ],
       },
       {

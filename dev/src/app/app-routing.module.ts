@@ -5,8 +5,8 @@ import { RouteUrl } from './router-url';
 import { AppComponent } from './app.component';
 
 export const routes: Routes = [
-  { path: RouteUrl.app, component: AppComponent },
-  { path: '', redirectTo: RouteUrl.app, pathMatch: 'full' }
+  // { path: RouteUrl.app, component: AppComponent },
+  // { path: '', redirectTo: RouteUrl.app, pathMatch: 'full' }
 ];
 
 @NgModule({

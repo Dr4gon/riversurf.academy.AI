@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 // environment dependent configuration
-const PUBLIC_PATH = '/assets';
+const PUBLIC_PATH = '/';
 const ENTRY_POINT = './src/index.html';
 
 module.exports = {

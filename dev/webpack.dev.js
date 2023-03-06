@@ -19,7 +19,7 @@ module.exports = {
     publicPath: PUBLIC_PATH,
   },
   resolve: { // https://stackoverflow.com/questions/40565361/what-does-resolve-extensions-do-in-webpack
-    extensions: [ '', '.mts', '.ts','.mjs','.js', '.html', '.json','.sass', '.css' ]
+    extensions: [ '', '.mts', '.ts', '.mjs', '.js', '.html', '.json', '.sass', '.css' ]
   },
   module: {
     rules: [

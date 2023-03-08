@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 // environment dependent configuration
-const PUBLIC_PATH = '/';
+const PUBLIC_PATH = '/'; // this '/' setting opens up the full path afterward for flexible navigation including set headers
 const ENTRY_POINT = './src/index.html';
 
 module.exports = {
@@ -32,13 +32,13 @@ module.exports = {
           {
             loader: "raw-loader",
             options: {
-              esModule: false,
+              esModule: false, // false = enable a CommonJS (node.js modules) instead of es modules (ECMA Script) syntax
             }
           },
           {
             loader: "sass-loader",
             options: {
-              sourceMap: true,
+              sourceMap: true, // adds the mapping for original files to debug
             },
           },
         ],

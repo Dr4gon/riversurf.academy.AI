@@ -31,12 +31,7 @@ module.exports = {
         use: [
           { loader: 'style-loader' },
           { loader: 'css-loader' },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true, // adds the mapping for original files to debug
-            },
-          },
+          { loader: 'sass-loader' },
         ],
       },
       {

@@ -3,7 +3,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [ "webpack-env"] // this is necessary so on compile time commands like require are validated properly by the IDE
   },
   "files": [
     "src/main.ts"

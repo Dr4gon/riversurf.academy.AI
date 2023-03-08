@@ -29,14 +29,10 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
           {
-            loader: "raw-loader",
-            options: {
-              esModule: false, // false = enable a CommonJS (node.js modules) instead of es modules (ECMA Script) syntax
-            }
-          },
-          {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
               sourceMap: true, // adds the mapping for original files to debug
             },

@@ -14,14 +14,20 @@ import { SwiperSlideComponent } from './swiper-slide/swiper-slide.component';
 // init Swiper:
 register();
 
+// loading components for progress spinner
+import { LoadingComponent } from './loading/loading.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
-    SwiperSlideComponent
+    SwiperSlideComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

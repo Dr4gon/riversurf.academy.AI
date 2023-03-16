@@ -1,33 +1,35 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import Swiper from 'swiper';
 
 @Component({
   selector: 'swiper-slide',
   template: require('./swiper-slide.component.html').default,
 })
-export class SwiperSlideComponent {
+export class SwiperSlideComponent implements OnInit, AfterViewInit {
 
   @ViewChild('.newSwiper') newSwiper: any;
 
   constructor() {
   }
-  ngOnInit(): void {
 
-    this.newSwiper = new Swiper(".newSwiper", {
+  ngOnInit(): void {
+    console.log('Swiper-Slider Component initializing.');
+    this.newSwiper = new Swiper('.newSwiper', {
       grabCursor: true,
-      effect: "creative",
+      effect: 'creative',
       creativeEffect: {
         prev: {
           shadow: true,
           translate: [ 0, 0, -400 ],
         },
         next: {
-          translate: [ "100%", 0, 0 ],
+          translate: [ '100%', 0, 0 ],
         },
       },
     });
   }
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit() {
+    console.log('Swiper-Slider Component init complete.');
   }
 }

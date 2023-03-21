@@ -1,12 +1,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+
+const smp = new SpeedMeasurePlugin();
 
 // environment dependent configuration
 const PUBLIC_PATH = '/'; // this '/' setting opens up the full path afterward for flexible navigation including set headers
 const ENTRY_POINT = './src/index.html';
 
-module.exports = {
+module.exports = smp.wrap({
   mode: 'development',
   devtool: 'eval-source-map',
   entry: {
@@ -92,6 +95,6 @@ module.exports = {
     new HtmlWebpackPlugin({ template: ENTRY_POINT }),
     new CleanWebpackPlugin({}), // clean local dist folder
   ],
-};
+});
 
 

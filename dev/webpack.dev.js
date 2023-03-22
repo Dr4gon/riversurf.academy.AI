@@ -16,7 +16,7 @@ module.exports = smp.wrap({
     polyfills: './src/polyfills.ts', // necessary for delivery of zone.js to the bundle
     main: [
       './src/main.ts',
-      './src/styles.sass'
+      './src/styles.scss'
     ],
   },
   output: {
@@ -25,7 +25,7 @@ module.exports = smp.wrap({
     publicPath: PUBLIC_PATH,
   },
   resolve: { // https://stackoverflow.com/questions/40565361/what-does-resolve-extensions-do-in-webpack
-    extensions: [ '', '.mts', '.ts', '.mjs', '.js', '.html', '.json', '.sass', '.css' ]
+    extensions: [ '', '.mts', '.ts', '.mjs', '.js', '.html', '.json', '.css' ]
   },
   module: {
     rules: [
@@ -42,7 +42,6 @@ module.exports = smp.wrap({
         use: [
           { loader: 'style-loader' },
           { loader: 'css-loader' },
-          { loader: 'sass-loader' },
         ],
       },
       {

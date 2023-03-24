@@ -37,7 +37,7 @@ module.exports = smp.wrap({
         ],
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.scss$/i,
         exclude: /node_modules/,
         use: [
           { loader: 'style-loader' },

@@ -59,7 +59,12 @@ module.exports = smp.wrap({
       {
         test: /\.m?ts$/,
         exclude: /node_modules/,
-        loader: 'ts-loader'
+        use: {
+          loader: 'ts-loader',
+          options: {
+            transpileOnly: true // deactivates type-checking for faster build time
+          }
+        }
       },
       {
         test: /\.html$/i,

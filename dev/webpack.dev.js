@@ -8,6 +8,7 @@ const smp = new SpeedMeasurePlugin();
 // environment dependent configuration
 const PUBLIC_PATH = '/'; // this '/' setting opens up the full path afterward for flexible navigation including set headers
 const ENTRY_POINT = './src/index.html';
+const NODE_MODULES_PATH = /node_modules/;
 
 module.exports = smp.wrap({
   mode: 'development',
@@ -38,7 +39,7 @@ module.exports = smp.wrap({
       },
       {
         test: /\.scss$/i,
-        exclude: /node_modules/,
+        exclude: NODE_MODULES_PATH,
         use: [
           { loader: 'style-loader' },
           { loader: 'css-loader' },
@@ -46,7 +47,7 @@ module.exports = smp.wrap({
       },
       {
         test: /\.m?js$/,
-        exclude: /node_modules/,
+        exclude: NODE_MODULES_PATH,
         use: {
           loader: 'babel-loader',
           options: {
@@ -58,7 +59,7 @@ module.exports = smp.wrap({
       },
       {
         test: /\.m?ts$/,
-        exclude: /node_modules/,
+        exclude: NODE_MODULES_PATH,
         use: {
           loader: 'ts-loader',
           options: {

@@ -25,7 +25,7 @@ module.exports = smp.wrap({
     publicPath: PUBLIC_PATH,
   },
   resolve: { // https://stackoverflow.com/questions/40565361/what-does-resolve-extensions-do-in-webpack
-    extensions: [ '', '.mts', '.ts', '.mjs', '.js', '.html', '.json', '.css' ]
+    extensions: [ '', '.mts', '.ts', '.mjs', '.js', '.html', '.json', '.scss', '.css'  ]
   },
   module: {
     rules: [

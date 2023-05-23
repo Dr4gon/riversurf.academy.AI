@@ -21,6 +21,8 @@ $my-theme: mat.define-light-theme($my-configuration);
  emit any typography styles.*/
 @include mat.button-theme($my-theme);
 
+@include mat.all-component-themes($my-theme);
+
 .dummy {
   /* Dummy element because somehow the first style is completely ignored (?) */
 }

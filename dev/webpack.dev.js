@@ -1,7 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 
 const smp = new SpeedMeasurePlugin();
 
@@ -14,10 +15,10 @@ module.exports = smp.wrap({
   mode: 'development',
   devtool: 'eval-source-map',
   entry: {
-    polyfills: './src/polyfills.ts', // necessary for delivery of zone.js to the bundle
     main: [
-      './src/main.ts',
-      './src/styles.scss'
+      './src/main.js',
+      './src/assets/base.css',
+      './src/assets/main.css'
     ],
   },
   output: {
@@ -26,13 +27,14 @@ module.exports = smp.wrap({
     publicPath: PUBLIC_PATH,
   },
   resolve: { // https://stackoverflow.com/questions/40565361/what-does-resolve-extensions-do-in-webpack
-    extensions: [ '', '.mts', '.ts', '.mjs', '.js', '.html', '.json', '.scss', '.css'  ]
+    extensions: [ '', '.mts', '.vue', '.ts', '.mjs', '.js', '.html', '.json', '.scss', '.css', 'svg' ]
   },
   module: {
     rules: [
       {
         test: /\.css$/i,
         use: [
+          { loader: 'vue-style-loader'},
           { loader: 'style-loader' },
           { loader: 'css-loader' },
         ],
@@ -68,6 +70,10 @@ module.exports = smp.wrap({
         }
       },
       {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
         test: /\.html$/i,
         loader: 'html-loader',
       },
@@ -99,6 +105,7 @@ module.exports = smp.wrap({
   plugins: [
     new HtmlWebpackPlugin({ template: ENTRY_POINT }),
     new CleanWebpackPlugin({}), // clean local dist folder
+    new VueLoaderPlugin(),
   ],
 });
 

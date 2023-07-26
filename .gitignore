@@ -1,51 +1,42 @@
-# Custom ignores #
-##################
-node_modules
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# IDEA ignores #
-##################
-*.iml
-misc.xml
-modules.xml
-vcs.xml
-workspace.xml
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
 
-# Compiled source #
-###################
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
 
-# Packages #
-############
-# it's better to unpack these files and commit the raw source
-w# git has its own built in compression methods
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-# Logs and databases #
-######################
-*.log
-*.sql
-*.sqlite
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
 
-# OS generated files #
-######################
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# System files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
-/.idea/jsLibraryMappings.xml
-/.idea/inspectionProfiles/Project_Default.xml

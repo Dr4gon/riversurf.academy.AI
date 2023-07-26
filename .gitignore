@@ -1,5 +1,9 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# Custom ignores #
+##################
+node_modules
+
 # Compiled output
 /dist
 /tmp
@@ -38,5 +42,10 @@ testem.log
 /typings
 
 # System files
-.DS_Store
+DS_Store
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+

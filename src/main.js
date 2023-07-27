@@ -1,5 +1,6 @@
 import './assets/main.css'
 import './assets/SURFNSMILE.jpg'
+import './assets/IntroVideo.webm'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

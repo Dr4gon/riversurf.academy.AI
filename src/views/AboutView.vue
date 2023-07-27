@@ -1,6 +1,10 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>   
+      <video width="600" height="400" controls>
+        <source src="@/assets/IntroVideo.webm" type="video/webm">
+      </video>
+    </h1>
   </div>
 </template>
 

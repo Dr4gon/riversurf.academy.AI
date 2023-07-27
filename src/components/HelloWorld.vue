@@ -13,11 +13,6 @@ defineProps({
     <h3>
       <img src="@/assets/SURFNSMILE.jpg">
     </h3>
-    <h3>
-      <video width="600" height="400" controls>
-        <source src="@/assets/IntroVideo.webm" type="video/webm">
-      </video>
-    </h3>
   </div>
 </template>
 

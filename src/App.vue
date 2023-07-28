@@ -1,17 +1,15 @@
 <script setup>
-import WelcomeComponent from './components/WelcomeComponent.vue'
+import MainView from "@/views/MainView.vue";
 </script>
 
 <template>
-  <header>
-
-    <div class="wrapper">
-      <WelcomeComponent  />
-    </div>
-  </header>
-
+  <div class="wrapper">
+    <MainView/>
+  </div>
 </template>
 
 <style scoped>
-
+.wrapper {
+  height: 100%;
+}
 </style>

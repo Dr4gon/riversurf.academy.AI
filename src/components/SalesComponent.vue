@@ -3,7 +3,7 @@
 </script>
 
 <template>
-
+<p>Produktpalette</p>
 </template>
 
 <style scoped>

@@ -7,6 +7,9 @@
        <nav>
         <RouterLink to="/welcome">Welcome</RouterLink>
         <RouterLink to="/convincer">Convincer</RouterLink>
+        <RouterLink to="/sales">Sales</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/contact">Contact</RouterLink>
     </nav>
 </div>
 </header>
@@ -41,7 +44,7 @@ nav a.router-link-exact-active:hover {
 }
 
 nav a {
-  display: inline-block;
+  display: block;
   padding: 0 1rem;
   border-left: 1px solid var(--color-border);
 }

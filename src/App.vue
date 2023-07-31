@@ -7,6 +7,9 @@
        <nav>
         <RouterLink to="/welcome">Welcome</RouterLink>
         <RouterLink to="/convincer">Convincer</RouterLink>
+        <RouterLink to="/sales">Sales</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/contact">Contact</RouterLink>
     </nav>
 </div>
 </header>

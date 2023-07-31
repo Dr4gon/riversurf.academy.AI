@@ -4,17 +4,17 @@
 <template>
   <header>
     <div class="wrapper">
-       <nav>
+      <nav>
         <RouterLink to="/welcome">Welcome</RouterLink>
         <RouterLink to="/convincer">Convincer</RouterLink>
         <RouterLink to="/sales">Sales</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/contact">Contact</RouterLink>
-    </nav>
-</div>
-</header>
+      </nav>
+    </div>
+  </header>
 
-<RouterView />
+  <RouterView/>
 </template>
 
 <style scoped>

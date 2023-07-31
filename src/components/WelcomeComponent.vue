@@ -6,13 +6,14 @@
   <div class="logo">
     <div>
       <h1>Welcome to Riversurf Academy 🤙</h1>
-      <img src="@/assets/SURFNSMILE.jpg" alt="Logo Surf'n'Smile">
+      <video width="640" height="360" controls>
+        <source src="http://www.riversurf.academy/WillkommensVideo_Edit_sub.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
   </div>
 </template>
 
 <style scoped>
-img{
-  height: 500px;
-}
+
 </style>

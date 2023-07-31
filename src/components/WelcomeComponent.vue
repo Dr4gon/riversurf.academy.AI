@@ -6,16 +6,13 @@
   <div class="logo">
     <div>
       <h1>Welcome to Riversurf Academy 🤙</h1>
+      <img src="@/assets/SURFNSMILE.jpg" alt="Logo Surf'n'Smile">
     </div>
   </div>
 </template>
 
 <style scoped>
-.logo{
-  height: 100%;
-  background-image: url("@/assets/SURFNSMILE.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+img{
+  height: 500px;
 }
 </style>

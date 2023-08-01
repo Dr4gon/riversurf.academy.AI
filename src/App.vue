@@ -1,4 +1,20 @@
 <script setup>
+import Swiper from 'swiper';
+
+ console.log('Swiper-Slider Component initializing.');
+  const newSwiper = new Swiper('.newSwiper', {
+      grabCursor: true,
+      effect: 'creative',
+      creativeEffect: {
+        prev: {
+          shadow: true,
+          translate: [ 0, 0, -400 ],
+        },
+        next: {
+          translate: [ '100%', 0, 0 ],
+        },
+      },
+    });
 </script>
 
 <template>
@@ -13,6 +29,20 @@
       </nav>
     </div>
   </header>
+
+  <!-- <div class="swiper newSwiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <p>Wie kannst du Riversurfen lernen?</p>
+    </div>
+    <div class="swiper-slide">Welche Services möchtest du buchen?</div>
+    <div class="swiper-slide">Von wem wirst du mit Spaß unterstützt?</div>
+    <div class="swiper-slide">Welche Riverwaves gibt's in Deutschland?</div>
+    <div class="swiper-slide">Wie meldest du dich bei mir?</div>
+    <div class="swiper-slide">Wem gehört die Website hier?</div>
+  </div>
+</div> -->
+
 
   <RouterView/>
 </template>
@@ -79,4 +109,48 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
+
+/* Swiper styles for effective slide components */
+.swiper {
+  margin: 100px auto;
+  width: 100%;
+  height: 500px;
+}
+
+.swiper-slide {
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.swiper-slide:nth-child(1n) {
+  background-color: rgb(206, 17, 17);
+}
+
+.swiper-slide:nth-child(2n) {
+  background-color: rgb(0, 140, 255);
+}
+
+.swiper-slide:nth-child(3n) {
+  background-color: rgb(10, 184, 111);
+}
+
+.swiper-slide:nth-child(4n) {
+  background-color: rgb(211, 122, 7);
+}
+
+.swiper-slide:nth-child(5n) {
+  background-color: rgb(118, 163, 12);
+}
+
+.swiper-slide:nth-child(6n) {
+  background-color: rgb(180, 10, 47);
+}
+
+.swiper-slide:nth-child(7n) {
+  background-color: rgb(35, 99, 19);
+}
+
 </style>

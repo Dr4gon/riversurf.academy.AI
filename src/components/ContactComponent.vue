@@ -2,8 +2,11 @@
 import {ref} from 'vue';
 
 const isSubmitted = ref(false);
-
+const name = ref('')
 const handleSubmit = () => {
+
+  name.value = document.getElementById('name').value;
+
   // TODO Logic einfügen wenn Backend steht, für die Einfachheit ist ein Timer gesetzt
   setTimeout(() => {
     isSubmitted.value = true;
@@ -26,7 +29,7 @@ const handleSubmit = () => {
               style="width: 300px; height: 150px; resize: none" required></textarea>
 
     <input type="submit" value="Submit">
-    <div v-if="isSubmitted" class="submit-message">Danke für deine Nachricht, ich melde mich bei dir 🤙</div>
+    <div v-if="isSubmitted" class="submit-message">Danke für deine Nachricht {{ name }}, ich melde mich bei dir 🤙</div>
   </form>
 </template>
 

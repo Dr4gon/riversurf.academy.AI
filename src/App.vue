@@ -1,20 +1,32 @@
 <script setup>
+// import Swiper bundle with all modules installed
+import { register } from 'swiper/element/bundle';
+
+// import styles bundle
+import 'swiper/css/bundle';
+
+// init Swiper:
+register();
+
 import Swiper from 'swiper';
 
- console.log('Swiper-Slider Component initializing.');
-  const newSwiper = new Swiper('.newSwiper', {
-      grabCursor: true,
-      effect: 'creative',
-      creativeEffect: {
-        prev: {
-          shadow: true,
-          translate: [ 0, 0, -400 ],
-        },
-        next: {
-          translate: [ '100%', 0, 0 ],
-        },
-      },
-    });
+const swiper = new Swiper('.swiper', {
+  grabCursor: true,
+  effect: 'creative',
+  creativeEffect: {
+    prev: {
+      // will set `translateZ(-400px)` on previous slides
+      translate: [0, 0, -400],
+    },
+    next: {
+      // will set `translateX(100%)` on next slides
+      translate: ['100%', 0, 0],
+    },
+  },
+});
+
+
+
 </script>
 
 <template>
@@ -30,21 +42,11 @@ import Swiper from 'swiper';
     </div>
   </header>
 
-  <!-- <div class="swiper newSwiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <p>Wie kannst du Riversurfen lernen?</p>
-    </div>
-    <div class="swiper-slide">Welche Services möchtest du buchen?</div>
-    <div class="swiper-slide">Von wem wirst du mit Spaß unterstützt?</div>
-    <div class="swiper-slide">Welche Riverwaves gibt's in Deutschland?</div>
-    <div class="swiper-slide">Wie meldest du dich bei mir?</div>
-    <div class="swiper-slide">Wem gehört die Website hier?</div>
-  </div>
-</div> -->
-
-
-  <RouterView/>
+<swiper-container class="swiper">
+  <swiper-slide><RouterView/></swiper-slide>
+  <swiper-slide><img src="@/assets/SURFNSMILE.jpg" alt="Logo Surf'n'Smile"></swiper-slide>
+  <swiper-slide><img src="@/assets/logo.svg" alt="Logo Surf'n'Smile"></swiper-slide>
+</swiper-container>
 </template>
 
 <style scoped>
@@ -110,47 +112,7 @@ nav a:first-of-type {
   }
 }
 
-/* Swiper styles for effective slide components */
-.swiper {
-  margin: 100px auto;
-  width: 100%;
-  height: 500px;
+img{
+  height: 80vh;
 }
-
-.swiper-slide {
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  font-weight: bold;
-  color: #fff;
-}
-
-.swiper-slide:nth-child(1n) {
-  background-color: rgb(206, 17, 17);
-}
-
-.swiper-slide:nth-child(2n) {
-  background-color: rgb(0, 140, 255);
-}
-
-.swiper-slide:nth-child(3n) {
-  background-color: rgb(10, 184, 111);
-}
-
-.swiper-slide:nth-child(4n) {
-  background-color: rgb(211, 122, 7);
-}
-
-.swiper-slide:nth-child(5n) {
-  background-color: rgb(118, 163, 12);
-}
-
-.swiper-slide:nth-child(6n) {
-  background-color: rgb(180, 10, 47);
-}
-
-.swiper-slide:nth-child(7n) {
-  background-color: rgb(35, 99, 19);
-}
-
 </style>

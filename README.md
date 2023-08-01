@@ -8,7 +8,11 @@
 
 ### Development Environment
 
-To start the application go to Folder riversurf.academy_frontend/dev in your Terminal
+* Install dependencies 
+
+`npm install`
+
+* Start the Server
 
 `npm run standalone`
 
@@ -39,4 +43,7 @@ To start the application go to Folder riversurf.academy_frontend/dev in your Ter
 * Readme updated
 * Project set up
 * Replace Angular.js with Vue.js
+* deleted Vue Templates
+* WelcomeComponent added
+* 
 

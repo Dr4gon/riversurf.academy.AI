@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import {computed, ref} from 'vue';
 
 const isSubmitted = ref(false);
 const isFast = ref(false);
@@ -8,6 +8,8 @@ const message = ref('');
 const startTime = ref(0);
 const endTime = ref(0);
 const info = ref(''); //Honeypot
+const submitMessageRight = computed(() => `Danke für deine Nachricht ${name.value}, ich melde mich bei dir 🤙`)
+const submitMessageFalse = computed(() => `Hier ist etwas schief gelaufen ${name.value}, bitte probiere es erneut.`)
 
 const setStartTime = () => {
   if (startTime.value === 0) {
@@ -36,26 +38,25 @@ const closeMessage = () => {
 
 <template>
   <form id="contact-form" @submit.prevent="handleSubmit">
+
     <label for="name">Name:</label>
     <input type="text" id="name" v-model="name" @input="setStartTime" placeholder="Name" required>
 
     <input type="text" id="info" v-model="info" style="display: none;">
 
     <label for="message">Message:</label>
+
     <textarea id="message" v-model="message" @input="setStartTime" name="message" rows="5"
               placeholder="Was willst du mit mir besprechen?"
               style="width: 300px; height: 150px; resize: none" required></textarea>
-
     <input type="submit" value="Submit">
-
     <div v-if="isSubmitted" class="submit-message">
       <span @click="closeMessage" class="close-btn">X</span>
-      <p>Danke für deine Nachricht {{ name }}, ich melde mich bei dir 🤙</p>
+      <p class="submitMessageRight">{{ submitMessageRight }}</p>
     </div>
-
     <div v-if="isFast" class="submit-message">
       <span @click="closeMessage" class="close-btn">X</span>
-      <p>Hier ist etwas schief gelaufen {{ name }}, bitte probiere es erneut.</p>
+      <p class="submitMessageFalse">{{ submitMessageFalse }}</p>
     </div>
   </form>
 </template>

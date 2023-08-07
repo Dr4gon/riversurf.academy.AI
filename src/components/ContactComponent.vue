@@ -23,7 +23,7 @@ const handleNameInput = () => {
   setStartTime();
   const nameElem = document.getElementById('name');
   if (name.value.trim() === '') {
-    nameElem && nameElem.setCustomValidity('Bitte geben Sie einen Namen ein.🤨');
+    nameElem && nameElem.setCustomValidity('Bitte gebe einen Namen ein 😉');
   } else {
     nameElem && nameElem.setCustomValidity('');
   }
@@ -43,13 +43,30 @@ const handleMessageInput = () => {
   setStartTime();
   const messageElem = document.getElementById('message');
   if (message.value.trim() === '') {
-    messageElem && messageElem.setCustomValidity('Bitte geben Sie eine Nachricht ein. 🤨');
+    messageElem && messageElem.setCustomValidity('Dieses Feld sollte nicht leer sein wenn du mir was sagen möchtest 🤨');
   } else {
     messageElem && messageElem.setCustomValidity('');
   }
 };
 
 const handleSubmit = () => {
+  handleNameInput();
+  handleEmailInput();
+  handleMessageInput();
+
+  const nameElem = document.getElementById('name');
+  const emailElem = document.getElementById('email');
+  const messageElem = document.getElementById('message');
+
+
+  if (
+    nameElem && nameElem.validity.customError ||
+    emailElem && emailElem.validity.customError ||
+    messageElem && messageElem.validity.customError
+  ) {
+    return;
+  }
+
   endTime.value = Date.now();
   if ((endTime.value - startTime.value) > 4000 && !info.value) {
     isSubmitted.value = true;

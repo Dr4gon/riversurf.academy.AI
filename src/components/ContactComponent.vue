@@ -32,11 +32,37 @@ const handleNameInput = () => {
 const handleEmailInput = () => {
   setStartTime();
   const emailElem = document.getElementById('email');
-  if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email.value)) {
-    emailElem && emailElem.setCustomValidity('Bitte geben Sie eine gültige E-Mail-Adresse ein. 🤨');
-  } else {
-    emailElem && emailElem.setCustomValidity('');
+
+  if (email.value.indexOf('@') === -1) {
+    emailElem && emailElem.setCustomValidity('Die E-Mail-Adresse muss ein "@" enthalten. 🤨');
+    return;
   }
+
+  let [localPart, domainPart] = email.value.split('@');
+
+  if (localPart.length === 0) {
+    emailElem && emailElem.setCustomValidity('Die E-Mail-Adresse muss einen lokalen Teil vor dem "@" haben. 🤨');
+    return;
+  }
+
+  if (domainPart.indexOf('.') === -1) {
+    emailElem && emailElem.setCustomValidity('Der Domain-Teil der E-Mail-Adresse muss einen "." enthalten. 🤨');
+    return;
+  }
+
+  let [domain, tld] = domainPart.split('.');
+
+  if (domain.length === 0) {
+    emailElem && emailElem.setCustomValidity('Der Domain-Teil der E-Mail-Adresse muss einen Domain-Namen vor dem "." haben. 🤨');
+    return;
+  }
+
+  if (tld.length < 2 || tld.length > 7) {
+    emailElem && emailElem.setCustomValidity('Die Top-Level-Domain (z.B. ".com") der E-Mail-Adresse muss zwischen 2 und 7 Zeichen lang sein. 🤨');
+    return;
+  }
+
+  emailElem && emailElem.setCustomValidity('');
 };
 
 const handleMessageInput = () => {

@@ -17,7 +17,6 @@ module.exports = smp.wrap({
   entry: {
     main: [
       './src/main.js',
-      './src/assets/base.css',
       './src/assets/main.css'
     ],
   },

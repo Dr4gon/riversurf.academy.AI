@@ -9,6 +9,11 @@ import 'swiper/css/bundle';
 register();
 
 import Swiper from 'swiper';
+import WelcomeComponent from "@/components/WelcomeComponent.vue";
+import ConvincerComponent from "@/components/ConvincerComponent.vue";
+import SalesComponent from "@/components/SalesComponent.vue";
+import AboutComponent from "@/components/AboutComponent.vue";
+import ContactComponent from "@/components/ContactComponent.vue";
 
 const swiper = new Swiper('.swiper', {
   grabCursor: true,
@@ -24,95 +29,18 @@ const swiper = new Swiper('.swiper', {
     },
   },
 });
-
-
-
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/welcome">Welcome</RouterLink>
-        <RouterLink to="/convincer">Convincer</RouterLink>
-        <RouterLink to="/sales">Sales</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/contact">Contact</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-<swiper-container class="swiper">
-  <swiper-slide><RouterView/></swiper-slide>
-  <swiper-slide><img src="@/assets/SURFNSMILE.jpg" alt="Logo Surf'n'Smile"></swiper-slide>
-  <swiper-slide><img src="@/assets/logo.svg" alt="Logo Surf'n'Smile"></swiper-slide>
-</swiper-container>
+  <swiper-container class="swiper">
+    <swiper-slide><WelcomeComponent/></swiper-slide>
+    <swiper-slide><ConvincerComponent/></swiper-slide>
+    <swiper-slide><SalesComponent/></swiper-slide>
+  </swiper-container>
+  <AboutComponent/>
+  <ContactComponent/>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-
-img{
-  height: 80vh;
-}
 </style>

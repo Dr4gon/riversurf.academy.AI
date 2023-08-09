@@ -90,6 +90,10 @@ const handleSubmit = () => {
     emailElem && emailElem.validity.customError ||
     messageElem && messageElem.validity.customError
   ) {
+    messageElem && messageElem.reportValidity();
+    emailElem && emailElem.reportValidity();
+    nameElem && nameElem.reportValidity();
+
     return;
   }
 
@@ -162,5 +166,8 @@ const closeMessage = () => {
   top: 7px;
   cursor: pointer;
   font-size: 12px;
+}
+form{
+  height: 100vh;
 }
 </style>

@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="logo">
+  <div class="container">
     <div>
       <h1>Welcome to Riversurf Academy 🤙</h1>
       <video width="640" height="360" controls>

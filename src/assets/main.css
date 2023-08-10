@@ -3,3 +3,12 @@ html, body
   margin: 0;
   padding: 0;
 }
+
+.container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  gap: 10px;
+}
+

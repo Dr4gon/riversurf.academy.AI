@@ -56,11 +56,6 @@ h1{
 }
 
 .container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  height: 500px;
-  gap: 10px;
 
   > div {
     flex: 0 0 120px;

@@ -1,5 +1,4 @@
 <script setup>
-import ProductComponent from "@/components/ProductComponent.vue";
 </script>
 
 <template>
@@ -10,9 +9,9 @@ import ProductComponent from "@/components/ProductComponent.vue";
 
   <!-- Container für die 3 Divs nebeneinander -->
   <div class="products-container">
-    <div class="product"><ProductComponent /></div>
-    <div class="product"><ProductComponent /></div>
-    <div class="product"><ProductComponent /></div>
+    <div class="product"></div>
+    <div class="product"></div>
+    <div class="product"></div>
   </div>
 </template>
 

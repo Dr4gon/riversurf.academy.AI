@@ -11,7 +11,7 @@
 <style scoped>
 .temp{
   background: rgb(13,20,23);
-  background: linear-gradient(0deg, rgba(13,20,23,1) 9%, rgba(62,96,111,1) 69%);
+  background: linear-gradient(0deg, rgba(13,20,23,1) 9%, var(--water-color) 50%);
   height: 100vh;
 }
 p{

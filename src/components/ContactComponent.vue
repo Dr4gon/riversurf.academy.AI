@@ -169,7 +169,7 @@ const closeMessage = () => {
 }
 form{
   height: 100vh;
-  background: rgb(0,0,0);
-  background: linear-gradient(0deg, rgba(0,0,0,1) 9%, rgba(13,20,23,1) 100%);
+  background: var(--underwater-color);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 1%, var(--underwater-color) 100%);
 }
 </style>

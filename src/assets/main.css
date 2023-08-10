@@ -4,11 +4,17 @@ html, body
   padding: 0;
 }
 
+/* Default setting for all navigation slides to fit water style UX */
 .container{
   width: 100%;
   display: flex;
   justify-content: center;
   height: 500px;
   gap: 10px;
+}
+
+:root {
+  --water-color: hsl(198, 71%, 42%);
+  --underwater-color: #40c3b4;
 }
 

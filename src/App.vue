@@ -67,7 +67,7 @@ swiper-slide {
   height: 100%;
 }
 .water {
-  background-color: #3E606F;
+  background-color: var(--water-color);
   position: relative;
   overflow: hidden;
 

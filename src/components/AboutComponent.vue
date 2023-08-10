@@ -3,15 +3,21 @@
 </script>
 
 <template>
-  <div class="temp">
-<p>It's a meee, Mario</p>
+  <div class="temp container">
+    <div>
+      <h1>What you need to know about me 😎</h1>
+      <video width="640" height="360" controls>
+        <source src="https://www.riversurf.academy/WillkommensVideo_Edit_sub.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .temp{
-  background: rgb(13,20,23);
-  background: linear-gradient(0deg, rgba(13,20,23,1) 9%, rgba(62,96,111,1) 69%);
+  background: var(--underwater-color);
+  background: linear-gradient(0deg, var(--underwater-color) 9%, var(--water-color) 50%);
   height: 100vh;
 }
 p{

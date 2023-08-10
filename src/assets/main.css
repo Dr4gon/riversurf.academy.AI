@@ -13,3 +13,7 @@ html, body
   gap: 10px;
 }
 
+:root {
+  --water-color: hsl(198, 71%, 42%);;
+}
+

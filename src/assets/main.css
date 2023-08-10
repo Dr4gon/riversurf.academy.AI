@@ -4,6 +4,7 @@ html, body
   padding: 0;
 }
 
+/* Default setting for all navigation slides to fit water style UX */
 .container{
   width: 100%;
   display: flex;

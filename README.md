@@ -45,5 +45,13 @@
 * Replace Angular.js with Vue.js
 * deleted Vue Templates
 * WelcomeComponent added
-* 
+
+### Version 0.5
+
+* Add basic tests
+* Add water animation for new water flow design
+* Integrate swiper.js for new navigation 
+* Create contact component with validation
+* Create recommendations with initial dummies
+* Design water flow navigation and mobile first concept
 

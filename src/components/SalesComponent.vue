@@ -1,36 +1,78 @@
 <script setup>
-import ProductComponent from "@/components/ProductComponent.vue";
+import {ref} from 'vue';
+
+//v-calendar
+import {DatePicker} from 'v-calendar';
+import 'v-calendar/style.css';
+
+const date = ref(new Date());
+
+
 </script>
 
 <template>
-  <!-- Überschrift mittig ausrichten -->
-  <div class="header-container">
-    <h1>De Longs, 3 favorites 🤙</h1>
-  </div>
+  <div class="container">
 
-  <!-- Container für die 3 Divs nebeneinander -->
-  <div class="products-container">
-    <div class="product"><ProductComponent /></div>
-    <div class="product"><ProductComponent /></div>
-    <div class="product"><ProductComponent /></div>
+    <div class="div-item">
+      <h2>Welcher Kurs?</h2>
+      <div><span>Basis #1</span>
+        <input type="radio" id="kurs-1" value="true">
+        <label for="kurs-1"></label>
+      </div>
+      <div><span>Basis #2</span>
+        <input type="radio" id="kurs-2" value="true">
+        <label for="kurs-2"></label>
+      </div>
+      <div><span>Basis #3</span>
+        <input type="radio" id="kurs-3" value="true">
+        <label for="kurs-3"></label>
+      </div>
+
+    </div>
+
+    <div class="div-item">
+      <DatePicker v-model="date" mode="date" :min-date="new Date()"/>
+    </div>
+
+    <div class="div-item">
+      <h2>Welche extras?</h2>
+      <div>
+        <span>Board</span>
+        <input type="radio" id="extra1-yes" value="true">
+        <label for="extra1-yes">Ja</label>
+        <input type="radio" id="extra1-no" value="false">
+        <label for="extra1-no">Nö</label>
+      </div>
+      <div>
+        <span>Neo</span>
+        <input type="radio" id="extra2-yes" value="true">
+        <label for="extra2-yes">Ja</label>
+        <input type="radio" id="extra2-no" value="false">
+        <label for="extra2-no">Nö</label>
+      </div>
+      <div>
+        <span>Abholen</span>
+        <input type="radio" id="extra3-yes" value="true">
+        <label for="extra3-yes">Ja</label>
+        <input type="radio" id="extra3-no" value="false">
+        <label for="extra3-no">Nö</label>
+      </div>
+      <div>
+        <span>Essen</span>
+        <input type="radio" id="extra4-yes" value="true">
+        <label for="extra4-yes">Ja</label>
+        <input type="radio" id="extra4-no" value="false">
+        <label for="extra4-no">Nö</label>
+      </div>
+    </div>
+  </div>
+  <div class="div-item">
+    <button>Jetzt Buchen!</button>
   </div>
 </template>
 
 <style scoped>
-.header-container {
-  text-align: center;
-  margin-bottom: 20px; /* Abstand unterhalb der Überschrift */
+.div-item{
+  margin: 20px;
 }
-
-.products-container {
-  display: flex; /* Flexbox verwenden, um die Divs nebeneinander anzuzeigen */
-  justify-content: space-between; /* Gleichmäßiger Abstand zwischen den Divs */
-}
-
-.product {
-  flex: 1; /* Jedes Produkt nimmt den gleichen Platz ein */
-  margin: 0 10px; /* Ein kleiner Abstand zwischen den Produkten */
-}
-
-/* Hier können Sie zusätzliche Styling-Einstellungen für die ProductComponent vornehmen */
 </style>

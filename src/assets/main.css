@@ -14,6 +14,7 @@ html, body
 }
 
 :root {
-  --water-color: hsl(198, 71%, 42%);;
+  --water-color: hsl(198, 71%, 42%);
+  --underwater-color: #40c3b4;
 }
 

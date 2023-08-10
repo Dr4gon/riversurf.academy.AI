@@ -16,8 +16,8 @@
 
 <style scoped>
 .temp{
-  background: rgb(13,20,23);
-  background: linear-gradient(0deg, rgba(13,20,23,1) 9%, var(--water-color) 50%);
+  background: var(--underwater-color);
+  background: linear-gradient(0deg, var(--underwater-color) 9%, var(--water-color) 50%);
   height: 100vh;
 }
 p{

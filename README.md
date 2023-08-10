@@ -1,4 +1,4 @@
-# riversurf.academy Frontend v0.4
+# riversurf.academy Frontend
 
 ## System Requirements
 

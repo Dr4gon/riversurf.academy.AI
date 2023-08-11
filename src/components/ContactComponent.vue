@@ -1,24 +1,27 @@
 <script setup>
 import {computed, ref} from 'vue';
 
-const isSubmitted = ref(false);
-const isFast = ref(false);
-const name = ref('');
-const email = ref('')
-const info = ref(''); //Honeypot
-const message = ref('');
-const startTime = ref(0);
-const endTime = ref(0);
+const isSubmitted = ref(false); // Indicates if the form has been successfully submitted
+const isFast = ref(false);      // Indicates if the form submission was suspiciously quick (potential spam)
+const name = ref('');           // Store the name input
+const email = ref('')           // Store the email input
+const info = ref('');           // Honeypot for spam bots. Not visible to users
+const message = ref('');        // Store the message input
+const startTime = ref(0);       // Track the time when user starts typing
+const endTime = ref(0);         // Track the time when user submits the form
 
+// dynamic submission messages
 const submitMessageRight = computed(() => `Danke für deine Nachricht ${name.value}, ich melde mich bei dir 🤙`)
 const submitMessageFalse = computed(() => `Hier ist etwas schief gelaufen ${name.value}, bitte probiere es erneut.`)
 
+// Set the start time for handleSubmit (spam protection)
 const setStartTime = () => {
   if (startTime.value === 0) {
     startTime.value = Date.now();
   }
 };
 
+// Name input validation
 const handleNameInput = () => {
   setStartTime();
   const nameElem = document.getElementById('name');
@@ -29,6 +32,7 @@ const handleNameInput = () => {
   }
 };
 
+// Email input validation
 const handleEmailInput = () => {
   setStartTime();
   const emailElem = document.getElementById('email');
@@ -65,6 +69,7 @@ const handleEmailInput = () => {
   emailElem && emailElem.setCustomValidity('');
 };
 
+// Message input validation
 const handleMessageInput = () => {
   setStartTime();
   const messageElem = document.getElementById('message');
@@ -75,16 +80,19 @@ const handleMessageInput = () => {
   }
 };
 
+// Main function to handle form submit
 const handleSubmit = () => {
+  // Validate inputs
   handleNameInput();
   handleEmailInput();
   handleMessageInput();
 
+  // Fetch form elements
   const nameElem = document.getElementById('name');
   const emailElem = document.getElementById('email');
   const messageElem = document.getElementById('message');
 
-
+  // Check if any form input has custom errors
   if (
     nameElem && nameElem.validity.customError ||
     emailElem && emailElem.validity.customError ||
@@ -96,7 +104,7 @@ const handleSubmit = () => {
 
     return;
   }
-
+  // Check form submission speed to identify potential spam
   endTime.value = Date.now();
   if ((endTime.value - startTime.value) > 4000 && !info.value) {
     isSubmitted.value = true;
@@ -105,6 +113,7 @@ const handleSubmit = () => {
   }
 };
 
+// Reset form and feedback messages
 const closeMessage = () => {
   isSubmitted.value = false;
   isFast.value = false;

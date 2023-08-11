@@ -12,18 +12,20 @@ const date = ref(new Date());
 
 <template>
   <div class="container">
-
     <div class="div-item">
       <h2>Welcher Kurs?</h2>
-      <div><span>Basis #1</span>
+      <div>
+        <span>Basis #1</span>
         <input type="radio" id="kurs-1" value="true">
         <label for="kurs-1"></label>
       </div>
-      <div><span>Basis #2</span>
+      <div>
+        <span>Basis #2</span>
         <input type="radio" id="kurs-2" value="true">
         <label for="kurs-2"></label>
       </div>
-      <div><span>Basis #3</span>
+      <div>
+        <span>Basis #3</span>
         <input type="radio" id="kurs-3" value="true">
         <label for="kurs-3"></label>
       </div>
@@ -38,10 +40,10 @@ const date = ref(new Date());
       <h2>Welche extras?</h2>
       <div>
         <span>Board</span>
-        <input type="radio" id="extra1-yes" value="true">
-        <label for="extra1-yes">Ja</label>
-        <input type="radio" id="extra1-no" value="false">
-        <label for="extra1-no">Nö</label>
+          <input type="radio" id="extra1-yes" value="true">
+          <label for="extra1-yes">Ja</label>
+          <input type="radio" id="extra1-no" value="false">
+          <label for="extra1-no">Nö</label>
       </div>
       <div>
         <span>Neo</span>
@@ -66,13 +68,38 @@ const date = ref(new Date());
       </div>
     </div>
   </div>
-  <div class="div-item">
+  <div class="div-button">
     <button>Jetzt Buchen!</button>
   </div>
 </template>
 
 <style scoped>
-.div-item{
-  margin: 20px;
+.container {
+  display: flex;
+  align-items: center;
 }
+.div-item{
+  background-color: var(--water-color);
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.div-item div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.div-item span {
+  flex: 1;
+}
+.div-button{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 </style>

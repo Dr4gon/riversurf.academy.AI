@@ -23,7 +23,7 @@ const handleNameInput = () => {
   setStartTime();
   const nameElem = document.getElementById('name');
   if (name.value.trim() === '') {
-    nameElem && nameElem.setCustomValidity('Bitte gebe einen Namen ein 😉');
+    nameElem && nameElem.setCustomValidity('Gebe einen Namen ein 😉');
   } else {
     nameElem && nameElem.setCustomValidity('');
   }
@@ -41,24 +41,24 @@ const handleEmailInput = () => {
   let [localPart, domainPart] = email.value.split('@');
 
   if (localPart.length === 0) {
-    emailElem && emailElem.setCustomValidity('Die E-Mail-Adresse muss einen lokalen Teil vor dem "@" haben. 🤨');
+    emailElem && emailElem.setCustomValidity('Die E-Mail-Adresse muss einen Namen vor dem "@" haben. 😄');
     return;
   }
 
   if (domainPart.indexOf('.') === -1) {
-    emailElem && emailElem.setCustomValidity('Der Domain-Teil der E-Mail-Adresse muss einen "." enthalten. 🤨');
+    emailElem && emailElem.setCustomValidity('Der Domain-Teil der E-Mail-Adresse muss einen "." enthalten. 😄');
     return;
   }
 
   let [domain, tld] = domainPart.split('.');
 
   if (domain.length === 0) {
-    emailElem && emailElem.setCustomValidity('Der Domain-Teil der E-Mail-Adresse muss einen Domain-Namen vor dem "." haben. 🤨');
+    emailElem && emailElem.setCustomValidity('Der Domain-Teil der E-Mail-Adresse muss einen Domain-Namen vor dem "." haben. 😄');
     return;
   }
 
   if (tld.length < 2 || tld.length > 7) {
-    emailElem && emailElem.setCustomValidity('Die Top-Level-Domain (z.B. ".com") der E-Mail-Adresse muss zwischen 2 und 7 Zeichen lang sein. 🤨');
+    emailElem && emailElem.setCustomValidity('Die Top-Level-Domain (z.B. ".com") der E-Mail-Adresse muss zwischen 2 und 7 Zeichen lang sein. 😄');
     return;
   }
 
@@ -69,7 +69,7 @@ const handleMessageInput = () => {
   setStartTime();
   const messageElem = document.getElementById('message');
   if (message.value.trim() === '') {
-    messageElem && messageElem.setCustomValidity('Dieses Feld sollte nicht leer sein wenn du mir was sagen möchtest 🤨');
+    messageElem && messageElem.setCustomValidity('Schreib mir eine Nachricht 😄');
   } else {
     messageElem && messageElem.setCustomValidity('');
   }
@@ -117,34 +117,41 @@ const closeMessage = () => {
 </script>
 
 <template>
-  <form id="contact-form" @submit.prevent="handleSubmit">
+  <div class="temp">
+    <div class="container">
+      <form id="contact-form" @submit.prevent="handleSubmit">
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" v-model="name" @input="handleNameInput" placeholder="Name">
+        </div>
 
-    <label for="name">Name:</label>
-    <input type="text" id="name" v-model="name" @input="handleNameInput" placeholder="Name">
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" v-model="email" @input="handleEmailInput" placeholder="email@mail.com">
+        </div>
+        <div>
+          <input type="text" id="info" v-model="info" style="display: none;">
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" v-model="email" @input="handleEmailInput" placeholder="email@mail.com">
+          <label for="message">Message:</label>
+          <textarea id="message" v-model="message" @input="handleMessageInput" name="message" rows="5"
+                    placeholder="Was willst du mit mir besprechen?"
+                    style="width: 300px; height: 150px; resize: none"></textarea>
+        </div>
+        <div>
+          <input type="submit" value="Schreib mir!">
+        </div>
+        <div v-if="isSubmitted" class="submit-message">
+          <span @click="closeMessage" class="close-btn">X</span>
+          <p class="submitMessageRight">{{ submitMessageRight }}</p>
+        </div>
 
-    <input type="text" id="info" v-model="info" style="display: none;">
-
-    <label for="message">Message:</label>
-    <textarea id="message" v-model="message" @input="handleMessageInput" name="message" rows="5"
-              placeholder="Was willst du mit mir besprechen?"
-              style="width: 300px; height: 150px; resize: none"></textarea>
-
-    <input type="submit" value="Submit">
-
-    <div v-if="isSubmitted" class="submit-message">
-      <span @click="closeMessage" class="close-btn">X</span>
-      <p class="submitMessageRight">{{ submitMessageRight }}</p>
+        <div v-if="isFast" class="submit-message">
+          <span @click="closeMessage" class="close-btn">X</span>
+          <p class="submitMessageFalse">{{ submitMessageFalse }}</p>
+        </div>
+      </form>
     </div>
-
-    <div v-if="isFast" class="submit-message">
-      <span @click="closeMessage" class="close-btn">X</span>
-      <p class="submitMessageFalse">{{ submitMessageFalse }}</p>
-    </div>
-
-  </form>
+  </div>
 </template>
 
 <style scoped>
@@ -167,9 +174,10 @@ const closeMessage = () => {
   cursor: pointer;
   font-size: 12px;
 }
-form{
+
+.temp {
   height: 100vh;
   background: var(--underwater-color);
-  background: linear-gradient(0deg, rgba(0,0,0,1) 1%, var(--underwater-color) 100%);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 1%, var(--underwater-color) 100%);
 }
 </style>

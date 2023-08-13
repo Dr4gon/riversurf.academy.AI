@@ -11,6 +11,10 @@ html, body
   justify-content: center;
   height: 500px;
   gap: 10px;
+
+  /* Needed for the water bubbles to stay underwater */
+  overflow: hidden;
+  position: relative;
 }
 
 :root {

@@ -1,6 +1,6 @@
 {
   "name": "dev",
-  "version": "0.4",
+  "version": "0.5",
   "scripts": {
     "dev": "npx webpack serve --config webpack.dev.js",
     "standalone": "vite",

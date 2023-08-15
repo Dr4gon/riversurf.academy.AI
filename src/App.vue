@@ -46,26 +46,7 @@ const swiper = new Swiper('.swiper', {
       </swiper-container>
     </div>
     <div class="containedBubbles">
-
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-      <div class='bubble'></div>
-
+      <div class="bubble" v-for="n in 18"></div>
       <AboutComponent/>
       <ContactComponent/>
     </div>

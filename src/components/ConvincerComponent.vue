@@ -56,6 +56,7 @@ h1{
 }
 
 .container {
+  height: 55vh; /* Overwrite from general style specifically for the recommendations */
 
   > div {
     flex: 0 0 120px;

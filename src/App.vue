@@ -46,7 +46,7 @@ const swiper = new Swiper('.swiper', {
       </swiper-container>
     </div>
     <div class="containedBubbles">
-      <div class="bubble" v-for="n in 18"></div>
+      <div class="bubble" v-for="n in 50"></div>
       <AboutComponent/>
       <ContactComponent/>
     </div>
@@ -127,7 +127,7 @@ swiper-slide {
   position: absolute;
 }
 
-$numberOfBubbles: 18;
+$numberOfBubbles: 50;
 
 @function randomBubble($min,$max){
   @return floor(random()*($max - $min + 1) + $min);

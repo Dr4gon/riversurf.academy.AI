@@ -128,7 +128,7 @@ const closeMessage = () => {
 <template>
   <div class="temp">
     <div class="container">
-      <form id="contact-form" @submit.prevent="handleSubmit">
+      <form class="contact" id="contact-form" @submit.prevent="handleSubmit">
         <div>
           <label for="name">Name:</label>
           <input type="text" id="name" v-model="name" @input="handleNameInput" placeholder="Name">
@@ -188,5 +188,9 @@ const closeMessage = () => {
   height: 100vh;
   background: var(--underwater-color);
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 1%, var(--underwater-color) 100%);
+}
+
+.contact{
+  margin-top: 30vh;
 }
 </style>

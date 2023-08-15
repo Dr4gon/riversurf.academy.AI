@@ -9,7 +9,7 @@ html, body
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 500px;
+  height: 100vh;
   gap: 10px;
 
   /* Needed for the water bubbles to stay underwater */

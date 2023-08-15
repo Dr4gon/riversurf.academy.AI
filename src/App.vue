@@ -161,7 +161,7 @@ $numberOfBubbles: 18;
   $bubbleLength: randomBubble(5, 100)+px;
 
   .bubble:nth-child(#{$i}){
-      background: radial-gradient(ellipse at $bgpos, #b8c6c6 0%,#30b3d3 46%,#20628c 100%);
+      background: radial-gradient(ellipse at $bgpos, #b8c6c6 0%,var(--underwater-color) 30%,var(--water-color) 100%);
       width: $bubbleLength;
       height: $bubbleLength;
       left: randomBubble(1, 100)+vw;

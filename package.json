@@ -1,5 +1,5 @@
 {
-  "name": "dev",
+  "name": "riversurf-frontend",
   "version": "0.5",
   "scripts": {
     "dev": "npx webpack serve --config webpack.dev.js",

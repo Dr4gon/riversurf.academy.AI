@@ -22,3 +22,10 @@ html, body
   --underwater-color: #40c3b4;
 }
 
+/* Ensures that this content is fully shown in a responsive design */
+img,
+picture,
+video {
+  max-width: 100%;
+}
+

@@ -1,21 +1,28 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
 
-# Custom ignores #
-##################
-node_modules
-
-# Compiled output
+# Compiled output #
+###################
 /dist
 /tmp
 /out-tsc
 /bazel-out
+/.vite
 
-# Node
-/node_modules
+# Node #
+########
+node_modules
 npm-debug.log
 yarn-error.log
 
-# IDEs and editors
+# IDEs and editors #
+####################
 .idea/
 .project
 .classpath
@@ -24,7 +31,8 @@ yarn-error.log
 .settings/
 *.sublime-workspace
 
-# Visual Studio Code
+# Visual Studio Code #
+######################
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -32,7 +40,8 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
-# Miscellaneous
+# Miscellaneous #
+#################
 /.angular/cache
 .sass-cache/
 /connect.lock
@@ -41,11 +50,32 @@ yarn-error.log
 testem.log
 /typings
 
-# System files
-DS_Store
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+w# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
 Thumbs.db
-

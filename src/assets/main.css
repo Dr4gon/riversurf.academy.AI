@@ -1,11 +1,11 @@
-html, body
-{
+html,
+body {
   margin: 0;
   padding: 0;
 }
 
 /* Default setting for all navigation slides to fit water style UX */
-.container{
+.container {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -28,4 +28,3 @@ picture,
 video {
   max-width: 100%;
 }
-

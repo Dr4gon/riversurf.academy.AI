@@ -1,18 +1,18 @@
 <script setup>
-import {computed, ref} from 'vue';
+import { computed, ref } from 'vue';
 
 const isSubmitted = ref(false); // Indicates if the form has been successfully submitted
-const isFast = ref(false);      // Indicates if the form submission was suspiciously quick (potential spam)
-const name = ref('');           // Store the name input
-const email = ref('')           // Store the email input
-const info = ref('');           // Honeypot for spam bots. Not visible to users
-const message = ref('');        // Store the message input
-const startTime = ref(0);       // Track the time when user starts typing
-const endTime = ref(0);         // Track the time when user submits the form
+const isFast = ref(false); // Indicates if the form submission was suspiciously quick (potential spam)
+const name = ref(''); // Store the name input
+const email = ref(''); // Store the email input
+const info = ref(''); // Honeypot for spam bots. Not visible to users
+const message = ref(''); // Store the message input
+const startTime = ref(0); // Track the time when user starts typing
+const endTime = ref(0); // Track the time when user submits the form
 
 // dynamic submission messages
-const submitMessageRight = computed(() => `Danke für deine Nachricht ${name.value}, ich melde mich bei dir 🤙`)
-const submitMessageFalse = computed(() => `Hier ist etwas schief gelaufen ${name.value}, bitte probiere es erneut.`)
+const submitMessageRight = computed(() => `Danke für deine Nachricht ${name.value}, ich melde mich bei dir 🤙`);
+const submitMessageFalse = computed(() => `Hier ist etwas schief gelaufen ${name.value}, bitte probiere es erneut.`);
 
 // Set the start time for handleSubmit (spam protection)
 const setStartTime = () => {
@@ -57,12 +57,16 @@ const handleEmailInput = () => {
   let [domain, tld] = domainPart.split('.');
 
   if (domain.length === 0) {
-    emailElem && emailElem.setCustomValidity('Der Domain-Teil der E-Mail-Adresse muss einen Domain-Namen vor dem "." haben. 😄');
+    emailElem &&
+      emailElem.setCustomValidity('Der Domain-Teil der E-Mail-Adresse muss einen Domain-Namen vor dem "." haben. 😄');
     return;
   }
 
   if (tld.length < 2 || tld.length > 7) {
-    emailElem && emailElem.setCustomValidity('Die Top-Level-Domain (z.B. ".com") der E-Mail-Adresse muss zwischen 2 und 7 Zeichen lang sein. 😄');
+    emailElem &&
+      emailElem.setCustomValidity(
+        'Die Top-Level-Domain (z.B. ".com") der E-Mail-Adresse muss zwischen 2 und 7 Zeichen lang sein. 😄'
+      );
     return;
   }
 
@@ -94,9 +98,9 @@ const handleSubmit = () => {
 
   // Check if any form input has custom errors
   if (
-    nameElem && nameElem.validity.customError ||
-    emailElem && emailElem.validity.customError ||
-    messageElem && messageElem.validity.customError
+    (nameElem && nameElem.validity.customError) ||
+    (emailElem && emailElem.validity.customError) ||
+    (messageElem && messageElem.validity.customError)
   ) {
     messageElem && messageElem.reportValidity();
     emailElem && emailElem.reportValidity();
@@ -106,7 +110,7 @@ const handleSubmit = () => {
   }
   // Check form submission speed to identify potential spam
   endTime.value = Date.now();
-  if ((endTime.value - startTime.value) > 4000 && !info.value) {
+  if (endTime.value - startTime.value > 4000 && !info.value) {
     isSubmitted.value = true;
   } else {
     isFast.value = true;
@@ -131,23 +135,29 @@ const closeMessage = () => {
       <form class="contact" id="contact-form" @submit.prevent="handleSubmit">
         <div>
           <label for="name">Name:</label>
-          <input type="text" id="name" v-model="name" @input="handleNameInput" placeholder="Name">
+          <input type="text" id="name" v-model="name" @input="handleNameInput" placeholder="Name" />
         </div>
 
         <div>
           <label for="email">Email:</label>
-          <input type="email" id="email" v-model="email" @input="handleEmailInput" placeholder="email@mail.com">
+          <input type="email" id="email" v-model="email" @input="handleEmailInput" placeholder="email@mail.com" />
         </div>
         <div>
-          <input type="text" id="info" v-model="info" style="display: none;">
+          <input type="text" id="info" v-model="info" style="display: none" />
 
           <label for="message">Message:</label>
-          <textarea id="message" v-model="message" @input="handleMessageInput" name="message" rows="5"
-                    placeholder="Was willst du mit mir besprechen?"
-                    style="width: 300px; height: 150px; resize: none"></textarea>
+          <textarea
+            id="message"
+            v-model="message"
+            @input="handleMessageInput"
+            name="message"
+            rows="5"
+            placeholder="Was willst du mit mir besprechen?"
+            style="width: 300px; height: 150px; resize: none"
+          ></textarea>
         </div>
         <div>
-          <input type="submit" value="Schreib mir!">
+          <input type="submit" value="Schreib mir!" />
         </div>
         <div v-if="isSubmitted" class="submit-message">
           <span @click="closeMessage" class="close-btn">X</span>
@@ -190,7 +200,7 @@ const closeMessage = () => {
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 1%, var(--underwater-color) 100%);
 }
 
-.contact{
+.contact {
   margin-top: 30vh;
 }
 </style>

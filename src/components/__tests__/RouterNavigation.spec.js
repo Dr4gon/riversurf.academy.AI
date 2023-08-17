@@ -1,4 +1,4 @@
-import {test, expect} from 'vitest';
+import { test, expect } from 'vitest';
 import router from '@/router/index';
 
 test('routing /welcome', async () => {

@@ -1,6 +1,6 @@
 <script setup>
 // import Swiper bundle with all modules installed
-import {register} from 'swiper/element/bundle';
+import { register } from 'swiper/element/bundle';
 
 // import styles bundle
 import 'swiper/css/bundle';
@@ -9,11 +9,11 @@ import 'swiper/css/bundle';
 register();
 
 import Swiper from 'swiper';
-import WelcomeComponent from "@/components/WelcomeComponent.vue";
-import ConvincerComponent from "@/components/ConvincerComponent.vue";
-import SalesComponent from "@/components/SalesComponent.vue";
-import AboutComponent from "@/components/AboutComponent.vue";
-import ContactComponent from "@/components/ContactComponent.vue";
+import WelcomeComponent from '@/components/WelcomeComponent.vue';
+import ConvincerComponent from '@/components/ConvincerComponent.vue';
+import SalesComponent from '@/components/SalesComponent.vue';
+import AboutComponent from '@/components/AboutComponent.vue';
+import ContactComponent from '@/components/ContactComponent.vue';
 
 const swiper = new Swiper('.swiper', {
   grabCursor: true,
@@ -32,35 +32,38 @@ const swiper = new Swiper('.swiper', {
 </script>
 
 <template>
-    <div class="water">
-      <swiper-container class="swiper">
-        <swiper-slide>
-          <WelcomeComponent/>
-        </swiper-slide>
-        <swiper-slide>
-          <ConvincerComponent/>
-        </swiper-slide>
-        <swiper-slide>
-          <SalesComponent/>
-        </swiper-slide>
-      </swiper-container>
-    </div>
-    <div class="containedBubbles">
-      <!-- Changes of the bubble number only works in concert with changing the css bubble number as well -->
-      <div class="bubble" v-for="n in 50"></div>
-      <AboutComponent/>
-      <ContactComponent/>
-    </div>
+  <div class="water">
+    <swiper-container class="swiper">
+      <swiper-slide>
+        <WelcomeComponent />
+      </swiper-slide>
+      <swiper-slide>
+        <ConvincerComponent />
+      </swiper-slide>
+      <swiper-slide>
+        <SalesComponent />
+      </swiper-slide>
+    </swiper-container>
+  </div>
+  <div class="containedBubbles">
+    <!-- Changes of the bubble number only works in concert with changing the css bubble number as well -->
+    <div class="bubble" v-for="n in 50"></div>
+    <AboutComponent />
+    <ContactComponent />
+  </div>
 </template>
 
 <style scoped lang="scss">
-html, body {
+html,
+body {
   height: 100%;
   overflow: hidden; /* Verhindert doppeltes Scrollen */
   box-sizing: border-box;
 }
 
-.swiper, AboutComponent, ContactComponent {
+.swiper,
+AboutComponent,
+ContactComponent {
   height: 100vh;
   width: 100%;
   margin: 0;
@@ -77,12 +80,12 @@ swiper-slide {
 
   &:before,
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     left: 50%;
     min-width: 300vw;
     min-height: 300vw;
-    background-color: #FCFFF5;
+    background-color: #fcfff5;
     animation-name: rotate;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
@@ -96,7 +99,7 @@ swiper-slide {
 
   &:after {
     bottom: 12vh;
-    opacity: .5;
+    opacity: 0.5;
     border-radius: 47%;
     animation-duration: 10s;
   }
@@ -114,7 +117,7 @@ swiper-slide {
   }
 }
 
-.containedBubbles{
+.containedBubbles {
   /* Needed for the water bubbles to stay underwater */
   position: relative;
   overflow: hidden;
@@ -131,38 +134,38 @@ swiper-slide {
 /* Changes of the bubble number only works in concert with changing the html generated bubble number as well*/
 $numberOfBubbles: 50;
 
-@function randomBubble($min,$max){
-  @return floor(random()*($max - $min + 1) + $min);
+@function randomBubble($min, $max) {
+  @return floor(random() * ($max - $min + 1) + $min);
 }
 
-@function randomTime($min,$max){
-  @return floor(random()*($max - $min + 1) + $min)+s;
+@function randomTime($min, $max) {
+  @return floor(random() * ($max - $min + 1) + $min) + s;
 }
-  
+
 @for $i from 1 through $numberOfBubbles {
   /* Some variance in bubble styling */
-  $bgpos: if($i % 2 == 0 ,top right,center); 
-  $bubbleLength: randomBubble(5, 100)+px;
+  $bgpos: if($i % 2 == 0, top right, center);
+  $bubbleLength: randomBubble(5, 100) + px;
 
-  .bubble:nth-child(#{$i}){
-      background: radial-gradient(ellipse at $bgpos, #b8c6c6 0%,var(--underwater-color) 30%,var(--water-color) 100%);
-      width: $bubbleLength; /* Must be equal to get round bubbles */
-      height: $bubbleLength; /* Must be equal to get round bubbles */
-      left: randomBubble(1, 100)+vw;
-      bottom: randomBubble(1, 100)+vh;
-      animation: move+#{$i} infinite randomTime(3, 15);
+  .bubble:nth-child(#{$i}) {
+    background: radial-gradient(ellipse at $bgpos, #b8c6c6 0%, var(--underwater-color) 30%, var(--water-color) 100%);
+    width: $bubbleLength; /* Must be equal to get round bubbles */
+    height: $bubbleLength; /* Must be equal to get round bubbles */
+    left: randomBubble(1, 100) + vw;
+    bottom: randomBubble(1, 100) + vh;
+    animation: move +#{$i} infinite randomTime(3, 15);
+  }
+
+  @keyframes move#{$i} {
+    0% {
+      bottom: -100px;
     }
-     
-  @keyframes move#{$i}{
-    0%{
-      bottom: -100px
-    }
-    100%{ /* burst bubbles at different heights */
-      bottom: randomBubble(0, 100)+vh;
-      transform: translate(randomBubble(-100, 200)+px, 0);
+    100% {
+      /* burst bubbles at different heights */
+      bottom: randomBubble(0, 100) + vh;
+      transform: translate(randomBubble(-100, 200) + px, 0);
       opacity: 0;
     }
   }
 }
-
 </style>

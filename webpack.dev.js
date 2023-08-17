@@ -15,36 +15,27 @@ module.exports = smp.wrap({
   mode: 'development',
   devtool: 'eval-source-map',
   entry: {
-    main: [
-      './src/main.js',
-      './src/assets/main.css'
-    ],
+    main: ['./src/main.js', './src/assets/main.css'],
   },
   output: {
     filename: '[name].js', // the name tag avoids conflicts in the chunking optimization
     path: path.resolve(__dirname, 'dist'),
     publicPath: PUBLIC_PATH,
   },
-  resolve: { // https://stackoverflow.com/questions/40565361/what-does-resolve-extensions-do-in-webpack
-    extensions: [ '', '.mts', '.vue', '.ts', '.mjs', '.js', '.html', '.json', '.scss', '.css', 'svg' ]
+  resolve: {
+    // https://stackoverflow.com/questions/40565361/what-does-resolve-extensions-do-in-webpack
+    extensions: ['', '.mts', '.vue', '.ts', '.mjs', '.js', '.html', '.json', '.scss', '.css', 'svg'],
   },
   module: {
     rules: [
       {
         test: /\.css$/i,
-        use: [
-          { loader: 'vue-style-loader'},
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-        ],
+        use: [{ loader: 'vue-style-loader' }, { loader: 'style-loader' }, { loader: 'css-loader' }],
       },
       {
         test: /\.scss$/i,
         exclude: NODE_MODULES_PATH,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-        ],
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
       },
       {
         test: /\.m?js$/,
@@ -52,11 +43,9 @@ module.exports = smp.wrap({
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              [ '@babel/preset-env', { targets: "defaults" } ]
-            ]
-          }
-        }
+            presets: [['@babel/preset-env', { targets: 'defaults' }]],
+          },
+        },
       },
       {
         test: /\.m?ts$/,
@@ -64,13 +53,13 @@ module.exports = smp.wrap({
         use: {
           loader: 'ts-loader',
           options: {
-            transpileOnly: true // deactivates type-checking for faster build time
-          }
-        }
+            transpileOnly: true, // deactivates type-checking for faster build time
+          },
+        },
       },
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
       },
       {
         test: /\.html$/i,
@@ -84,28 +73,25 @@ module.exports = smp.wrap({
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
-    ]
+    ],
   },
-  devServer:
-    {
-      historyApiFallback: true, // 404 gets routed back to index.html
-      port: 9090,
-      headers: {
-        'Content-Security-Policy': 'font-src \'self\' data:; img-src \'self\' data:', // allows delivery of elements from same origin
-      },
-      devMiddleware: {
-        index: true,
-        mimeTypes: { phtml: 'text/html' },
-        publicPath: PUBLIC_PATH,
-        serverSideRender: true,
-        writeToDisk: true,
-      },
+  devServer: {
+    historyApiFallback: true, // 404 gets routed back to index.html
+    port: 9090,
+    headers: {
+      'Content-Security-Policy': "font-src 'self' data:; img-src 'self' data:", // allows delivery of elements from same origin
     },
+    devMiddleware: {
+      index: true,
+      mimeTypes: { phtml: 'text/html' },
+      publicPath: PUBLIC_PATH,
+      serverSideRender: true,
+      writeToDisk: true,
+    },
+  },
   plugins: [
     new HtmlWebpackPlugin({ template: ENTRY_POINT }),
     new CleanWebpackPlugin({}), // clean local dist folder
     new VueLoaderPlugin(),
   ],
 });
-
-

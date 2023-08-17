@@ -1,5 +1,5 @@
 /* eslint-env node */
-require('@rushstack/eslint-patch/modern-module-resolution')
+require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
   root: true,
@@ -32,12 +32,11 @@ module.exports = {
         singleQuote: true,
         arrowParens: 'avoid',
         printWidth: 120,
-        semi: false,
+        semi: true,
         trailingComma: 'es5',
         tabWidth: 2,
         useTabs: false,
       },
     ],
   },
-}
-
+};

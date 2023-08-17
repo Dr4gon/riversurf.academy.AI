@@ -1,16 +1,20 @@
-html, body
-{
+html,
+body {
   margin: 0;
   padding: 0;
 }
 
 /* Default setting for all navigation slides to fit water style UX */
-.container{
+.container {
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 500px;
+  height: 100vh;
   gap: 10px;
+
+  /* Needed for the water bubbles to stay underwater */
+  overflow: hidden;
+  position: relative;
 }
 
 :root {
@@ -18,3 +22,9 @@ html, body
   --underwater-color: #40c3b4;
 }
 
+/* Ensures that this content is fully shown in a responsive design */
+img,
+picture,
+video {
+  max-width: 100%;
+}

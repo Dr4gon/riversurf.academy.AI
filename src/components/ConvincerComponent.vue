@@ -1,52 +1,55 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
-
-<div>
-  <h1>Recommendations</h1>
-  <br>
-  <div class="container">
-    <div>
-      <div class="content">
-        <h2>Peter Griffin</h2>
-        <p>Hatte 'ne Lektion bei De Long und boah, war das klasse! Er hatte nicht mal ein Problem mit meiner
-          kugelrunden Bauchform. Fühlte mich fast wie ein Delfin... ein sehr schwerer Delfin. Zwei Daumen hoch!
-          Hehehehe.</p>
+  <div>
+    <h1>Recommendations</h1>
+    <br />
+    <div class="container">
+      <div>
+        <div class="content">
+          <h2>Peter Griffin</h2>
+          <p>
+            Hatte 'ne Lektion bei De Long und boah, war das klasse! Er hatte nicht mal ein Problem mit meiner
+            kugelrunden Bauchform. Fühlte mich fast wie ein Delfin... ein sehr schwerer Delfin. Zwei Daumen hoch!
+            Hehehehe.
+          </p>
+        </div>
       </div>
-    </div>
-    <div>
-      <div class="content">
-        <h2>Glenn Quagmire</h2>
-        <p>Nahm eine Surf-Stunde und, naja, der Anzug sah bei mir verdammt gut aus!
-          Aber zurück zu De Long, er war erstklassig. Würde es auf jeden Fall wieder tun... und ich rede immer noch vom
-          Surfen. Alright</p>
+      <div>
+        <div class="content">
+          <h2>Glenn Quagmire</h2>
+          <p>
+            Nahm eine Surf-Stunde und, naja, der Anzug sah bei mir verdammt gut aus! Aber zurück zu De Long, er war
+            erstklassig. Würde es auf jeden Fall wieder tun... und ich rede immer noch vom Surfen. Alright
+          </p>
+        </div>
       </div>
-    </div>
-    <div>
-      <div class="content">
-        <h2>Joe Swanson</h2>
-        <p>Trotz meines Rollstuhls hat De Long einen Weg gefunden, mich auf die Welle zu bringen! Es war
-          unglaublich und ich habe mich noch nie so frei gefühlt. Diese Erfahrung war beeindruckend. Er bekommt von mir
-          volle Punktzahl! Roll on!</p>
+      <div>
+        <div class="content">
+          <h2>Joe Swanson</h2>
+          <p>
+            Trotz meines Rollstuhls hat De Long einen Weg gefunden, mich auf die Welle zu bringen! Es war unglaublich
+            und ich habe mich noch nie so frei gefühlt. Diese Erfahrung war beeindruckend. Er bekommt von mir volle
+            Punktzahl! Roll on!
+          </p>
+        </div>
       </div>
-    </div>
-    <div>
-      <div class="content">
-        <h2>Cleveland Brown</h2>
-        <p>War das ein Ritt! Ich dachte, ich würde fallen und meinen
-          eigenen 'Cleveland Show' Absturz machen, aber De Long hielt mich stabil und auf der Welle. Einfach
-          fantastisch! No, no, no, no... ich würde es definitiv wieder tun</p>
+      <div>
+        <div class="content">
+          <h2>Cleveland Brown</h2>
+          <p>
+            War das ein Ritt! Ich dachte, ich würde fallen und meinen eigenen 'Cleveland Show' Absturz machen, aber De
+            Long hielt mich stabil und auf der Welle. Einfach fantastisch! No, no, no, no... ich würde es definitiv
+            wieder tun
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <style scoped>
-
-h1{
+h1 {
   text-align: center;
 }
 * {
@@ -56,6 +59,7 @@ h1{
 }
 
 .container {
+  height: 55vh; /* Overwrite from general style specifically for the recommendations */
 
   > div {
     flex: 0 0 120px;
@@ -67,19 +71,21 @@ h1{
     overflow: hidden;
 
     &:nth-of-type(1) {
-      background: url("https://static.wikia.nocookie.net/familyguy/images/a/aa/FamilyGuy_Single_PeterDrink_R7.jpg") no-repeat 50% / cover;
+      background: url('https://static.wikia.nocookie.net/familyguy/images/a/aa/FamilyGuy_Single_PeterDrink_R7.jpg')
+        no-repeat 50% / cover;
     }
 
     &:nth-of-type(2) {
-      background: url("https://upload.wikimedia.org/wikipedia/en/f/fe/Glenn_Quagmire.png") no-repeat 50% / cover;
+      background: url('https://upload.wikimedia.org/wikipedia/en/f/fe/Glenn_Quagmire.png') no-repeat 50% / cover;
     }
 
     &:nth-of-type(3) {
-      background: url("https://static.wikia.nocookie.net/familyguy/images/9/9c/190px-Joe_Swanson.png") no-repeat 50% / cover;
+      background: url('https://static.wikia.nocookie.net/familyguy/images/9/9c/190px-Joe_Swanson.png') no-repeat 50% /
+        cover;
     }
 
     &:nth-of-type(4) {
-      background: url("https://static.wikia.nocookie.net/familyguy/images/1/1f/Cleveland.png") no-repeat 50% / cover;
+      background: url('https://static.wikia.nocookie.net/familyguy/images/1/1f/Cleveland.png') no-repeat 50% / cover;
     }
 
     .content {

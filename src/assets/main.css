@@ -51,8 +51,12 @@ video {
   max-width: 100%;
 }
 
-/* Adjust videos to mobile first design */
+/* 
+ Adjust videos to mobile first design. The reason for using vw for 
+ both values is to keep the aspect ratio regardless of a shift in 
+ size.
+*/
 video{
-  width: 78vw;
-  /* height: 75vh; Let the video decide upon the width */
+  width: 78vw; 
+  height: 40vw;
 }

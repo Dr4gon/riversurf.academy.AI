@@ -1,3 +1,16 @@
+/*
+
+Waterflow Design Principles
+
+* One element per view
+* As intuitive as possible for the user
+* Fluid movements between navigation
+* Simple is always best
+* Screen size does matter
+(* Is water style in color and elements)
+
+*/
+
 html,
 body {
   margin: 0;

@@ -28,3 +28,10 @@ picture,
 video {
   max-width: 100%;
 }
+
+/* Adjust videos to mobile first design */
+video{
+  width: 78vw;
+  /* height: 75vh; Let the video decide upon the width */
+  padding: 5vh;
+}

@@ -2,8 +2,6 @@
 
 <template>
   <div>
-    <h1>Recommendations</h1>
-    <br />
     <div class="container">
       <div>
         <div class="content">
@@ -49,9 +47,6 @@
 </template>
 
 <style scoped>
-h1 {
-  text-align: center;
-}
 * {
   margin: 0;
   padding: 0;

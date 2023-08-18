@@ -16,6 +16,8 @@ body {
   /* Needed for the water bubbles to stay underwater */
   overflow: hidden;
   position: relative;
+
+  padding-top: 5vh;
 }
 
 :root {
@@ -34,5 +36,4 @@ video {
 video{
   width: 78vw;
   /* height: 75vh; Let the video decide upon the width */
-  padding: 5vh;
 }

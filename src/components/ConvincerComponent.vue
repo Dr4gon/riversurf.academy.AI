@@ -54,7 +54,7 @@
   height: 55vh; /* Overwrite from general style specifically for the recommendations */
 
   > div {
-    flex: 0 0 120px;
+    flex: 0 0 15vw;
     border-radius: 0.5rem;
     transition: 0.5s ease-in-out;
     cursor: pointer;

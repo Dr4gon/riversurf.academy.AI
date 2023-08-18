@@ -2,7 +2,12 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: Montserrat;
+  font-family: var(--water-font-family);
+}
+
+input,
+textarea{
+  font-family: var(--water-font-family);
 }
 
 /* Default setting for all navigation slides to fit water style UX */
@@ -23,6 +28,7 @@ body {
 :root {
   --water-color: hsl(198, 71%, 42%);
   --underwater-color: #40c3b4;
+  --water-font-family: Montserrat;
 }
 
 /* Ensures that this content is fully shown in a responsive design */

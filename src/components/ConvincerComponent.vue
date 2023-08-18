@@ -51,7 +51,7 @@
 }
 
 .container {
-  height: 55vh; /* Overwrite from general style specifically for the recommendations */
+  height: 75vh; /* Overwrite from general style specifically for the recommendations */
 
   > div {
     flex: 0 0 15vw;

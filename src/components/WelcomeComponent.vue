@@ -3,8 +3,7 @@
 <template>
   <div class="container">
     <div>
-      <h1>Welcome to Riversurf Academy 🤙</h1>
-      <video width="640" height="360" controls>
+      <video class="video" controls>
         <source src="https://www.riversurf.academy/WillkommensVideo_Edit_sub.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -12,4 +11,10 @@
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.video {
+  width: 78vw;
+  /* height: 75vh; Let the video decide upon the width */
+  padding: 5vh;
+}
+</style>

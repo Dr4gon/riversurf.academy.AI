@@ -134,26 +134,22 @@ swiper-slide {
 /* Changes of the bubble number only works in concert with changing the html generated bubble number as well*/
 $numberOfBubbles: 50;
 
-@function randomBubble($min, $max) {
-  @return floor(random() * ($max - $min + 1) + $min);
-}
-
-@function randomTime($min, $max) {
-  @return floor(random() * ($max - $min + 1) + $min) + s;
+@function calcRandomValueBetween($min, $max, $unit) {
+  @return floor(random() * ($max - $min + 1) + $min) + $unit;
 }
 
 @for $i from 1 through $numberOfBubbles {
   /* Some variance in bubble styling */
   $bgpos: if($i % 2 == 0, top right, center);
-  $bubbleLength: randomBubble(5, 100) + px;
+  $bubbleLength: calcRandomValueBetween(5, 100, px);
 
   .bubble:nth-child(#{$i}) {
     background: radial-gradient(ellipse at $bgpos, #b8c6c6 0%, var(--underwater-color) 30%, var(--water-color) 100%);
     width: $bubbleLength; /* Must be equal to get round bubbles */
     height: $bubbleLength; /* Must be equal to get round bubbles */
-    left: randomBubble(1, 100) + vw;
-    bottom: randomBubble(1, 100) + vh;
-    animation: move +#{$i} infinite randomTime(3, 15);
+    left: calcRandomValueBetween(1, 100, vw);
+    bottom: calcRandomValueBetween(1, 100, vh);
+    animation: move +#{$i} infinite calcRandomValueBetween(3, 15, s);
   }
 
   @keyframes move#{$i} {
@@ -162,8 +158,8 @@ $numberOfBubbles: 50;
     }
     100% {
       /* burst bubbles at different heights */
-      bottom: randomBubble(0, 100) + vh;
-      transform: translate(randomBubble(-100, 200) + px, 0);
+      bottom: calcRandomValueBetween(0, 100, vh);
+      transform: translate(calcRandomValueBetween(-100, 200, px), 0);
       opacity: 0;
     }
   }

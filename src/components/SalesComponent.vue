@@ -74,11 +74,11 @@ const date = ref(new Date());
 .container {
   display: flex;
   align-items: center;
+  padding-top: 0; /*Deactivate because aligns-item: center already creates gap to the top */
 }
 .div-item {
   background-color: var(--water-color);
   border-radius: 15px;
-  padding: 15px;
   margin: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

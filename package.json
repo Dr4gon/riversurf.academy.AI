@@ -17,6 +17,7 @@
   "private": true,
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "axios": "^1.5.0",
     "html-webpack-plugin": "^5.5.0",
     "pinia": "^2.1.4",
     "rxjs": "~7.8.0",
@@ -44,9 +45,9 @@
     "eslint": "^8.19.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-cypress": "^2.13.3",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-cypress": "^2.13.3",
     "eslint-plugin-vue": "^9.15.1",
     "html-loader": "^4.2.0",
     "http-server": "^14.1.1",

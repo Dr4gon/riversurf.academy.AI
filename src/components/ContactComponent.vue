@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue';
+import axios from 'axios';
 
 const isSubmitted = ref(false); // Indicates if the form has been successfully submitted
 const isFast = ref(false); // Indicates if the form submission was suspiciously quick (potential spam)
@@ -85,7 +86,7 @@ const handleMessageInput = () => {
 };
 
 // Main function to handle form submit
-const handleSubmit = () => {
+const handleSubmit = async () => {
   // Validate inputs
   handleNameInput();
   handleEmailInput();
@@ -111,8 +112,26 @@ const handleSubmit = () => {
   // Check form submission speed to identify potential spam
   endTime.value = Date.now();
   if (endTime.value - startTime.value > 4000 && !info.value) {
-    isSubmitted.value = true;
+    try {
+      const response = await axios.post('http://localhost:3000/contact', {
+        name: name.value,
+        email: email.value,
+        message: message.value,
+      });
+
+      if (response.status === 200) {
+        isSubmitted.value = true;
+      } else {
+        console.log('Response Status != 200');
+        // handle error based on response
+        isFast.value = true;
+      }
+    } catch (error) {
+      console.error('Da ist ein Fehler beim Absenden des Formulars passiert 🙄');
+      isFast.value = true;
+    }
   } else {
+    console.log('Das Formular wurde zu schnell abgeschickt');
     isFast.value = true;
   }
 };

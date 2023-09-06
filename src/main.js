@@ -1,5 +1,6 @@
 // These imports deliver the files to the browser
 import './assets/main.css';
+import './assets/normalize.css';
 import './assets/SURFNSMILE.jpg';
 import './assets/IntroVideo.webm';
 import { setupCalendar } from 'v-calendar';

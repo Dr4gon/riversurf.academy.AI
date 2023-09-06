@@ -21,8 +21,6 @@ Waterflow Design Principles
 /* Direct html element changes */
 html,
 body {
-  margin: 0;
-  padding: 0;
   font-family: var(--water-font-family);
 }
 
@@ -38,13 +36,13 @@ video {
   max-width: 100%;
 }
 
-/* 
- Adjust videos to mobile first design. The reason for using vw for 
- both values is to keep the aspect ratio regardless of a shift in 
+/*
+ Adjust videos to mobile first design. The reason for using vw for
+ both values is to keep the aspect ratio regardless of a shift in
  size.
 */
 video{
-  width: 78vw; 
+  width: 78vw;
   height: 40vw;
 }
 

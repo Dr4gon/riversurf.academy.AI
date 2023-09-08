@@ -2,42 +2,45 @@
 
 <template>
   <div class="container">
-    <div>
-      <div class="content">
-        <h2>Peter Griffin</h2>
-        <p>
-          Hatte 'ne Lektion bei De Long und boah, war das klasse! Er hatte nicht mal ein Problem mit meiner kugelrunden
-          Bauchform. Fühlte mich fast wie ein Delfin... ein sehr schwerer Delfin. Zwei Daumen hoch! Hehehehe.
-        </p>
+    <div class="view">
+      <div>
+        <div class="content">
+          <h2>Peter Griffin</h2>
+          <p>
+            Hatte 'ne Lektion bei De Long und boah, war das klasse! Er hatte nicht mal ein Problem mit meiner
+            kugelrunden Bauchform. Fühlte mich fast wie ein Delfin... ein sehr schwerer Delfin. Zwei Daumen hoch!
+            Hehehehe.
+          </p>
+        </div>
       </div>
-    </div>
-    <div>
-      <div class="content">
-        <h2>Glenn Quagmire</h2>
-        <p>
-          Nahm eine Surf-Stunde und, naja, der Anzug sah bei mir verdammt gut aus! Aber zurück zu De Long, er war
-          erstklassig. Würde es auf jeden Fall wieder tun... und ich rede immer noch vom Surfen. Alright
-        </p>
+      <div>
+        <div class="content">
+          <h2>Glenn Quagmire</h2>
+          <p>
+            Nahm eine Surf-Stunde und, naja, der Anzug sah bei mir verdammt gut aus! Aber zurück zu De Long, er war
+            erstklassig. Würde es auf jeden Fall wieder tun... und ich rede immer noch vom Surfen. Alright
+          </p>
+        </div>
       </div>
-    </div>
-    <div>
-      <div class="content">
-        <h2>Joe Swanson</h2>
-        <p>
-          Trotz meines Rollstuhls hat De Long einen Weg gefunden, mich auf die Welle zu bringen! Es war unglaublich und
-          ich habe mich noch nie so frei gefühlt. Diese Erfahrung war beeindruckend. Er bekommt von mir volle Punktzahl!
-          Roll on!
-        </p>
+      <div>
+        <div class="content">
+          <h2>Joe Swanson</h2>
+          <p>
+            Trotz meines Rollstuhls hat De Long einen Weg gefunden, mich auf die Welle zu bringen! Es war unglaublich
+            und ich habe mich noch nie so frei gefühlt. Diese Erfahrung war beeindruckend. Er bekommt von mir volle
+            Punktzahl! Roll on!
+          </p>
+        </div>
       </div>
-    </div>
-    <div>
-      <div class="content">
-        <h2>Cleveland Brown</h2>
-        <p>
-          War das ein Ritt! Ich dachte, ich würde fallen und meinen eigenen 'Cleveland Show' Absturz machen, aber De
-          Long hielt mich stabil und auf der Welle. Einfach fantastisch! No, no, no, no... ich würde es definitiv wieder
-          tun
-        </p>
+      <div>
+        <div class="content">
+          <h2>Cleveland Brown</h2>
+          <p>
+            War das ein Ritt! Ich dachte, ich würde fallen und meinen eigenen 'Cleveland Show' Absturz machen, aber De
+            Long hielt mich stabil und auf der Welle. Einfach fantastisch! No, no, no, no... ich würde es definitiv
+            wieder tun
+          </p>
+        </div>
       </div>
     </div>
   </div>

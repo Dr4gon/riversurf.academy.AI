@@ -1,101 +1,102 @@
-<script setup>
-import { ref } from 'vue';
-
-//v-calendar
-import { DatePicker } from 'v-calendar';
-import 'v-calendar/style.css';
-
-const date = ref(new Date());
-</script>
-
 <template>
   <div class="container">
-    <div class="div-item">
-      <h2>Welcher Kurs?</h2>
-      <div>
-        <span>Basis #1</span>
-        <input type="radio" id="kurs-1" value="true" />
-        <label for="kurs-1"></label>
-      </div>
-      <div>
-        <span>Basis #2</span>
-        <input type="radio" id="kurs-2" value="true" />
-        <label for="kurs-2"></label>
-      </div>
-      <div>
-        <span>Basis #3</span>
-        <input type="radio" id="kurs-3" value="true" />
-        <label for="kurs-3"></label>
-      </div>
-    </div>
-
-    <div class="div-item">
-      <DatePicker v-model="date" mode="date" :min-date="new Date()" />
-    </div>
-
-    <div class="div-item">
-      <h2>Welche extras?</h2>
-      <div>
-        <span>Board</span>
-        <input type="radio" id="extra1-yes" value="true" />
-        <label for="extra1-yes">Ja</label>
-        <input type="radio" id="extra1-no" value="false" />
-        <label for="extra1-no">Nö</label>
-      </div>
-      <div>
-        <span>Neo</span>
-        <input type="radio" id="extra2-yes" value="true" />
-        <label for="extra2-yes">Ja</label>
-        <input type="radio" id="extra2-no" value="false" />
-        <label for="extra2-no">Nö</label>
-      </div>
-      <div>
-        <span>Abholen</span>
-        <input type="radio" id="extra3-yes" value="true" />
-        <label for="extra3-yes">Ja</label>
-        <input type="radio" id="extra3-no" value="false" />
-        <label for="extra3-no">Nö</label>
-      </div>
-      <div>
-        <span>Essen</span>
-        <input type="radio" id="extra4-yes" value="true" />
-        <label for="extra4-yes">Ja</label>
-        <input type="radio" id="extra4-no" value="false" />
-        <label for="extra4-no">Nö</label>
+    <div class="view">
+      <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet" />
+      <div class="centered-box" ref="observerTarget">
+        <div class="header" :class="{ 'move-to-top': stage >= 1 }">
+          <h1 class="centered-text" :class="{ 'smaller-text': stage >= 1 }">DO YOU WANT TO RIDE WITH ME?</h1>
+        </div>
+        <div class="booking-steps" v-if="stage >= 1">
+          <div class="progress-bar" :style="{ width: progress + '%' }"></div>
+          <div v-if="stage === 1">Schritt 1: Erfahrung</div>
+          <div v-if="stage === 2">Schritt 2: Kursauswahl</div>
+          <div v-if="stage === 3">Schritt 3: Boardauswahl</div>
+          <!-- ... weitere Schritte -->
+          <button @click="prevStep">Zurück</button>
+          <button @click="nextStep">Weiter</button>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="div-button">
-    <button>Jetzt Buchen!</button>
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      stage: 0, // Startwert
+      observer: null,
+    };
+  },
+  computed: {
+    progress() {
+      return (this.stage / 7) * 100;
+    },
+  },
+  mounted() {
+    this.observer = new IntersectionObserver(this.handleIntersection, { threshold: 0.1 });
+    this.observer.observe(this.$refs.observerTarget);
+  },
+  beforeDestroy() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  },
+  methods: {
+    handleIntersection(entries) {
+      if (entries[0].isIntersecting) {
+        setTimeout(() => {
+          this.stage = 1;
+        }, 3000);
+        this.observer.disconnect();
+      }
+    },
+    nextStep() {
+      if (this.stage < 7) {
+        this.stage++;
+      }
+    },
+    prevStep() {
+      if (this.stage > 1) {
+        this.stage--;
+      }
+    },
+  },
+};
+</script>
+
 <style scoped>
-.container {
-  display: flex;
-  align-items: center;
-  padding-top: 0; /*Deactivate because aligns-item: center already creates gap to the top */
-}
-.div-item {
-  background-color: var(--water-color);
-  border-radius: 15px;
-  margin: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.centered-box {
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: top 1s ease;
 }
 
-.div-item div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
+.move-to-top {
+  top: 0;
+  transform: translate(-50%, 0);
 }
 
-.div-item span {
-  flex: 1;
+.centered-text {
+  font-family: 'Lilita One', cursive;
+  font-size: 5rem;
+  transition: font-size 1s ease;
 }
-.div-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.smaller-text {
+  font-size: 2.5rem;
+}
+
+.booking-steps {
+  padding-top: 3rem;
+}
+
+.progress-bar {
+  height: 20px;
+  background-color: lightslategray;
+  transition: width 0.5s ease;
 }
 </style>

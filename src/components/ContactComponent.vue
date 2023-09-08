@@ -149,8 +149,8 @@ const closeMessage = () => {
 </script>
 
 <template>
-  <div class="temp">
-    <div class="container">
+  <div class="container contact-background">
+    <div class="view">
       <form class="contact" id="contact-form" @submit.prevent="handleSubmit">
         <div>
           <label for="name">Name:</label>
@@ -213,7 +213,7 @@ const closeMessage = () => {
   font-size: 12px;
 }
 
-.temp {
+.contact-background {
   height: 100vh;
   background: var(--underwater-color);
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 1%, var(--underwater-color) 100%);

@@ -20,7 +20,6 @@
     var(--water-color) 70%,
     var(--water-color) 80%
   );
-  height: 100vh;
   background-size: 100% 150%;
 
   animation: underwater 4s ease infinite;

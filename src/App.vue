@@ -32,7 +32,7 @@ const swiper = new Swiper('.swiper', {
 </script>
 
 <template>
-  <div class="water">
+  <div class="main-container">
     <swiper-container class="swiper">
       <swiper-slide>
         <WelcomeComponent />
@@ -61,9 +61,7 @@ body {
   box-sizing: border-box;
 }
 
-.swiper,
-AboutComponent,
-ContactComponent {
+.swiper {
   height: 100vh;
   width: 100%;
   margin: 0;
@@ -73,7 +71,8 @@ ContactComponent {
 swiper-slide {
   height: 100%;
 }
-.water {
+
+.main-container {
   background-color: var(--water-color);
   position: relative;
   overflow: hidden;

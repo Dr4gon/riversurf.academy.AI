@@ -57,7 +57,6 @@ const swiper = new Swiper('.swiper', {
 html,
 body {
   overflow: hidden; /* Verhindert doppeltes Scrollen */
-  box-sizing: border-box;
 }
 
 .main-container {

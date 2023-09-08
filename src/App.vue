@@ -29,6 +29,25 @@ const swiper = new Swiper('.swiper', {
     },
   },
 });
+
+// turn your phone
+import { ref, onMounted, onUnmounted } from 'vue';
+
+const isLandscape = ref(false);
+const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+const checkOrientation = () => {
+  isLandscape.value = window.innerWidth > window.innerHeight;
+};
+
+onMounted(() => {
+  checkOrientation();
+  window.addEventListener('resize', checkOrientation);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', checkOrientation);
+});
 </script>
 
 <template>
@@ -50,6 +69,9 @@ const swiper = new Swiper('.swiper', {
     <div class="bubble" v-for="n in 50"></div>
     <AboutComponent />
     <ContactComponent />
+  </div>
+  <div v-if="isMobileDevice && !isLandscape" class="turn-your-phone">
+    <p>Please rotate your device for a better viewing 😉</p>
   </div>
 </template>
 
@@ -149,5 +171,18 @@ $numberOfBubbles: 50;
       opacity: 0;
     }
   }
+}
+.turn-your-phone {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
 }
 </style>

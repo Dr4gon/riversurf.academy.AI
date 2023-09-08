@@ -51,11 +51,13 @@ video{
 /* Default setting for all navigation slides to fit water style UX */
 .container {
   width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  height: 100vh;
-  gap: 10px;
-  padding-top: 5vh;
+}
+
+.view {
+  background-color: rgba(128, 128, 128, 0.5);
 }
 
 

@@ -56,20 +56,8 @@ const swiper = new Swiper('.swiper', {
 <style scoped lang="scss">
 html,
 body {
-  height: 100%;
   overflow: hidden; /* Verhindert doppeltes Scrollen */
   box-sizing: border-box;
-}
-
-.swiper {
-  height: 100vh;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-swiper-slide {
-  height: 100%;
 }
 
 .main-container {

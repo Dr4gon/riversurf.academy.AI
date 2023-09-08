@@ -56,10 +56,6 @@ video{
   height: 100vh;
   gap: 10px;
 
-  /* Needed for the water bubbles to stay underwater */
-  overflow: hidden;
-  position: relative;
-
   padding-top: 5vh;
 }
 

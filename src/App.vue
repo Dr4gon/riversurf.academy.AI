@@ -76,11 +76,6 @@ onUnmounted(() => {
 </template>
 
 <style scoped lang="scss">
-html,
-body {
-  overflow: hidden; /* Verhindert doppeltes Scrollen */
-}
-
 .main-container {
   background-color: var(--water-color);
   position: relative;

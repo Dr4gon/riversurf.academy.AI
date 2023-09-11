@@ -2,9 +2,9 @@
 export default {
   data() {
     return {
-      stage: 0, // Startwert
+      stage: 0,
       observer: null,
-      showText: true, // Neuer State für den Text
+      showText: true,
       substage: 0,
     };
   },
@@ -26,8 +26,8 @@ export default {
     handleIntersection(entries) {
       if (entries[0].isIntersecting) {
         setTimeout(() => {
-          this.showText = false; // Text ausblenden
-          this.stage = 1; // Zum ersten Schritt wechseln
+          this.showText = false;
+          this.stage = 1;
         }, 3000);
         this.observer.disconnect();
       }
@@ -35,16 +35,16 @@ export default {
     goToStage(targetStage) {
       if (targetStage >= 1 && targetStage <= 6) {
         this.stage = targetStage;
-        this.subStage = 0; // Reset der Substage, wenn Sie zu einer neuen Stage wechseln
+        this.substage = 0;
       }
     },
     goToSubStage(targetSubStage) {
       if (this.stage === 1 && targetSubStage >= 0 && targetSubStage <= 2) {
-        this.subStage = targetSubStage;
+        this.substage = targetSubStage;
       } else if (this.stage === 2 && targetSubStage >= 0 && targetSubStage <= 2) {
-        this.subStage = targetSubStage;
+        this.substage = targetSubStage;
       } else if (this.stage === 3 && targetSubStage >= 0 && targetSubStage <= 1) {
-        this.subStage = targetSubStage;
+        this.substage = targetSubStage;
       }
     },
   },
@@ -79,9 +79,9 @@ export default {
           <div v-if="stage === 1">
             <div class="below" v-if="substage === 0">
               <div class="edge"></div>
-              <div class="below3"><img src="@/assets/sales/Beginner.png" /></div>
-              <div class="below3"><img src="@/assets/sales/Intermediate.png" /></div>
-              <div class="below3"><img src="@/assets/sales/Professional.png" /></div>
+              <div class="below3"><img src="@/assets/sales/Beginner.png" alt="Beginner" /></div>
+              <div class="below3"><img src="@/assets/sales/Intermediate.png" alt="Intermediate" /></div>
+              <div class="below3"><img src="@/assets/sales/Professional.png" alt="Professional" /></div>
               <div class="edge"></div>
             </div>
           </div>
@@ -117,18 +117,16 @@ export default {
   border-radius: 15px;
 }
 
-/* Innerer `div`, der sich je nach Fortschritt füllt */
 .progress-bar {
   position: absolute;
   left: 0;
   top: 0;
   height: 100%;
-  background-color: orange; /* Farbe des Fortschritts */
+  background-color: orange;
   transition: width 0.5s ease;
   border-radius: 15px;
 }
 
-/* Text innerhalb des Containers */
 .progress-text {
   position: absolute;
   top: 0;
@@ -138,7 +136,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  white-space: nowrap; /* Verhindert den Zeilenumbruch */
+  white-space: nowrap;
 }
 
 .headings {

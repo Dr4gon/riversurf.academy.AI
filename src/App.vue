@@ -157,7 +157,7 @@ $numberOfBubbles: 50;
     height: $bubbleLength; /* Must be equal to get round bubbles */
     left: calcRandomValueBetween(1, 100, vw);
     bottom: calcRandomValueBetween(1, 100, vh);
-    animation: move +#{$i} infinite calcRandomValueBetween(3, 15, s);
+    animation: move + #{$i} infinite calcRandomValueBetween(3, 15, s);
   }
 
   @keyframes move#{$i} {

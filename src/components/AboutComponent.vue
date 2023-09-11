@@ -21,9 +21,9 @@
     var(--water-color) 80%
   );
   background-size: 100% 150%;
-
   animation: underwater 4s ease infinite;
 }
+
 @keyframes underwater {
   0% {
     background-position: 0 20%;

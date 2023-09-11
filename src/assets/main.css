@@ -15,7 +15,7 @@ Waterflow Design Principles
 :root {
   --water-color: hsl(198, 71%, 42%);
   --underwater-color: #40c3b4;
-  --water-font-family: Montserrat;
+  --water-font-family: 'Roboto', sans-serif;
 }
 
 /* Direct html element changes */
@@ -62,7 +62,8 @@ video{
   margin: 20px;
   display: flex;
   justify-content: center;
-  width: 100%;
+  height: 350px;
+  width: 650px;
 }
 
 

@@ -1,9 +1,11 @@
 <script>
-import { DatePicker } from 'v-calendar';
-import 'v-calendar/style.css';
+import SummaryComponent from '@/components/sales/SummaryComponent.vue';
+import SalesContactComponent from '@/components/sales/SalesContactComponent.vue';
+import TimeComponent from '@/components/sales/TimeComponent.vue';
+import EquipmentComponent from '@/components/sales/EquipmentComponent.vue';
 
 export default {
-  components: { DatePicker },
+  components: { EquipmentComponent, TimeComponent, SalesContactComponent, SummaryComponent },
 
   data() {
     return {
@@ -65,14 +67,6 @@ export default {
     },
     handleCourse(inputCourse) {
       this.course = inputCourse;
-    },
-    clearBoard() {
-      this.bodyHeight = 0;
-      this.bodyWeight = 0;
-    },
-    clearClothingSize() {
-      this.gender = 0;
-      this.clothingSize = '';
     },
   },
 };
@@ -267,173 +261,46 @@ export default {
           </div>
 
           <div v-if="stage === 3">
-            <div class="below" v-if="substage === 0">
-              <div class="edge"><h1 @click="goToStage(2)">&lt;</h1></div>
-              <div class="below2">
-                <img @click="goToSubStage(1)" src="@/assets/sales/Board.png" alt="Board" />
-              </div>
-              <div class="below2">
-                <img @click="goToSubStage(2)" src="@/assets/sales/Neo.png" alt="Neo" />
-              </div>
-              <div class="edge"><h1 @click="goToStage(4)">&gt;</h1></div>
-            </div>
-            <div class="below" v-if="substage === 1">
-              <div class="edge"></div>
-              <div class="below3"><img src="@/assets/sales/Board.png" alt="Board" /></div>
-              <div class="below2">
-                <label for="height">Körpergröße (cm):</label>
-                <input type="number" id="height" name="height" v-model="bodyHeight" />
-                <br />
-
-                <label for="weight">Gewicht (kg):</label>
-                <input type="number" id="weight" name="weight" v-model="bodyWeight" />
-                <br />
-
-                <button
-                  @click="
-                    goToSubStage(0);
-                    clearBoard();
-                    console.log(bodyHeight, bodyWeight);
-                  "
-                >
-                  zurücksetzen
-                </button>
-                <button
-                  @click="
-                    goToSubStage(0);
-                    console.log(bodyHeight, bodyWeight);
-                  "
-                >
-                  Bestätigen
-                </button>
-              </div>
-              <div class="edge"></div>
-            </div>
-            <div class="below" v-if="substage === 2">
-              <div class="edge"></div>
-              <div class="below3"><img src="@/assets/sales/Neo.png" alt="Neo" /></div>
-              <div class="below2">
-                <fieldset>
-                  <legend>Geschlecht:</legend>
-                  <input type="radio" id="male" name="gender" value="male" v-model="gender" />
-                  <label for="male">Männlich</label>
-
-                  <input type="radio" id="female" name="gender" value="female" v-model="gender" />
-                  <label for="female">Weiblich</label>
-                </fieldset>
-
-                <fieldset>
-                  <legend>Größe:</legend>
-                  <input type="radio" id="small" name="size" value="S" v-model="clothingSize" />
-                  <label for="small">S</label>
-
-                  <input type="radio" id="medium" name="size" value="M" v-model="clothingSize" />
-                  <label for="medium">M</label>
-
-                  <input type="radio" id="large" name="size" value="L" v-model="clothingSize" />
-                  <label for="large">L</label>
-                </fieldset>
-                <button
-                  @click="
-                    goToSubStage(0);
-                    clearClothingSize();
-                    console.log(gender, clothingSize);
-                  "
-                >
-                  zurück
-                </button>
-                <button
-                  @click="
-                    goToSubStage(0);
-                    console.log(gender, clothingSize);
-                  "
-                >
-                  Bestätigen
-                </button>
-              </div>
-              <div class="edge"></div>
-            </div>
+            <EquipmentComponent
+              @update-bodyHeight="bodyHeight = $event"
+              @update-bodyWeight="bodyWeight = $event"
+              @update-gender="gender = $event"
+              @update-clothingSize="clothingSize = $event"
+              @go-to-stage="goToStage"
+            />
           </div>
 
           <div v-if="stage === 4">
-            <div class="below" v-if="substage === 0">
-              <div class="edge"><h1 @click="goToStage(3)">&lt;</h1></div>
-              <div class="below2">
-                <DatePicker v-model="date" mode="date" :min-date="new Date()" />
-              </div>
-              <div class="below2">
-                <fieldset>
-                  <legend>Available Timeslots:</legend>
-                  <input type="radio" id="small" name="time" value="10.00 - 12.00" v-model="timeSlot" />
-                  <label for="small">10.00 - 12.00</label>
-                  <br />
-                  <input type="radio" id="medium" name="time" value="12.00 - 14.00" v-model="timeSlot" />
-                  <label for="small">12.00 - 14.00</label>
-                  <br />
-                  <input type="radio" id="large" name="time" value="14.00 - 16.00" v-model="timeSlot" />
-                  <label for="small">14.00 - 16.00</label>
-                  <br />
-                  <input type="radio" id="large" name="time" value="16.00 - 18.00" v-model="timeSlot" />
-                  <label for="small">16.00 - 18.00</label>
-                </fieldset>
-                <button @click="goToStage(5), console.log(date, timeSlot)">Bestätigen</button>
-              </div>
-              <div class="edge"></div>
-            </div>
+            <TimeComponent @update-date="date = $event" @update-timeSlot="timeSlot = $event" @go-to-stage="goToStage" />
           </div>
 
           <div v-if="stage === 5">
-            <div class="below" v-if="substage === 0">
-              <div class="edge"><h1 @click="goToStage(4)">&lt;</h1></div>
-              <div class="below2">
-                <input type="text" placeholder="* Name" v-model="name" />
-                <input type="email" placeholder="* E-Mail" v-model="email" />
-                <input type="tel" placeholder="* Handy Nr." v-model="handy" />
-                <p>* Pflichtfelder</p>
-              </div>
-
-              <div class="below2">
-                <textarea
-                  rows="5"
-                  placeholder="Bemerkungen"
-                  v-model="remark"
-                  style="width: 300px; height: 150px; resize: none"
-                ></textarea>
-                <button
-                  @click="
-                    goToStage(6);
-                    console.log(name, email, handy, remark);
-                  "
-                >
-                  Bestätigen
-                </button>
-              </div>
-              <div class="edge"></div>
-            </div>
+            <SalesContactComponent
+              @update-name="name = $event"
+              @update-email="email = $event"
+              @update-handy="handy = $event"
+              @update-remark="remark = $event"
+              @go-to-stage="goToStage"
+              :stage="stage"
+              :substage="substage"
+            />
           </div>
 
           <div v-if="stage === 6">
-            <div class="below">
-              <div class="edge"><h1 @click="goToStage(5)">&lt;</h1></div>
-              <div class="below2">
-                <h3>Level: {{ level }}</h3>
-                <h3>Kurs: {{ course }}</h3>
-                <h3>Board: {{ (bodyHeight, bodyWeight) }}</h3>
-                <h3>Neo: {{ (gender, clothingSize) }}</h3>
-                <h3>Datum: {{ date }}</h3>
-                <h3>Zeit: {{ timeSlot }}</h3>
-              </div>
-              <div class="below2">
-                <h3>Name: {{ name }}</h3>
-                <h3>E-mail: {{ email }}</h3>
-                <h3>Handy: {{ handy }}</h3>
-                <h2 v-if="course === 'Schnuppern'">Price: 30 €</h2>
-                <h2 v-if="course === 'Einzelkurs'">Price: 90 €</h2>
-                <h2 v-if="course === 'Tagestour'">Price: 150 €</h2>
-                <button>Order now!</button>
-              </div>
-              <div class="edge"></div>
-            </div>
+            <SummaryComponent
+              :body-height="bodyHeight"
+              :body-weight="bodyWeight"
+              :clothing-size="clothingSize"
+              :course="course"
+              :date="date"
+              :email="email"
+              :gender="gender"
+              :handy="handy"
+              :level="level"
+              :name="name"
+              :time-slot="timeSlot"
+              @go-to-stage="goToStage"
+            />
           </div>
         </div>
       </div>
@@ -441,7 +308,7 @@ export default {
   </div>
 </template>
 
-<style scoped>
+<style>
 .view {
   display: flex;
   flex-direction: column;
@@ -507,7 +374,7 @@ export default {
 
 .below2 {
   flex: 2;
-  background-color: orange;
+
   text-align: center;
 }
 

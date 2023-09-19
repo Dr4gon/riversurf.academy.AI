@@ -1,150 +1,160 @@
-<script setup>
-import { computed, ref } from 'vue';
+<script>
 import axios from 'axios';
 
-const isSubmitted = ref(false); // Indicates if the form has been successfully submitted
-const isFast = ref(false); // Indicates if the form submission was suspiciously quick (potential spam)
-const name = ref(''); // Store the name input
-const email = ref(''); // Store the email input
-const info = ref(''); // Honeypot for spam bots. Not visible to users
-const message = ref(''); // Store the message input
-const startTime = ref(0); // Track the time when user starts typing
-const endTime = ref(0); // Track the time when user submits the form
-
-// dynamic submission messages
-const submitMessageRight = computed(() => `Danke für deine Nachricht ${name.value}, ich melde mich bei dir 🤙`);
-const submitMessageFalse = computed(() => `Hier ist etwas schief gelaufen ${name.value}, bitte probiere es erneut.`);
-
-// Set the start time for handleSubmit (spam protection)
-const setStartTime = () => {
-  if (startTime.value === 0) {
-    startTime.value = Date.now();
-  }
-};
-
-// Name input validation
-const handleNameInput = () => {
-  setStartTime();
-  const nameElem = document.getElementById('name');
-  if (name.value.trim() === '') {
-    nameElem && nameElem.setCustomValidity('Gebe einen Namen ein 😉');
-  } else {
-    nameElem && nameElem.setCustomValidity('');
-  }
-};
-
-// Email input validation
-const handleEmailInput = () => {
-  setStartTime();
-  const emailElem = document.getElementById('email');
-
-  if (email.value.indexOf('@') === -1) {
-    emailElem && emailElem.setCustomValidity('Die E-Mail-Adresse muss ein "@" enthalten. 🤨');
-    return;
-  }
-
-  let [localPart, domainPart] = email.value.split('@');
-
-  if (localPart.length === 0) {
-    emailElem && emailElem.setCustomValidity('Die E-Mail-Adresse muss einen Namen vor dem "@" haben. 😄');
-    return;
-  }
-
-  if (domainPart.indexOf('.') === -1) {
-    emailElem && emailElem.setCustomValidity('Der Domain-Teil der E-Mail-Adresse muss einen "." enthalten. 😄');
-    return;
-  }
-
-  let [domain, tld] = domainPart.split('.');
-
-  if (domain.length === 0) {
-    emailElem &&
-      emailElem.setCustomValidity('Der Domain-Teil der E-Mail-Adresse muss einen Domain-Namen vor dem "." haben. 😄');
-    return;
-  }
-
-  if (tld.length < 2 || tld.length > 7) {
-    emailElem &&
-      emailElem.setCustomValidity(
-        'Die Top-Level-Domain (z.B. ".com") der E-Mail-Adresse muss zwischen 2 und 7 Zeichen lang sein. 😄'
-      );
-    return;
-  }
-
-  emailElem && emailElem.setCustomValidity('');
-};
-
-// Message input validation
-const handleMessageInput = () => {
-  setStartTime();
-  const messageElem = document.getElementById('message');
-  if (message.value.trim() === '') {
-    messageElem && messageElem.setCustomValidity('Schreib mir eine Nachricht 😄');
-  } else {
-    messageElem && messageElem.setCustomValidity('');
-  }
-};
-
-// Main function to handle form submit
-const handleSubmit = async () => {
-  // Validate inputs
-  handleNameInput();
-  handleEmailInput();
-  handleMessageInput();
-
-  // Fetch form elements
-  const nameElem = document.getElementById('name');
-  const emailElem = document.getElementById('email');
-  const messageElem = document.getElementById('message');
-
-  // Check if any form input has custom errors
-  if (
-    (nameElem && nameElem.validity.customError) ||
-    (emailElem && emailElem.validity.customError) ||
-    (messageElem && messageElem.validity.customError)
-  ) {
-    messageElem && messageElem.reportValidity();
-    emailElem && emailElem.reportValidity();
-    nameElem && nameElem.reportValidity();
-
-    return;
-  }
-  // Check form submission speed to identify potential spam
-  endTime.value = Date.now();
-  if (endTime.value - startTime.value > 4000 && !info.value) {
-    try {
-      const response = await axios.post('http://localhost:3000/contact', {
-        name: name.value,
-        email: email.value,
-        message: message.value,
-      });
-
-      if (response.status === 200) {
-        isSubmitted.value = true;
-      } else {
-        console.log('Response Status != 200');
-        // handle error based on response
-        isFast.value = true;
+export default {
+  name: 'ContactComponent',
+  data() {
+    return {
+      isSubmitted: false, // Indicates if the form has been successfully submitted
+      isFast: false, // Indicates if the form submission was suspiciously quick (potential spam)
+      name: '', // Store the name input
+      email: '', // Store the email input
+      info: '', // Honeypot for spam bots. Not visible to users
+      message: '', // Store the message input
+      submitMessageRight: 0, // Track the time when user starts typing
+      submitMessageFalse: 0, // Track the time when user submits the form
+    };
+  },
+  methods: {
+    // Set the start time for handleSubmit (spam protection)
+    setStartTime() {
+      if (this.startTime === 0) {
+        this.startTime = Date.now();
       }
-    } catch (error) {
-      console.error('Da ist ein Fehler beim Absenden des Formulars passiert 🙄');
-      isFast.value = true;
-    }
-  } else {
-    console.log('Das Formular wurde zu schnell abgeschickt');
-    isFast.value = true;
-  }
-};
+    },
+    // Name input validation
+    handleNameInput() {
+      this.setStartTime();
+      const nameElem = document.getElementById('name');
+      if (this.name.trim() === '') {
+        nameElem && nameElem.setCustomValidity('Gebe einen Namen ein 😉');
+      } else {
+        nameElem && nameElem.setCustomValidity('');
+      }
+    },
+    // Email input validation
+    handleEmailInput() {
+      this.setStartTime();
+      const emailElem = document.getElementById('email');
 
-// Reset form and feedback messages
-const closeMessage = () => {
-  isSubmitted.value = false;
-  isFast.value = false;
-  name.value = '';
-  message.value = '';
-  email.value = '';
-  startTime.value = 0;
-  endTime.value = 0;
+      if (this.email.indexOf('@') === -1) {
+        emailElem && emailElem.setCustomValidity('Die E-Mail-Adresse muss ein "@" enthalten. 🤨');
+        return;
+      }
+
+      let [localPart, domainPart] = this.email.split('@');
+
+      if (localPart.length === 0) {
+        emailElem && emailElem.setCustomValidity('Die E-Mail-Adresse muss einen Namen vor dem "@" haben. 😄');
+        return;
+      }
+
+      if (domainPart.indexOf('.') === -1) {
+        emailElem && emailElem.setCustomValidity('Der Domain-Teil der E-Mail-Adresse muss einen "." enthalten. 😄');
+        return;
+      }
+
+      let [domain, tld] = domainPart.split('.');
+
+      if (domain.length === 0) {
+        emailElem &&
+          emailElem.setCustomValidity(
+            'Der Domain-Teil der E-Mail-Adresse muss einen Domain-Namen vor dem "." haben. 😄'
+          );
+        return;
+      }
+
+      if (tld.length < 2 || tld.length > 7) {
+        emailElem &&
+          emailElem.setCustomValidity(
+            'Die Top-Level-Domain (z.B. ".com") der E-Mail-Adresse muss zwischen 2 und 7 Zeichen lang sein. 😄'
+          );
+        return;
+      }
+
+      emailElem && emailElem.setCustomValidity('');
+    },
+
+    // Message input validation
+    handleMessageInput() {
+      this.setStartTime();
+      const messageElem = document.getElementById('message');
+      if (this.message.trim() === '') {
+        messageElem && messageElem.setCustomValidity('Schreib mir eine Nachricht 😄');
+      } else {
+        messageElem && messageElem.setCustomValidity('');
+      }
+    },
+
+    // Main function to handle form submit
+    async handleSubmit() {
+      // Validate inputs
+      this.handleNameInput();
+      this.handleEmailInput();
+      this.handleMessageInput();
+
+      // Fetch form elements
+      const nameElem = document.getElementById('name');
+      const emailElem = document.getElementById('email');
+      const messageElem = document.getElementById('message');
+
+      // Check if any form input has custom errors
+      if (
+        (nameElem && nameElem.validity.customError) ||
+        (emailElem && emailElem.validity.customError) ||
+        (messageElem && messageElem.validity.customError)
+      ) {
+        messageElem && messageElem.reportValidity();
+        emailElem && emailElem.reportValidity();
+        nameElem && nameElem.reportValidity();
+
+        return;
+      }
+      // Check form submission speed to identify potential spam
+      this.endTime = Date.now();
+      if (this.endTime - this.startTime > 4000 && !info.value) {
+        try {
+          const response = await axios.post('http://localhost:3000/contact', {
+            name: this.name,
+            email: this.email,
+            message: this.message,
+          });
+
+          if (response.status === 200) {
+            this.isSubmitted = true;
+          } else {
+            console.log('Response Status != 200');
+            // handle error based on response
+            this.isFast = true;
+          }
+        } catch (error) {
+          console.error('Da ist ein Fehler beim Absenden des Formulars passiert 🙄');
+          this.isFast = true;
+        }
+      } else {
+        console.log('Das Formular wurde zu schnell abgeschickt');
+        this.isFast = true;
+      }
+    },
+    // Reset form and feedback messages
+    closeMessage() {
+      this.isSubmitted = false;
+      this.isFast = false;
+      this.name = '';
+      this.message = '';
+      this.email = '';
+      this.startTime = 0;
+      this.endTime = 0;
+    },
+  },
+  computed: {
+    submitMessageRight() {
+      return `Danke für deine Nachricht ${this.name}, ich melde mich bei dir 🤙`;
+    },
+    submitMessageFalse() {
+      return `Hier ist etwas schief gelaufen ${this.name}, bitte probiere es erneut.`;
+    },
+  },
 };
 </script>
 

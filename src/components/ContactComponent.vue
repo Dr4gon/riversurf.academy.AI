@@ -88,11 +88,6 @@ export default {
 
     // Main function to handle form submit
     async submit() {
-      // Validate inputs
-      this.validateName();
-      this.validateEmail();
-      this.validateMessage();
-
       // Check form submission speed to identify potential spam
       this.endTime = Date.now();
       if (this.endTime - this.startTime < 4000 && info.value) {

@@ -51,7 +51,6 @@ export default {
       this.emailIsInvalid = true;
 
       if (this.email === '') {
-        this.EMAIL_ERROR_MSG = 'Gebe eine E-Mail-Adresse ein 😄';
         return;
       }
 

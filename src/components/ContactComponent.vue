@@ -93,19 +93,6 @@ export default {
       this.validateEmail();
       this.validateMessage();
 
-      // Fetch form elements
-      const nameElem = document.getElementById('name');
-      const emailElem = document.getElementById('email');
-      const messageElem = document.getElementById('message');
-
-      // Check if any form input has custom errors
-      if (nameElem.validity.customError || emailElem.validity.customError || messageElem.validity.customError) {
-        messageElem.reportValidity();
-        emailElem.reportValidity();
-        nameElem.reportValidity();
-
-        return;
-      }
       // Check form submission speed to identify potential spam
       this.endTime = Date.now();
       if (this.endTime - this.startTime < 4000 && info.value) {

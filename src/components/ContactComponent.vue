@@ -160,7 +160,7 @@ export default {
           <input type="email" id="email" v-model="email" @input="validateEmail" placeholder="email@mail.com" required />
         </div>
         <div>
-          <input type="text" id="info" v-model="info" style="display: none" />
+          <input type="text" id="info" v-model="info" hidden />
 
           <label for="message">Message:</label>
           <textarea

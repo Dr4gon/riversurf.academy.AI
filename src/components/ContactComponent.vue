@@ -22,7 +22,7 @@ export default {
     };
   },
   methods: {
-    // Set the start time for handleSubmit (spam protection)
+    // Set the start time for submit (spam protection)
     setStartTime() {
       if (this.startTime === 0) {
         this.startTime = Date.now();
@@ -87,7 +87,7 @@ export default {
     },
 
     // Main function to handle form submit
-    async handleSubmit() {
+    async submit() {
       // Validate inputs
       this.validateName();
       this.validateEmail();
@@ -149,7 +149,7 @@ export default {
 <template>
   <div class="container contact-background">
     <div class="view">
-      <form class="contact" id="contact-form" @submit.prevent="handleSubmit">
+      <form class="contact" id="contact-form" @submit.prevent="submit">
         <div>
           <label for="name">Name:</label>
           <input type="text" id="name" v-model="name" @input="validateName" placeholder="Name" required />

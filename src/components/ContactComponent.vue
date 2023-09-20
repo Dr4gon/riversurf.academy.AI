@@ -18,12 +18,14 @@ export default {
       name: '', // Store the name input
       nameIsInvalid: false, // Indicates if the name input is invalid
       email: '', // Store the email input
+      emailIsInvalid: false, // Indicates if the email input is invalid
       info: '', // Honeypot for spam bots. Not visible to users
       message: '', // Store the message input
       messageIsInvalid: false, // Indicates if the message input is invalid
 
       NAME_ERROR_MSG: 'Gebe einen Namen ein 😉',
       MESSAGE_ERROR_MSG: 'Schreib mir eine Nachricht 😄',
+      EMAIL_ERROR_MSG: 'Gebe eine gültige E-Mail-Adresse ein 😄',
     };
   },
   methods: {
@@ -46,40 +48,38 @@ export default {
     },
     validateEmail() {
       this.setStartTime();
-      const emailElem = document.getElementById('email');
+      this.emailIsInvalid = true;
+
+      if (this.email === '') {
+        this.EMAIL_ERROR_MSG = 'Gebe eine E-Mail-Adresse ein 😄';
+        return;
+      }
 
       if (this.email.indexOf('@') === -1) {
-        emailElem.setCustomValidity('Die E-Mail-Adresse muss ein "@" enthalten. 🤨');
+        this.EMAIL_ERROR_MSG = 'Die E-Mail-Adresse muss ein "@" enthalten. 🤨';
         return;
       }
 
       let [localPart, domainPart] = this.email.split('@');
-
-      if (localPart.length === 0) {
-        emailElem.setCustomValidity('Die E-Mail-Adresse muss einen Namen vor dem "@" haben. 😄');
-        return;
-      }
-
-      if (domainPart.indexOf('.') === -1) {
-        emailElem.setCustomValidity('Der Domain-Teil der E-Mail-Adresse muss einen "." enthalten. 😄');
-        return;
-      }
-
       let [domain, tld] = domainPart.split('.');
 
-      if (domain.length === 0) {
-        emailElem.setCustomValidity('Der Domain-Teil der E-Mail-Adresse muss einen Domain-Namen vor dem "." haben. 😄');
-        return;
+      switch (true) {
+        case localPart.length === 0:
+          this.EMAIL_ERROR_MSG = 'Die E-Mail-Adresse muss einen Namen vor dem "@" haben. 😄';
+          break;
+        case domainPart.indexOf('.') === -1:
+          this.EMAIL_ERROR_MSG = 'Der Domain-Teil der E-Mail-Adresse muss einen "." enthalten. 😄';
+          break;
+        case domain.length === 0:
+          this.EMAIL_ERROR_MSG = 'Der Domain-Teil der E-Mail-Adresse muss einen Domain-Namen vor dem "." haben. 😄';
+          break;
+        case tld.length < 2 || tld.length > 7:
+          this.EMAIL_ERROR_MSG =
+            'Die Top-Level-Domain (z.B. ".com") der E-Mail-Adresse muss zwischen 2 und 7 Zeichen lang sein. 😄';
+          break;
+        default:
+          this.emailIsInvalid = false;
       }
-
-      if (tld.length < 2 || tld.length > 7) {
-        emailElem.setCustomValidity(
-          'Die Top-Level-Domain (z.B. ".com") der E-Mail-Adresse muss zwischen 2 und 7 Zeichen lang sein. 😄'
-        );
-        return;
-      }
-
-      emailElem.setCustomValidity('');
     },
 
     // Main function to handle form submit
@@ -119,6 +119,7 @@ export default {
       this.message = '';
       this.messageIsInvalid = false;
       this.email = '';
+      this.emailIsInvalid = false;
       this.startTime = 0;
       this.endTime = 0;
     },
@@ -138,7 +139,8 @@ export default {
 
         <div>
           <label for="email">Email:</label>
-          <input type="email" id="email" v-model="email" @input="validateEmail" placeholder="email@mail.com" required />
+          <input type="email" id="email" v-model="email" @blur="validateEmail" placeholder="email@mail.com" required />
+          <span class="error" v-if="emailIsInvalid">{{ this.EMAIL_ERROR_MSG }}</span>
         </div>
         <div>
           <input type="text" id="info" v-model="info" hidden />

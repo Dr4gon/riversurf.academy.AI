@@ -27,9 +27,9 @@ export default {
       this.setStartTime();
       const nameElem = document.getElementById('name');
       if (this.name.trim() === '') {
-        nameElem && nameElem.setCustomValidity('Gebe einen Namen ein 😉');
+        nameElem.setCustomValidity('Gebe einen Namen ein 😉');
       } else {
-        nameElem && nameElem.setCustomValidity('');
+        nameElem.setCustomValidity('');
       }
     },
     // Email input validation
@@ -38,41 +38,37 @@ export default {
       const emailElem = document.getElementById('email');
 
       if (this.email.indexOf('@') === -1) {
-        emailElem && emailElem.setCustomValidity('Die E-Mail-Adresse muss ein "@" enthalten. 🤨');
+        emailElem.setCustomValidity('Die E-Mail-Adresse muss ein "@" enthalten. 🤨');
         return;
       }
 
       let [localPart, domainPart] = this.email.split('@');
 
       if (localPart.length === 0) {
-        emailElem && emailElem.setCustomValidity('Die E-Mail-Adresse muss einen Namen vor dem "@" haben. 😄');
+        emailElem.setCustomValidity('Die E-Mail-Adresse muss einen Namen vor dem "@" haben. 😄');
         return;
       }
 
       if (domainPart.indexOf('.') === -1) {
-        emailElem && emailElem.setCustomValidity('Der Domain-Teil der E-Mail-Adresse muss einen "." enthalten. 😄');
+        emailElem.setCustomValidity('Der Domain-Teil der E-Mail-Adresse muss einen "." enthalten. 😄');
         return;
       }
 
       let [domain, tld] = domainPart.split('.');
 
       if (domain.length === 0) {
-        emailElem &&
-          emailElem.setCustomValidity(
-            'Der Domain-Teil der E-Mail-Adresse muss einen Domain-Namen vor dem "." haben. 😄'
-          );
+        emailElem.setCustomValidity('Der Domain-Teil der E-Mail-Adresse muss einen Domain-Namen vor dem "." haben. 😄');
         return;
       }
 
       if (tld.length < 2 || tld.length > 7) {
-        emailElem &&
-          emailElem.setCustomValidity(
-            'Die Top-Level-Domain (z.B. ".com") der E-Mail-Adresse muss zwischen 2 und 7 Zeichen lang sein. 😄'
-          );
+        emailElem.setCustomValidity(
+          'Die Top-Level-Domain (z.B. ".com") der E-Mail-Adresse muss zwischen 2 und 7 Zeichen lang sein. 😄'
+        );
         return;
       }
 
-      emailElem && emailElem.setCustomValidity('');
+      emailElem.setCustomValidity('');
     },
 
     // Message input validation
@@ -80,9 +76,9 @@ export default {
       this.setStartTime();
       const messageElem = document.getElementById('message');
       if (this.message.trim() === '') {
-        messageElem && messageElem.setCustomValidity('Schreib mir eine Nachricht 😄');
+        messageElem.setCustomValidity('Schreib mir eine Nachricht 😄');
       } else {
-        messageElem && messageElem.setCustomValidity('');
+        messageElem.setCustomValidity('');
       }
     },
 
@@ -99,14 +95,10 @@ export default {
       const messageElem = document.getElementById('message');
 
       // Check if any form input has custom errors
-      if (
-        (nameElem && nameElem.validity.customError) ||
-        (emailElem && emailElem.validity.customError) ||
-        (messageElem && messageElem.validity.customError)
-      ) {
-        messageElem && messageElem.reportValidity();
-        emailElem && emailElem.reportValidity();
-        nameElem && nameElem.reportValidity();
+      if (nameElem.validity.customError || emailElem.validity.customError || messageElem.validity.customError) {
+        messageElem.reportValidity();
+        emailElem.reportValidity();
+        nameElem.reportValidity();
 
         return;
       }
@@ -164,12 +156,19 @@ export default {
       <form class="contact" id="contact-form" @submit.prevent="handleSubmit">
         <div>
           <label for="name">Name:</label>
-          <input type="text" id="name" v-model="name" @input="handleNameInput" placeholder="Name" />
+          <input type="text" id="name" v-model="name" @input="handleNameInput" placeholder="Name" required />
         </div>
 
         <div>
           <label for="email">Email:</label>
-          <input type="email" id="email" v-model="email" @input="handleEmailInput" placeholder="email@mail.com" />
+          <input
+            type="email"
+            id="email"
+            v-model="email"
+            @input="handleEmailInput"
+            placeholder="email@mail.com"
+            required
+          />
         </div>
         <div>
           <input type="text" id="info" v-model="info" style="display: none" />
@@ -183,6 +182,7 @@ export default {
             rows="5"
             placeholder="Was willst du mit mir besprechen?"
             style="width: 300px; height: 150px; resize: none"
+            required
           ></textarea>
         </div>
         <div>

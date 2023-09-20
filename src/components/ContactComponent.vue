@@ -3,6 +3,14 @@ import axios from 'axios';
 
 export default {
   name: 'ContactComponent',
+  computed: {
+    submitMessageRight() {
+      return `Danke für deine Nachricht ${this.name}, ich melde mich bei dir 🤙`;
+    },
+    submitMessageFalse() {
+      return `Hier ist etwas schief gelaufen ${this.name}, bitte probiere es erneut.`;
+    },
+  },
   data() {
     return {
       isSubmitted: false, // Indicates if the form has been successfully submitted
@@ -135,14 +143,6 @@ export default {
       this.email = '';
       this.startTime = 0;
       this.endTime = 0;
-    },
-  },
-  computed: {
-    submitMessageRight() {
-      return `Danke für deine Nachricht ${this.name}, ich melde mich bei dir 🤙`;
-    },
-    submitMessageFalse() {
-      return `Hier ist etwas schief gelaufen ${this.name}, bitte probiere es erneut.`;
     },
   },
 };

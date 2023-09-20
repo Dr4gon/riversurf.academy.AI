@@ -109,22 +109,22 @@ export default {
       // Check form submission speed to identify potential spam
       this.endTime = Date.now();
       if (this.endTime - this.startTime > 4000 && !info.value) {
-        try {
-          const response = await axios.post('http://localhost:3000/contact', {
+        const response = await axios
+          .post('http://localhost:3000/contact', {
             name: this.name,
             email: this.email,
             message: this.message,
+          })
+          .catch(error => {
+            console.error('Da ist ein Fehler beim Absenden des Formulars passiert 🙄');
+            this.isFast = true;
           });
 
-          if (response.status === 200) {
-            this.isSubmitted = true;
-          } else {
-            console.log('Response Status != 200');
-            // handle error based on response
-            this.isFast = true;
-          }
-        } catch (error) {
-          console.error('Da ist ein Fehler beim Absenden des Formulars passiert 🙄');
+        if (response.status === 200) {
+          this.isSubmitted = true;
+        } else {
+          console.log('Response Status != 200');
+          // handle error based on response
           this.isFast = true;
         }
       } else {

@@ -179,7 +179,7 @@ export default {
             name="message"
             rows="5"
             placeholder="Was willst du mit mir besprechen?"
-            style="width: 300px; height: 150px; resize: none"
+            class="message"
             required
           ></textarea>
         </div>
@@ -224,5 +224,11 @@ export default {
 .contact-background {
   background: var(--underwater-color);
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 1%, var(--underwater-color) 100%);
+}
+
+.message {
+  width: 300px;
+  height: 150px;
+  resize: none;
 }
 </style>

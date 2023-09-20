@@ -115,18 +115,17 @@ export default {
             email: this.email,
             message: this.message,
           })
+          .then(response => {
+            if (response.status === 200) {
+              this.isSubmitted = true;
+            } else {
+              this.isFast = true;
+            }
+          })
           .catch(error => {
             console.error('Da ist ein Fehler beim Absenden des Formulars passiert 🙄');
             this.isFast = true;
           });
-
-        if (response.status === 200) {
-          this.isSubmitted = true;
-        } else {
-          console.log('Response Status != 200');
-          // handle error based on response
-          this.isFast = true;
-        }
       } else {
         console.log('Das Formular wurde zu schnell abgeschickt');
         this.isFast = true;

@@ -20,8 +20,10 @@ export default {
       email: '', // Store the email input
       info: '', // Honeypot for spam bots. Not visible to users
       message: '', // Store the message input
+      messageIsInvalid: false, // Indicates if the message input is invalid
 
       NAME_ERROR_MSG: 'Gebe einen Namen ein 😉',
+      MESSAGE_ERROR_MSG: 'Schreib mir eine Nachricht 😄',
     };
   },
   methods: {
@@ -33,7 +35,14 @@ export default {
     },
     validateName() {
       this.setStartTime();
-      this.nameIsInvalid = this.name.trim() === '' ? true : false;
+      this.nameIsInvalid = this.validateTrimmed(this.name);
+    },
+    validateMessage() {
+      this.setStartTime();
+      this.messageIsInvalid = this.validateTrimmed(this.message);
+    },
+    validateTrimmed(value) {
+      return value.trim() === '' ? true : false;
     },
     validateEmail() {
       this.setStartTime();
@@ -73,17 +82,6 @@ export default {
       emailElem.setCustomValidity('');
     },
 
-    // Message input validation
-    validateMessage() {
-      this.setStartTime();
-      const messageElem = document.getElementById('message');
-      if (this.message.trim() === '') {
-        messageElem.setCustomValidity('Schreib mir eine Nachricht 😄');
-      } else {
-        messageElem.setCustomValidity('');
-      }
-    },
-
     // Main function to handle form submit
     async submit() {
       // Check form submission speed to identify potential spam
@@ -119,6 +117,7 @@ export default {
       this.name = '';
       this.nameIsInvalid = false;
       this.message = '';
+      this.messageIsInvalid = false;
       this.email = '';
       this.startTime = 0;
       this.endTime = 0;
@@ -148,13 +147,15 @@ export default {
           <textarea
             id="message"
             v-model="message"
-            @input="validateMessage"
+            @blur="validateMessage"
             name="message"
             rows="5"
             placeholder="Was willst du mit mir besprechen?"
             class="message"
             required
-          ></textarea>
+          >
+          </textarea>
+          <span class="error" v-if="messageIsInvalid">{{ this.MESSAGE_ERROR_MSG }}</span>
         </div>
         <div>
           <input type="submit" value="Schreib mir!" />

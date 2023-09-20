@@ -28,8 +28,7 @@ export default {
         this.startTime = Date.now();
       }
     },
-    // Name input validation
-    handleNameInput() {
+    validateName() {
       this.setStartTime();
       const nameElem = document.getElementById('name');
       if (this.name.trim() === '') {
@@ -38,8 +37,7 @@ export default {
         nameElem.setCustomValidity('');
       }
     },
-    // Email input validation
-    handleEmailInput() {
+    validateEmail() {
       this.setStartTime();
       const emailElem = document.getElementById('email');
 
@@ -78,7 +76,7 @@ export default {
     },
 
     // Message input validation
-    handleMessageInput() {
+    validateMessage() {
       this.setStartTime();
       const messageElem = document.getElementById('message');
       if (this.message.trim() === '') {
@@ -91,9 +89,9 @@ export default {
     // Main function to handle form submit
     async handleSubmit() {
       // Validate inputs
-      this.handleNameInput();
-      this.handleEmailInput();
-      this.handleMessageInput();
+      this.validateName();
+      this.validateEmail();
+      this.validateMessage();
 
       // Fetch form elements
       const nameElem = document.getElementById('name');
@@ -154,19 +152,12 @@ export default {
       <form class="contact" id="contact-form" @submit.prevent="handleSubmit">
         <div>
           <label for="name">Name:</label>
-          <input type="text" id="name" v-model="name" @input="handleNameInput" placeholder="Name" required />
+          <input type="text" id="name" v-model="name" @input="validateName" placeholder="Name" required />
         </div>
 
         <div>
           <label for="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            v-model="email"
-            @input="handleEmailInput"
-            placeholder="email@mail.com"
-            required
-          />
+          <input type="email" id="email" v-model="email" @input="validateEmail" placeholder="email@mail.com" required />
         </div>
         <div>
           <input type="text" id="info" v-model="info" style="display: none" />
@@ -175,7 +166,7 @@ export default {
           <textarea
             id="message"
             v-model="message"
-            @input="handleMessageInput"
+            @input="validateMessage"
             name="message"
             rows="5"
             placeholder="Was willst du mit mir besprechen?"

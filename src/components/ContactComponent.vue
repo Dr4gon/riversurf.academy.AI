@@ -16,9 +16,12 @@ export default {
       isSubmitted: false, // Indicates if the form has been successfully submitted
       isFast: false, // Indicates if the form submission was suspiciously quick (potential spam)
       name: '', // Store the name input
+      nameIsInvalid: false, // Indicates if the name input is invalid
       email: '', // Store the email input
       info: '', // Honeypot for spam bots. Not visible to users
       message: '', // Store the message input
+
+      NAME_ERROR_MSG: 'Gebe einen Namen ein 😉',
     };
   },
   methods: {
@@ -30,12 +33,7 @@ export default {
     },
     validateName() {
       this.setStartTime();
-      const nameElem = document.getElementById('name');
-      if (this.name.trim() === '') {
-        nameElem.setCustomValidity('Gebe einen Namen ein 😉');
-      } else {
-        nameElem.setCustomValidity('');
-      }
+      this.nameIsInvalid = this.name.trim() === '' ? true : false;
     },
     validateEmail() {
       this.setStartTime();
@@ -119,6 +117,7 @@ export default {
       this.isSubmitted = false;
       this.isFast = false;
       this.name = '';
+      this.nameIsInvalid = false;
       this.message = '';
       this.email = '';
       this.startTime = 0;
@@ -134,7 +133,8 @@ export default {
       <form class="contact" id="contact-form" @submit.prevent="submit">
         <div>
           <label for="name">Name:</label>
-          <input type="text" id="name" v-model="name" @input="validateName" placeholder="Name" required />
+          <input type="text" id="name" v-model="name" @blur="validateName" placeholder="Name" required />
+          <span class="error" v-if="nameIsInvalid">{{ this.NAME_ERROR_MSG }}</span>
         </div>
 
         <div>
@@ -203,5 +203,10 @@ export default {
   width: 300px;
   height: 150px;
   resize: none;
+}
+
+.error {
+  margin-left: 2px;
+  color: red;
 }
 </style>

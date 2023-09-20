@@ -11,8 +11,6 @@ export default {
       email: '', // Store the email input
       info: '', // Honeypot for spam bots. Not visible to users
       message: '', // Store the message input
-      submitMessageRight: 0, // Track the time when user starts typing
-      submitMessageFalse: 0, // Track the time when user submits the form
     };
   },
   methods: {

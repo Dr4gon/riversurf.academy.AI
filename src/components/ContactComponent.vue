@@ -111,8 +111,7 @@ export default {
     },
     // Reset form and feedback messages
     closeMessage() {
-      this.isSubmitted = false;
-      this.isFast = false;
+      this.resetOnlyState();
       this.name = '';
       this.nameIsInvalid = false;
       this.message = '';

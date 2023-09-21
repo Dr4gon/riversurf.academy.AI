@@ -30,24 +30,24 @@ export default {
   },
   methods: {
     // Set the start time for submit (spam protection)
-    setStartTime() {
+    startTimer() {
       if (this.startTime === 0) {
         this.startTime = Date.now();
       }
     },
     validateName() {
-      this.setStartTime();
+      this.startTimer();
       this.nameIsInvalid = this.validateTrimmed(this.name);
     },
     validateMessage() {
-      this.setStartTime();
+      this.startTimer();
       this.messageIsInvalid = this.validateTrimmed(this.message);
     },
     validateTrimmed(value) {
       return value.trim() === '' ? true : false;
     },
     validateEmail() {
-      this.setStartTime();
+      this.startTimer();
       this.emailIsInvalid = true;
 
       if (this.email === '') {

@@ -122,6 +122,10 @@ export default {
       this.startTime = 0;
       this.endTime = 0;
     },
+    resetOnlyState() {
+      this.isSubmitted = false;
+      this.isFast = false;
+    },
   },
 };
 </script>
@@ -167,7 +171,7 @@ export default {
         </div>
 
         <div v-if="isFast" class="submit-message">
-          <span @click="closeMessage" class="close-btn">X</span>
+          <span @click="resetOnlyState" class="close-btn">X</span>
           <p class="submitMessageFalse">{{ submitMessageFalse }}</p>
         </div>
       </form>

@@ -1,10 +1,10 @@
 <template>
-  <div class="below" v-if="substage === 0">
+  <div class="below">
     <div class="edge"><h1 @click="$emit('go-to-stage', 4)">&lt;</h1></div>
     <div class="below2">
-      <input type="text" placeholder="* Name" v-model="localName" />
-      <input type="email" placeholder="* E-Mail" v-model="localEmail" />
-      <input type="tel" placeholder="* Handy Nr." v-model="localHandy" />
+      <input type="text" placeholder="* Name" v-model="localName" required />
+      <input type="email" placeholder="* E-Mail" v-model="localEmail" required />
+      <input type="tel" placeholder="* Handy Nr." v-model="localHandy" required />
       <p>* Pflichtfelder</p>
     </div>
 
@@ -41,7 +41,6 @@ export default {
     name: {},
     remark: {},
     stage: {},
-    substage: {},
   },
   data() {
     return {

@@ -3,9 +3,10 @@ import SummaryComponent from '@/components/sales/SummaryComponent.vue';
 import SalesContactComponent from '@/components/sales/SalesContactComponent.vue';
 import TimeComponent from '@/components/sales/TimeComponent.vue';
 import EquipmentComponent from '@/components/sales/EquipmentComponent.vue';
+import CourseComponent from '@/components/sales/CourseComponent.vue';
 
 export default {
-  components: { EquipmentComponent, TimeComponent, SalesContactComponent, SummaryComponent },
+  components: { CourseComponent, EquipmentComponent, TimeComponent, SalesContactComponent, SummaryComponent },
 
   data() {
     return {
@@ -54,7 +55,6 @@ export default {
     goToStage(targetStage) {
       if (targetStage >= 1 && targetStage <= 6) {
         this.stage = targetStage;
-        this.substage = 0;
       }
     },
     goToSubStage(targetSubStage) {
@@ -64,9 +64,6 @@ export default {
     },
     handleLevel(inputLevel) {
       this.level = inputLevel;
-    },
-    handleCourse(inputCourse) {
-      this.course = inputCourse;
     },
   },
 };
@@ -179,85 +176,7 @@ export default {
           </div>
 
           <div v-if="stage === 2">
-            <div class="below" v-if="substage === 0">
-              <div class="edge"><h1 @click="goToStage(1)">&lt;</h1></div>
-              <div class="below3">
-                <img @click="goToSubStage(1)" src="@/assets/sales/Schnuppern.png" alt="Schnuppern" />
-              </div>
-              <div class="below3">
-                <img @click="goToSubStage(2)" src="@/assets/sales/Einzelkurs.png" alt="Einzelkurs" />
-              </div>
-              <div class="below3">
-                <img @click="goToSubStage(3)" src="@/assets/sales/Tagestour.png" alt="Tagestour" />
-              </div>
-              <div class="edge"></div>
-            </div>
-            <div class="below" v-if="substage === 1">
-              <div class="edge"></div>
-              <div class="below3"><img src="@/assets/sales/Schnuppern.png" alt="Schnuppern" /></div>
-              <div class="below2">
-                <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                  labore et dolore magna aliquyam
-                </p>
-                <h2>30 €</h2>
-                <button @click="goToSubStage(0)">zurück</button>
-                <button
-                  @click="
-                    goToStage(3);
-                    handleCourse('Schnuppern');
-                    console.log(course);
-                  "
-                >
-                  Bestätigen
-                </button>
-              </div>
-              <div class="edge"></div>
-            </div>
-            <div class="below" v-if="substage === 2">
-              <div class="edge"></div>
-              <div class="below3"><img src="@/assets/sales/Einzelkurs.png" alt="Einzelkurs" /></div>
-              <div class="below2">
-                <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                  labore et dolore magna aliquyam
-                </p>
-                <h2>90 €</h2>
-                <button @click="goToSubStage(0)">zurück</button>
-                <button
-                  @click="
-                    goToStage(3);
-                    handleCourse('Einzelkurs');
-                    console.log(course);
-                  "
-                >
-                  Bestätigen
-                </button>
-              </div>
-              <div class="edge"></div>
-            </div>
-            <div class="below" v-if="substage === 3">
-              <div class="edge"></div>
-              <div class="below3"><img src="@/assets/sales/Tagestour.png" alt="Tagestour" /></div>
-              <div class="below2">
-                <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                  labore et dolore magna aliquyam
-                </p>
-                <h2>150 €</h2>
-                <button @click="goToSubStage(0)">zurück</button>
-                <button
-                  @click="
-                    goToStage(3);
-                    handleCourse('Tagestour');
-                    console.log(course);
-                  "
-                >
-                  Bestätigen
-                </button>
-              </div>
-              <div class="edge"></div>
-            </div>
+            <CourseComponent @go-to-stage="goToStage" @update-course="course = $event" />
           </div>
 
           <div v-if="stage === 3">
@@ -282,7 +201,6 @@ export default {
               @update-remark="remark = $event"
               @go-to-stage="goToStage"
               :stage="stage"
-              :substage="substage"
             />
           </div>
 

@@ -22,7 +22,8 @@
       <button
         @click="
           $emit('goToStage', 5);
-          console.log(date, timeSlot);
+          $emit('update-date', localDate);
+          $emit('update-timeSlot', localTimeSlot);
         "
       >
         Bestätigen

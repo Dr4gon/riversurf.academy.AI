@@ -82,7 +82,6 @@ export default {
   props: {
     course: {},
     goToStage: {},
-    handleCourse: {},
   },
 
   data() {

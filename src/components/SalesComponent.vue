@@ -21,7 +21,6 @@ export default {
       stage: 0,
       observer: null,
       showText: true,
-      substage: 0,
       level: '',
       course: '',
       bodyHeight: 0,

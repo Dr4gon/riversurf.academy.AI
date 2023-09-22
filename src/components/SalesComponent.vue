@@ -4,9 +4,17 @@ import SalesContactComponent from '@/components/sales/SalesContactComponent.vue'
 import TimeComponent from '@/components/sales/TimeComponent.vue';
 import EquipmentComponent from '@/components/sales/EquipmentComponent.vue';
 import CourseComponent from '@/components/sales/CourseComponent.vue';
+import LevelComponent from '@/components/sales/LevelComponent.vue';
 
 export default {
-  components: { CourseComponent, EquipmentComponent, TimeComponent, SalesContactComponent, SummaryComponent },
+  components: {
+    LevelComponent,
+    CourseComponent,
+    EquipmentComponent,
+    TimeComponent,
+    SalesContactComponent,
+    SummaryComponent,
+  },
 
   data() {
     return {
@@ -57,14 +65,6 @@ export default {
         this.stage = targetStage;
       }
     },
-    goToSubStage(targetSubStage) {
-      if (targetSubStage >= 0 && targetSubStage <= 3) {
-        this.substage = targetSubStage;
-      }
-    },
-    handleLevel(inputLevel) {
-      this.level = inputLevel;
-    },
   },
 };
 </script>
@@ -97,82 +97,7 @@ export default {
           </div>
 
           <div v-if="stage === 1">
-            <div class="below" v-if="substage === 0">
-              <div class="edge"></div>
-              <div class="below3">
-                <img @click="goToSubStage(1)" src="@/assets/sales/Beginner.png" alt="Beginner" />
-              </div>
-              <div class="below3">
-                <img @click="goToSubStage(2)" src="@/assets/sales/Intermediate.png" alt="Intermediate" />
-              </div>
-              <div class="below3">
-                <img @click="goToSubStage(3)" src="@/assets/sales/Professional.png" alt="Professional" />
-              </div>
-              <div class="edge"></div>
-            </div>
-            <div class="below" v-if="substage === 1">
-              <div class="edge"></div>
-              <div class="below3"><img src="@/assets/sales/Beginner.png" alt="Beginner" /></div>
-              <div class="below2">
-                <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                  labore et dolore magna aliquyam
-                </p>
-                <button @click="goToSubStage(0)">zurück</button>
-                <button
-                  @click="
-                    goToStage(2);
-                    handleLevel('Beginner');
-                    console.log(level);
-                  "
-                >
-                  Bestätigen
-                </button>
-              </div>
-              <div class="edge"></div>
-            </div>
-            <div class="below" v-if="substage === 2">
-              <div class="edge"></div>
-              <div class="below3"><img src="@/assets/sales/Intermediate.png" alt="Intermediate" /></div>
-              <div class="below2">
-                <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                  labore et dolore magna aliquyam
-                </p>
-                <button @click="goToSubStage(0)">zurück</button>
-                <button
-                  @click="
-                    goToStage(2);
-                    handleLevel('Intermediate');
-                    console.log(level);
-                  "
-                >
-                  Bestätigen
-                </button>
-              </div>
-              <div class="edge"></div>
-            </div>
-            <div class="below" v-if="substage === 3">
-              <div class="edge"></div>
-              <div class="below3"><img src="@/assets/sales/Professional.png" alt="Professional" /></div>
-              <div class="below2">
-                <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                  labore et dolore magna aliquyam
-                </p>
-                <button @click="goToSubStage(0)">zurück</button>
-                <button
-                  @click="
-                    goToStage(2);
-                    handleLevel('Professional');
-                    console.log(level);
-                  "
-                >
-                  Bestätigen
-                </button>
-              </div>
-              <div class="edge"></div>
-            </div>
+            <LevelComponent @go-to-stage="goToStage" @update-level="level = $event" />
           </div>
 
           <div v-if="stage === 2">

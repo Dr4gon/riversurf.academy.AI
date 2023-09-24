@@ -16,10 +16,6 @@ Surf'n'Smile - Slow 😩 Steady 😁 Superfun.
 
 ![30%](https://progress-bar.dev/30)
 
-## System Requirements
-
-- Node.js: 18.13.0 LTS - https://nodejs.org/en/download
-
 ## Project Setup
 
 ### Development Environment

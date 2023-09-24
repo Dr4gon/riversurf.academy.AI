@@ -6,7 +6,7 @@ It's optimized for mobile horizontal usage and gives you the impression of being
 
 The heart of this project is to provide you with a cosmos for riversurfing. Starting from which river waves exist, what equipment to use, over to learn more fine grained control over your surfboard.
 
-I already "tech" (= people asking me for advice) freely at the river waves I'm at. If you like more, you're able to book me for some sessions.
+I already "teach" (= people asking me for advice) freely at the river waves I'm at. If you like more, you're able to book me for some sessions.
 
 ```sh
 Surf'n'Smile - Slow 😩 Steady 😁 Superfun.

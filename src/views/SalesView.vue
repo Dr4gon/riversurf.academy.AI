@@ -1,10 +1,10 @@
 <script>
-import SummaryComponent from '@/components/sales/SummaryComponent.vue';
-import SalesContactComponent from '@/components/sales/SalesContactComponent.vue';
-import TimeComponent from '@/components/sales/TimeComponent.vue';
-import EquipmentComponent from '@/components/sales/EquipmentComponent.vue';
-import CourseComponent from '@/components/sales/CourseComponent.vue';
-import LevelComponent from '@/components/sales/LevelComponent.vue';
+import SummaryComponent from '@/views/sales/SummaryComponent.vue';
+import SalesContactComponent from '@/views/sales/SalesContactComponent.vue';
+import TimeComponent from '@/views/sales/TimeComponent.vue';
+import EquipmentComponent from '@/views/sales/EquipmentComponent.vue';
+import CourseComponent from '@/views/sales/CourseComponent.vue';
+import LevelComponent from '@/views/sales/LevelComponent.vue';
 
 export default {
   components: {

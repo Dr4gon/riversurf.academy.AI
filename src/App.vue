@@ -9,11 +9,11 @@ import 'swiper/css/bundle';
 register();
 
 import Swiper from 'swiper';
-import WelcomeView from '@/components/WelcomeView.vue';
-import ConvincerView from '@/components/ConvincerView.vue';
-import SalesView from '@/components/SalesView.vue';
-import AboutView from '@/components/AboutView.vue';
-import ContactView from '@/components/ContactView.vue';
+import WelcomeView from '@/views/WelcomeView.vue';
+import ConvincerView from '@/views/ConvincerView.vue';
+import SalesView from '@/views/SalesView.vue';
+import AboutView from '@/views/AboutView.vue';
+import ContactView from '@/views/ContactView.vue';
 
 const swiper = new Swiper('.swiper', {
   grabCursor: true,

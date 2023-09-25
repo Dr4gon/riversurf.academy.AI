@@ -1,6 +1,6 @@
 import { test, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
-import ContactComponent from '@/components/ContactView.vue';
+import ContactComponent from '@/views/ContactView.vue';
 
 function delay(time) {
   return new Promise(resolve => setTimeout(resolve, time));

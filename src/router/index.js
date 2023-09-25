@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-const COMPONENT_PATH = '../components/';
+const COMPONENT_PATH = '../views/';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

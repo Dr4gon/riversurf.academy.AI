@@ -1,3 +1,52 @@
+<template>
+  <div class="container contact-background">
+    <div class="view">
+      <form class="contact" id="contact-form" @submit.prevent="submit">
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" v-model="name" @blur="validateName" placeholder="Name" required />
+          <span class="error" v-if="nameIsInvalid">{{ this.NAME_ERROR_MSG }}</span>
+        </div>
+
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" v-model="email" @blur="validateEmail" placeholder="email@mail.com" required />
+          <span class="error" v-if="emailIsInvalid">{{ this.EMAIL_ERROR_MSG }}</span>
+        </div>
+        <div>
+          <input type="text" id="info" v-model="info" hidden />
+
+          <label for="message">Message:</label>
+          <textarea
+            id="message"
+            v-model="message"
+            @blur="validateMessage"
+            name="message"
+            rows="5"
+            placeholder="Was willst du mit mir besprechen?"
+            class="message"
+            required
+          >
+          </textarea>
+          <span class="error" v-if="messageIsInvalid">{{ this.MESSAGE_ERROR_MSG }}</span>
+        </div>
+        <div>
+          <input type="submit" value="Schreib mir!" />
+        </div>
+        <div v-if="isSubmitted" class="submit-message">
+          <span @click="closeMessage" class="close-btn">X</span>
+          <p class="submitMessageRight">{{ submitMessageRight }}</p>
+        </div>
+
+        <div v-if="isFast" class="submit-message">
+          <span @click="resetOnlyState" class="close-btn">X</span>
+          <p class="submitMessageFalse">{{ submitMessageFalse }}</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+
 <script>
 import axios from 'axios';
 
@@ -128,55 +177,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="container contact-background">
-    <div class="view">
-      <form class="contact" id="contact-form" @submit.prevent="submit">
-        <div>
-          <label for="name">Name:</label>
-          <input type="text" id="name" v-model="name" @blur="validateName" placeholder="Name" required />
-          <span class="error" v-if="nameIsInvalid">{{ this.NAME_ERROR_MSG }}</span>
-        </div>
-
-        <div>
-          <label for="email">Email:</label>
-          <input type="email" id="email" v-model="email" @blur="validateEmail" placeholder="email@mail.com" required />
-          <span class="error" v-if="emailIsInvalid">{{ this.EMAIL_ERROR_MSG }}</span>
-        </div>
-        <div>
-          <input type="text" id="info" v-model="info" hidden />
-
-          <label for="message">Message:</label>
-          <textarea
-            id="message"
-            v-model="message"
-            @blur="validateMessage"
-            name="message"
-            rows="5"
-            placeholder="Was willst du mit mir besprechen?"
-            class="message"
-            required
-          >
-          </textarea>
-          <span class="error" v-if="messageIsInvalid">{{ this.MESSAGE_ERROR_MSG }}</span>
-        </div>
-        <div>
-          <input type="submit" value="Schreib mir!" />
-        </div>
-        <div v-if="isSubmitted" class="submit-message">
-          <span @click="closeMessage" class="close-btn">X</span>
-          <p class="submitMessageRight">{{ submitMessageRight }}</p>
-        </div>
-
-        <div v-if="isFast" class="submit-message">
-          <span @click="resetOnlyState" class="close-btn">X</span>
-          <p class="submitMessageFalse">{{ submitMessageFalse }}</p>
-        </div>
-      </form>
-    </div>
-  </div>
-</template>
 
 <style scoped>
 .submit-message {

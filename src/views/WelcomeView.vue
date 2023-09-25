@@ -1,5 +1,3 @@
-<script setup></script>
-
 <template>
   <div class="container">
     <div class="view">
@@ -10,5 +8,7 @@
     </div>
   </div>
 </template>
+
+<script setup></script>
 
 <style scoped></style>

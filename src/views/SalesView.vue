@@ -1,72 +1,3 @@
-<script>
-import SummaryComponent from '../components/SummaryComponent.vue';
-import componentsContactComponent from '../components/SalesContactComponent.vue';
-import TimeComponent from '../components/TimeComponent.vue';
-import EquipmentComponent from '../components/EquipmentComponent.vue';
-import CourseComponent from '../components/CourseComponent.vue';
-import LevelComponent from '../components/LevelComponent.vue';
-
-export default {
-  components: {
-    LevelComponent,
-    CourseComponent,
-    EquipmentComponent,
-    TimeComponent,
-    componentsContactComponent,
-    SummaryComponent,
-  },
-
-  data() {
-    return {
-      stage: 0,
-      observer: null,
-      showText: true,
-      level: '',
-      course: '',
-      bodyHeight: 0,
-      bodyWeight: 0,
-      gender: '',
-      clothingSize: '',
-      date: '',
-      timeSlot: '',
-      name: '',
-      email: '',
-      handy: '',
-      remark: '',
-    };
-  },
-  computed: {
-    progress() {
-      return (this.stage / 6) * 100;
-    },
-  },
-  mounted() {
-    this.observer = new IntersectionObserver(this.handleIntersection, { threshold: 0.1 });
-    this.observer.observe(this.$refs.observerTarget);
-  },
-  beforeDestroy() {
-    if (this.observer) {
-      this.observer.disconnect();
-    }
-  },
-  methods: {
-    handleIntersection(entries) {
-      if (entries[0].isIntersecting) {
-        setTimeout(() => {
-          this.showText = false;
-          this.stage = 1;
-        }, 3000);
-        this.observer.disconnect();
-      }
-    },
-    goToStage(targetStage) {
-      if (targetStage >= 1 && targetStage <= 6) {
-        this.stage = targetStage;
-      }
-    },
-  },
-};
-</script>
 <template>
   <div class="container">
     <div class="view">
@@ -149,6 +80,76 @@ export default {
     </div>
   </div>
 </template>
+
+<script>
+import SummaryComponent from '../components/SummaryComponent.vue';
+import componentsContactComponent from '../components/SalesContactComponent.vue';
+import TimeComponent from '../components/TimeComponent.vue';
+import EquipmentComponent from '../components/EquipmentComponent.vue';
+import CourseComponent from '../components/CourseComponent.vue';
+import LevelComponent from '../components/LevelComponent.vue';
+
+export default {
+  components: {
+    LevelComponent,
+    CourseComponent,
+    EquipmentComponent,
+    TimeComponent,
+    componentsContactComponent,
+    SummaryComponent,
+  },
+
+  data() {
+    return {
+      stage: 0,
+      observer: null,
+      showText: true,
+      level: '',
+      course: '',
+      bodyHeight: 0,
+      bodyWeight: 0,
+      gender: '',
+      clothingSize: '',
+      date: '',
+      timeSlot: '',
+      name: '',
+      email: '',
+      handy: '',
+      remark: '',
+    };
+  },
+  computed: {
+    progress() {
+      return (this.stage / 6) * 100;
+    },
+  },
+  mounted() {
+    this.observer = new IntersectionObserver(this.handleIntersection, { threshold: 0.1 });
+    this.observer.observe(this.$refs.observerTarget);
+  },
+  beforeDestroy() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  },
+  methods: {
+    handleIntersection(entries) {
+      if (entries[0].isIntersecting) {
+        setTimeout(() => {
+          this.showText = false;
+          this.stage = 1;
+        }, 3000);
+        this.observer.disconnect();
+      }
+    },
+    goToStage(targetStage) {
+      if (targetStage >= 1 && targetStage <= 6) {
+        this.stage = targetStage;
+      }
+    },
+  },
+};
+</script>
 
 <style>
 .view {

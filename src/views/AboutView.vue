@@ -1,5 +1,3 @@
-<script setup></script>
-
 <template>
   <div class="container about-background">
     <div class="view">
@@ -10,6 +8,8 @@
     </div>
   </div>
 </template>
+
+<script setup></script>
 
 <style scoped>
 .about-background {

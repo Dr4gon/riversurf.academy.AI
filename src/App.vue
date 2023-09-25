@@ -9,11 +9,11 @@ import 'swiper/css/bundle';
 register();
 
 import Swiper from 'swiper';
-import WelcomeComponent from '@/components/WelcomeComponent.vue';
-import ConvincerComponent from '@/components/ConvincerComponent.vue';
-import SalesComponent from '@/components/SalesComponent.vue';
-import AboutComponent from '@/components/AboutComponent.vue';
-import ContactComponent from '@/components/ContactComponent.vue';
+import WelcomeView from '@/components/WelcomeView.vue';
+import ConvincerView from '@/components/ConvincerView.vue';
+import SalesView from '@/components/SalesView.vue';
+import AboutView from '@/components/AboutView.vue';
+import ContactView from '@/components/ContactView.vue';
 
 const swiper = new Swiper('.swiper', {
   grabCursor: true,
@@ -54,21 +54,21 @@ onUnmounted(() => {
   <div class="main-container">
     <swiper-container class="swiper">
       <swiper-slide>
-        <WelcomeComponent />
+        <WelcomeView />
       </swiper-slide>
       <swiper-slide>
-        <ConvincerComponent />
+        <ConvincerView />
       </swiper-slide>
       <swiper-slide>
-        <SalesComponent />
+        <SalesView />
       </swiper-slide>
     </swiper-container>
   </div>
   <div class="containedBubbles">
     <!-- Changes of the bubble number only works in concert with changing the css bubble number as well -->
     <div class="bubble" v-for="n in 50"></div>
-    <AboutComponent />
-    <ContactComponent />
+    <AboutView />
+    <ContactView />
   </div>
   <div v-if="isMobileDevice && !isLandscape" class="turn-your-phone">
     <p>Please rotate your device for a better viewing 😉</p>

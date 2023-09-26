@@ -14,6 +14,7 @@ import ConvincerView from '@/views/ConvincerView.vue';
 import SalesView from '@/views/SalesView.vue';
 import AboutView from '@/views/AboutView.vue';
 import ContactView from '@/views/ContactView.vue';
+import BoardSelectorView from '@/views/BoardSelectorView.vue';
 
 const swiper = new Swiper('.swiper', {
   grabCursor: true,
@@ -53,6 +54,9 @@ onUnmounted(() => {
 <template>
   <div class="main-container">
     <swiper-container class="swiper">
+      <swiper-slide>
+        <BoardSelectorView />
+      </swiper-slide>
       <swiper-slide>
         <WelcomeView />
       </swiper-slide>

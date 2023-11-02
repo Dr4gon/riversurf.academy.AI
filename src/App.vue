@@ -33,6 +33,7 @@ const swiper = new Swiper('.swiper', {
 
 // turn your phone
 import { ref, onMounted, onUnmounted } from 'vue';
+import NeoSelectorView from '@/views/NeoSelectorView.vue';
 
 const isLandscape = ref(false);
 const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -56,6 +57,9 @@ onUnmounted(() => {
     <swiper-container class="swiper">
       <swiper-slide>
         <BoardSelectorView />
+      </swiper-slide>
+      <swiper-slide>
+        <NeoSelectorView />
       </swiper-slide>
       <swiper-slide>
         <WelcomeView />

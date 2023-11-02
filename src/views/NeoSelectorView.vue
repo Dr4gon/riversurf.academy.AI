@@ -1,47 +1,50 @@
 <template>
   <div class='container'>
     <div class='view neo'>
-      <div class='generator' v-if='!submitted'>
-        <h1>Neopren Generator</h1>
-        <p>Du suchst nach einem passenden Neopren Anzug für dein nächstes Riversurf Abenteuer? Was für einen Neopren
-          Anzug
-          du brauchst und auf was du beim Kauf achten solltest, erfährst du hier in.</p>
-        <label>
-          Welche Wassertemperatur hat dein Zielgewässer?
-          <select v-model='waterTemperature'>
-            <option disabled value=''>Bitte auswählen</option>
-            <option value='above23'>über 23°</option>
-            <option value='between19and23'>19° - 23°</option>
-            <option value='between15and20'>15° - 20°</option>
-            <option value='between12and17'>12° - 17°</option>
-            <option value='between9and13'>9° - 13°</option>
-            <option value='under9'>unter 9°</option>
-          </select>
-        </label>
-        <br>
-        <label>
-          Wie ist dein Geschlecht?
-          <select v-model='gender'>
-            <option disabled value=''>Bitte auswählen</option>
-            <option value='m'>Männlich</option>
-            <option value='f'>Weiblich</option>
-          </select>
-        </label>
-        <br>
-        <button @click='submit'>Start</button>
-      </div>
-      <div class='generatedContent' v-if='submitted'>
-        <MaleAbove23 v-if="waterTemperature === 'above23' && gender ==='m'" />
-        <FemaleAbove23 v-if="waterTemperature ==='above23' && gender==='f'" />
-        <MaleBetween19and23 v-if="waterTemperature === 'between19and23' && gender ==='m'" />
-        <FemaleBetween19and23 v-if="waterTemperature ==='between19and23' && gender==='f'" />
-        <Between15and20 v-if="waterTemperature === 'between15and20'" />
-        <Between12and17 v-if="waterTemperature === 'between12and17'" />
-        <Between9and13 v-if="waterTemperature === 'between9and13'" />
-        <Under9 v-if="waterTemperature === 'under9'" />
-        <button @click='submitted = false'>Zurück</button>
-      </div>
+      <transition-group name="slide-up">
+        <div class='generator' v-if='!submitted'>
+          <h1>Neopren Generator</h1>
+          <p>Du suchst nach einem passenden Neopren Anzug für dein nächstes Riversurf Abenteuer? Was für einen Neopren
+            Anzug
+            du brauchst und auf was du beim Kauf achten solltest, erfährst du hier in.</p>
+          <label>
+            Welche Wassertemperatur hat dein Zielgewässer?
+            <select v-model='waterTemperature'>
+              <option disabled value=''>Bitte auswählen</option>
+              <option value='above23'>über 23°</option>
+              <option value='between19and23'>19° - 23°</option>
+              <option value='between15and20'>15° - 20°</option>
+              <option value='between12and17'>12° - 17°</option>
+              <option value='between9and13'>9° - 13°</option>
+              <option value='under9'>unter 9°</option>
+            </select>
+          </label>
+          <br>
+          <label>
+            Wie ist dein Geschlecht?
+            <select v-model='gender'>
+              <option disabled value=''>Bitte auswählen</option>
+              <option value='m'>Männlich</option>
+              <option value='f'>Weiblich</option>
+            </select>
+          </label>
+          <br>
+          <button @click='submit'>Start</button>
+        </div>
+        <div class='generatedContent' v-if='submitted'>
+          <MaleAbove23 v-if="waterTemperature === 'above23' && gender ==='m'" />
+          <FemaleAbove23 v-if="waterTemperature ==='above23' && gender==='f'" />
+          <MaleBetween19and23 v-if="waterTemperature === 'between19and23' && gender ==='m'" />
+          <FemaleBetween19and23 v-if="waterTemperature ==='between19and23' && gender==='f'" />
+          <Between15and20 v-if="waterTemperature === 'between15and20'" />
+          <Between12and17 v-if="waterTemperature === 'between12and17'" />
+          <Between9and13 v-if="waterTemperature === 'between9and13'" />
+          <Under9 v-if="waterTemperature === 'under9'" />
+          <button @click='submitted = false'>Zurück</button>
+        </div>
+      </transition-group>
     </div>
+
   </div>
 </template>
 
@@ -92,5 +95,22 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: absolute;
 }
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 1s ease-out;
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(300px);
+}
+
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(-300px);
+}
+
 </style>

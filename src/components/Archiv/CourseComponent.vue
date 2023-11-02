@@ -2,19 +2,19 @@
   <div class="below" v-if="substage === 0">
     <div class="edge"><h1 @click="$emit('go-to-stage', 1)">&lt;</h1></div>
     <div class="below3">
-      <img @click="goToSubStage(1)" src="../assets/sales/Schnuppern.png" alt="Schnuppern" />
+      <img @click="goToSubStage(1)" src='../../assets/sales/Schnuppern.png' alt="Schnuppern" />
     </div>
     <div class="below3">
-      <img @click="goToSubStage(2)" src="../assets/sales/Einzelkurs.png" alt="Einzelkurs" />
+      <img @click="goToSubStage(2)" src='../../assets/sales/Einzelkurs.png' alt="Einzelkurs" />
     </div>
     <div class="below3">
-      <img @click="goToSubStage(3)" src="../assets/sales/Tagestour.png" alt="Tagestour" />
+      <img @click="goToSubStage(3)" src='../../assets/sales/Tagestour.png' alt="Tagestour" />
     </div>
     <div class="edge"></div>
   </div>
   <div class="below" v-if="substage === 1">
     <div class="edge"></div>
-    <div class="below3"><img src="../assets/sales/Schnuppern.png" alt="Schnuppern" /></div>
+    <div class="below3"><img src='../../assets/sales/Schnuppern.png' alt="Schnuppern" /></div>
     <div class="below2">
       <p>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
@@ -35,7 +35,7 @@
   </div>
   <div class="below" v-if="substage === 2">
     <div class="edge"></div>
-    <div class="below3"><img src="../assets/sales/Einzelkurs.png" alt="Einzelkurs" /></div>
+    <div class="below3"><img src='../../assets/sales/Einzelkurs.png' alt="Einzelkurs" /></div>
     <div class="below2">
       <p>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
@@ -56,7 +56,7 @@
   </div>
   <div class="below" v-if="substage === 3">
     <div class="edge"></div>
-    <div class="below3"><img src="../assets/sales/Tagestour.png" alt="Tagestour" /></div>
+    <div class="below3"><img src='../../assets/sales/Tagestour.png' alt="Tagestour" /></div>
     <div class="below2">
       <p>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et

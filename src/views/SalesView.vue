@@ -82,12 +82,12 @@
 </template>
 
 <script>
-import SummaryComponent from '../components/Archiv/SummaryComponent.vue';
-import componentsContactComponent from '../components/Archiv/SalesContactComponent.vue';
-import TimeComponent from '../components/Archiv/TimeComponent.vue';
-import EquipmentComponent from '../components/Archiv/EquipmentComponent.vue';
-import CourseComponent from '../components/Archiv/CourseComponent.vue';
-import LevelComponent from '../components/Archiv/LevelComponent.vue';
+import SummaryComponent from '../components/archiv/SummaryComponent.vue';
+import componentsContactComponent from '../components/archiv/SalesContactComponent.vue';
+import TimeComponent from '../components/archiv/TimeComponent.vue';
+import EquipmentComponent from '../components/archiv/EquipmentComponent.vue';
+import CourseComponent from '../components/archiv/CourseComponent.vue';
+import LevelComponent from '../components/archiv/LevelComponent.vue';
 
 export default {
   components: {

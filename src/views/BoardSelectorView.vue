@@ -1,11 +1,26 @@
 <template>
   <div class="container">
     <div class="view">
-      <p>BoardSelecterView</p>
+      <input v-model="weight" @blur="checkWeight" placeholder="Write down your body weight in kg" />
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script>
+export default {
+  name: 'BoardSelectorView',
+  computed: {},
+  data() {
+    return {
+      weight: '',
+    };
+  },
+  methods: {
+    checkWeight() {
+      console.log(this.weight);
+    },
+  },
+};
+</script>
 
 <style scoped></style>

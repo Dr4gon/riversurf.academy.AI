@@ -54,7 +54,7 @@ onUnmounted(() => {
 
 <template>
   <div class="main-container">
-    <swiper-container class="swiper">
+    <swiper-container class="swiper" initial-slide="2">
       <swiper-slide>
         <BoardSelectorView />
       </swiper-slide>

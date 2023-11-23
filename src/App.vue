@@ -17,7 +17,6 @@ import ContactView from '@/views/ContactView.vue';
 import BoardSelectorView from '@/views/BoardSelectorView.vue';
 
 const swiper = new Swiper('.swiper', {
-  grabCursor: true,
   effect: 'creative',
   creativeEffect: {
     prev: {
@@ -54,7 +53,7 @@ onUnmounted(() => {
 
 <template>
   <div class="main-container">
-    <swiper-container class="swiper" initial-slide="2">
+    <swiper-container class="swiper" initial-slide="2" grab-cursor="true">
       <swiper-slide>
         <BoardSelectorView />
       </swiper-slide>

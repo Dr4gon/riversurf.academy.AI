@@ -11,6 +11,14 @@
           <input id="height" v-model="height" @blur="checkHeight" placeholder="Your body heigth in 174" />
           <label for="height">cm</label>
         </p>
+        <p>
+          <select id="surfLevel" v-model="surfLevel">
+            <option disabled value="">Level auswählen</option>
+            <option value="beginner">Stehe auf der Welle</option>
+            <option value="advanced">Fahre sauber Turns</option>
+            <option value="pro">Hab Tricks drauf</option>
+          </select>
+        </p>
       </form>
     </div>
   </div>
@@ -24,6 +32,7 @@ export default {
     return {
       weight: '',
       height: '',
+      surfLevel: '',
     };
   },
   methods: {

@@ -19,6 +19,14 @@
             <option value="pro">Hab Tricks drauf</option>
           </select>
         </p>
+        <p>
+          <select id="waveType" v-model="waveType">
+            <option disabled value="">Welle auswählen</option>
+            <option value="laende">Floßlände</option>
+            <option value="bach">Eisbach</option>
+            <option value="citywave">Jochen Schweizer</option>
+          </select>
+        </p>
       </form>
     </div>
   </div>
@@ -33,6 +41,7 @@ export default {
       weight: '',
       height: '',
       surfLevel: '',
+      waveType: '',
     };
   },
   methods: {

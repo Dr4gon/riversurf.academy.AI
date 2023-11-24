@@ -3,7 +3,8 @@
     <div class="view selector">
       <form id="boardSelectorData">
         <h1>Board Selector</h1>
-        <input id="weight" v-model="weight" @blur="checkWeight" placeholder="Your body weight in kg" />
+        <input id="weight" v-model="weight" @blur="checkWeight" placeholder="Your body weight" />
+        <label for="weigth">kg</label>
       </form>
     </div>
   </div>

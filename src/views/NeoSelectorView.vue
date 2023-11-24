@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="view neo">
+    <div class="view selector">
       <transition-group name="slide-up">
         <div class="generator" v-if="!submitted">
           <h1>Neopren Generator</h1>
@@ -95,13 +95,6 @@ export default {
 </script>
 
 <style>
-.neo {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: absolute;
-}
-
 .slide-up-enter-active,
 .slide-up-leave-active {
   transition: all 1s ease-out;

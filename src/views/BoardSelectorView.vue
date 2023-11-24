@@ -1,7 +1,10 @@
 <template>
   <div class="container">
-    <div class="view">
-      <input v-model="weight" @blur="checkWeight" placeholder="Write down your body weight in kg" />
+    <div class="view selector">
+      <form id="boardSelectorData">
+        <h1>Board Selector</h1>
+        <input id="weight" v-model="weight" @blur="checkWeight" placeholder="Your body weight in kg" />
+      </form>
     </div>
   </div>
 </template>

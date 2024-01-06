@@ -79,3 +79,7 @@ w# git has its own built in compression methods
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Custom files #
+######################
+.env

@@ -15,6 +15,7 @@ import SalesView from '@/views/SalesView.vue';
 import AboutView from '@/views/AboutView.vue';
 import ContactView from '@/views/ContactView.vue';
 import BoardSelectorView from '@/views/BoardSelectorView.vue';
+import NeoSelectorView from '@/views/NeoSelectorView.vue';
 
 const swiper = new Swiper('.swiper', {
   effect: 'creative',
@@ -30,9 +31,9 @@ const swiper = new Swiper('.swiper', {
   },
 });
 
+
 // turn your phone
 import { ref, onMounted, onUnmounted } from 'vue';
-import NeoSelectorView from '@/views/NeoSelectorView.vue';
 
 const isLandscape = ref(false);
 const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);

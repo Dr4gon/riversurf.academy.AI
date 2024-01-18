@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <div class="view">
-      <p>
-        <input type="text" placeholder="What's your question about riversurfing?" />
-        <button v-bind="askChatGPT()">Ask</button>
-      </p>
-
+      <form >
+        <input class="text" v-model="userQuestion" placeholder="What's your question about riversurfing?" />
+        <button type="submit" @click.prevent="askChatGPT">Ask</button>
+      </form>
+      <h3>{{ answer }}</h3>
       <p>
         <label class="center">OR</label>
       </p>
@@ -20,28 +20,25 @@
 </template>
 
 <script>
-import { OpenAI } from 'openai';
+import axios from 'axios';
 
 export default {
   name: 'WelcomeView',
-  computed: {},
   data() {
-    return {};
+    return {
+      userQuestion: '',
+      answer: ''
+    };
   },
   methods: {
     async askChatGPT() {
-      // console.log(import.meta.env.VITE_OPENAI_API_KEY);
-      // dangerouslyAllowBrowser temporarely allows security issue with secret key until backend is up and running
-      const openai = new OpenAI({ apiKey: import.meta.env.VITE_OPENAI_API_KEY, dangerouslyAllowBrowser: true });
-
-      // openai.chat.completions
-      //   .create({
-      //     messages: [{ role: 'system', content: 'What do you about riversurfing?' }],
-      //     model: 'gpt-3.5-turbo',
-      //   })
-      //   .then(response => {
-      //     console.log(response.choices[0]);
-      //   });
+      try {
+        const response = await axios.post('http://localhost:3000/api/request', { text: this.userQuestion });
+        this.answer = response.data.reply;
+      } catch (error) {
+        console.error('Fehler beim Senden der Anfrage:', error);
+        this.answer = `Fehler: ${error.message}`;
+      }
     },
   },
 };

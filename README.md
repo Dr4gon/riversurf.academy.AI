@@ -20,15 +20,20 @@ Surf'n'Smile - Slow 😩 Steady 😁 Superfun.
 
 ### Development Environment
 
-- Install dependencies
+- Create the image with current code
 
-`npm install`
+`docker build -t frontend .`
 
-- Start the Server
+- Start the container and run the image
 
-`npm run standalone`
+`docker run -it -p 5173:5173 frontend`
 
 ## Version history
+
+### 0.6
+
+- Configure docker container
+- Integrate OpenAI interface for dialog capabilities with page visitors
 
 ### 0.5
 

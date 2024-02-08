@@ -20,6 +20,12 @@ Surf'n'Smile - Slow 😩 Steady 😁 Superfun.
 
 ### Development Environment
 
+## Frontend
+
+- Navigate to the frontend folder
+
+`cd frontend`
+
 - Create the image with current code
 
 `docker build -t frontend .`

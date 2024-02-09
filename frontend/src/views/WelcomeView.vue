@@ -1,10 +1,12 @@
 <template>
   <div class="container">
     <div class="view view-layout">
-      <form>
+      <form class="chat-window">
         <textarea disabled class="chat-text">{{ answer }}</textarea>
-        <input class="text" v-model="userQuestion" placeholder="What's your question about riversurfing?" />
-        <button type="submit" @click.prevent="askChatGPT">Ask</button>
+        <div class="chat-actions">
+          <input class="text" v-model="userQuestion" placeholder="What's your question about riversurfing?" />
+          <button type="submit" @click.prevent="askChatGPT">Ask</button>
+        </div>
 
         <!-- <p>
           <label class="center">OR</label>
@@ -62,7 +64,7 @@ export default {
 
 <style scoped>
 input {
-  width: 55vw;
+  width: inherit;
 }
 
 p {
@@ -75,9 +77,23 @@ p {
 }
 
 .chat-text {
-  margin: 4px;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
   border-radius: 10px 10px 0 0;
-  width: -webkit-fill-available;
+  width: inherit;
   height: 93%;
+}
+
+.chat-actions {
+  display: inline-flex;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: inherit;
+}
+
+.chat-window {
+  width: -webkit-fill-available;
 }
 </style>

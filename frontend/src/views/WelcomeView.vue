@@ -1,7 +1,8 @@
 <template>
   <div class="container">
-    <div class="view">
+    <div class="view view-layout">
       <form>
+        <textarea disabled class="chat-text">awdas</textarea>
         <input class="text" v-model="userQuestion" placeholder="What's your question about riversurfing?" />
         <button type="submit" @click.prevent="askChatGPT">Ask</button>
 
@@ -72,5 +73,12 @@ p {
 
 .center {
   margin-left: 30vw;
+}
+
+.chat-text {
+  margin: 4px;
+  border-radius: 10px 10px 0 0;
+  width: -webkit-fill-available;
+  height: 93%;
 }
 </style>

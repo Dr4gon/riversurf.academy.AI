@@ -11,7 +11,6 @@ register();
 import Swiper from 'swiper';
 import WelcomeView from '@/views/WelcomeView.vue';
 import ConvincerView from '@/views/ConvincerView.vue';
-import SalesView from '@/views/SalesView.vue';
 import AboutView from '@/views/AboutView.vue';
 import ContactView from '@/views/ContactView.vue';
 import BoardSelectorView from '@/views/BoardSelectorView.vue';

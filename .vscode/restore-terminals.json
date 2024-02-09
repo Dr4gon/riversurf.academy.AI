@@ -1,0 +1,28 @@
+{
+    "artificialDelayMilliseconds": 700,
+    "keepExistingTerminalsOpen": false,
+    "runOnStartup": true,
+    "terminals": [
+    {
+    "splitTerminals": [
+    {
+      "name": "Frontend",
+      "commands": ["cd frontend"]
+    }
+    ]
+    },
+    {
+      "splitTerminals": [
+      {
+        "name": "Backend",
+        "commands": ["cd backend"]
+      }
+    ]
+    },
+    {
+    "splitTerminals": [
+    {
+    "name": "GIT"
+    }]
+    }]
+}

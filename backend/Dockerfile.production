@@ -9,6 +9,5 @@ ADD package.json package-lock.json ./
 RUN npm install --omit=dev
 
 ADD src ./src
-ADD .env ./
 
 CMD ["npm", "run", "serve"] // default command

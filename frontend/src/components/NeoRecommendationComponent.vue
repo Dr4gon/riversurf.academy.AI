@@ -12,24 +12,22 @@ export default {
   props: {
     waterTemperature: {
       type: String,
-      required: true
+      required: true,
     },
     gender: {
       type: String,
-      required: true
+      required: true,
     },
     level: {
       type: String,
-      required: true
+      required: true,
     },
     budget: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

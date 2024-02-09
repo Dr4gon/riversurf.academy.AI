@@ -31,7 +31,6 @@ const swiper = new Swiper('.swiper', {
   },
 });
 
-
 // turn your phone
 import { ref, onMounted, onUnmounted } from 'vue';
 

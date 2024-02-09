@@ -1,8 +1,6 @@
+Completion ![30%](https://progress-bar.dev/30)
+
 # riversurf.academy AI
-
-[Tim](https://github.com/mhmFrost), a fromer student now turned Padawan, and me have created unintentionally something very unique: It's called `Waterflow Design`.
-
-It's optimized for mobile horizontal usage and gives you the impression of being out on the open sea with waves. Deep diving - literally - below the surface for more details. Until you reach the bottom of the sea where bubbles live - not really - but in this design it does. It combines intuitive elements of the mobile world with intuitive elements from the real sea world - Arggggh, I'm a pirate.
 
 The heart of this project is to provide you with an interactive AI cosmos for riversurfing. Starting from which river waves exist, what equipment to use, over to learn more fine grained control over your surfboard via video feedback.
 
@@ -10,9 +8,7 @@ The heart of this project is to provide you with an interactive AI cosmos for ri
 Surf'n'Smile - Slow 😩 Steady 😁 Superfun.
 ```
 
-## Status
-
-![30%](https://progress-bar.dev/30)
+[Tim](https://github.com/mhmFrost), a fromer student now turned Padawan, are working together on this project. It's also an experiment in UI design to see how AI changes the way, we interact with web pages.
 
 ## Project Setup
 
@@ -20,7 +16,7 @@ Surf'n'Smile - Slow 😩 Steady 😁 Superfun.
 
 `docker-compose up --build frontend backend`
 
-### Frontend
+### Frontend Standalone
 
 - Navigate to the frontend folder
 
@@ -34,7 +30,7 @@ Surf'n'Smile - Slow 😩 Steady 😁 Superfun.
 
 `docker run -it -p 5173:5173 frontend`
 
-### Backend
+### Backend Standalone
 
 - Navigate to the backend folder
 
@@ -48,9 +44,9 @@ Surf'n'Smile - Slow 😩 Steady 😁 Superfun.
 
 `docker run -it -p 3000:3000 backend`
 
+## Version History
 
-
-### Version history frontend
+### Frontend
 
 #### 0.6
 
@@ -94,7 +90,7 @@ Surf'n'Smile - Slow 😩 Steady 😁 Superfun.
 - Use seed of Angular 14 to lay groundwork for full Angular integration
 - Figure out how to integrate the new Angular settings into build
 
-### Version history backend
+### Backend
 
 ### 0.4
 

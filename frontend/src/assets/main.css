@@ -62,8 +62,8 @@ video {
   margin: 20px;
   display: flex;
   justify-content: center;
-  height: 350px;
-  width: 650px;
+  height: 60vh;
+  width: 65vw;
 }
 
 .selector {

@@ -5,7 +5,7 @@
         <textarea disabled class="chat-text">{{ answer }}</textarea>
         <div class="chat-actions">
           <input class="text" v-model="userQuestion" placeholder="What's your question about riversurfing?" />
-          <button type="submit" @click.prevent="askChatGPT">Ask</button>
+          <button class="chat-button" type="submit" @click.prevent="askChatGPT">Ask</button>
         </div>
 
         <!-- <p>
@@ -65,6 +65,8 @@ export default {
 <style scoped>
 input {
   width: inherit;
+  border-radius: 0 0 0 5px;
+  border: none;
 }
 
 p {
@@ -95,5 +97,10 @@ p {
 
 .chat-window {
   width: -webkit-fill-available;
+}
+
+.chat-button {
+  border-radius: 0 0 5px 0;
+  border: none;
 }
 </style>

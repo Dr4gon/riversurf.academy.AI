@@ -4,17 +4,18 @@
       <form>
         <input class="text" v-model="userQuestion" placeholder="What's your question about riversurfing?" />
         <button type="submit" @click.prevent="askChatGPT">Ask</button>
-      </form>
-      <h3>{{ answer }}</h3>
-      <p>
-        <label class="center">OR</label>
-      </p>
 
-      <p>
-        <label>Upload a video for feedback</label>
-        <input type="file" accept="video/*" />
-        <button>Upload</button>
-      </p>
+        <h3>{{ answer }}</h3>
+        <!-- <p>
+          <label class="center">OR</label>
+        </p> -->
+
+        <!-- <p>
+          <label>Upload a video for feedback</label>
+          <input type="file" accept="video/*" />
+          <button>Upload</button>
+        </p> -->
+      </form>
     </div>
   </div>
 </template>

@@ -2,11 +2,10 @@
   <div class="container">
     <div class="view view-layout">
       <form>
-        <textarea disabled class="chat-text">awdas</textarea>
+        <textarea disabled class="chat-text">{{ answer }}</textarea>
         <input class="text" v-model="userQuestion" placeholder="What's your question about riversurfing?" />
         <button type="submit" @click.prevent="askChatGPT">Ask</button>
 
-        <h3>{{ answer }}</h3>
         <!-- <p>
           <label class="center">OR</label>
         </p> -->

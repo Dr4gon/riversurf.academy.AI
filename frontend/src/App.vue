@@ -52,22 +52,22 @@ onUnmounted(() => {
 
 <template>
   <div class="main-container">
-    <swiper-container class="swiper" initial-slide="2" grab-cursor="true">
-      <swiper-slide>
+    <swiper-container class="swiper" grab-cursor="true">
+      <!-- <swiper-slide>
         <BoardSelectorView />
       </swiper-slide>
       <swiper-slide>
         <NeoSelectorView />
       </swiper-slide>
-      <swiper-slide>
-        <WelcomeView />
-      </swiper-slide>
+      <swiper-slide> -->
+      <WelcomeView />
+      <!-- </swiper-slide>
       <swiper-slide>
         <ConvincerView />
       </swiper-slide>
       <swiper-slide>
         <SalesView />
-      </swiper-slide>
+      </swiper-slide> -->
     </swiper-container>
   </div>
   <div class="containedBubbles">

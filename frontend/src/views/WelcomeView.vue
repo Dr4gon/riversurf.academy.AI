@@ -45,7 +45,10 @@ export default {
     async askChatGPT() {
       try {
         const uuid = localStorage.getItem('userIdentifier');
-        const response = await axios.post('http://localhost:3000/api/request', { text: this.userQuestion, uuid: uuid });
+        const response = await axios.post(import.meta.env.VITE_BACKEND_URL + '/api/request', {
+          text: this.userQuestion,
+          uuid: uuid,
+        });
         this.answer = response.data.reply;
       } catch (error) {
         console.error('Fehler beim Senden der Anfrage:', error);

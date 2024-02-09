@@ -54,7 +54,7 @@ Surf'n'Smile - Slow 😩 Steady 😁 Superfun.
 
 #### 0.6
 
-- Configure docker container
+- Configure docker container for local and prod env
 - Integrate OpenAI interface for dialog capabilities with page visitors
 
 #### 0.5
@@ -95,6 +95,10 @@ Surf'n'Smile - Slow 😩 Steady 😁 Superfun.
 - Figure out how to integrate the new Angular settings into build
 
 ### Version history backend
+
+### 0.4
+
+- Configure docker container for local and prod env
 
 ### 0.3
 

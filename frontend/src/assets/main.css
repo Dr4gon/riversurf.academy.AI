@@ -64,6 +64,7 @@ video {
   justify-content: center;
   height: 60vh;
   width: 65vw;
+  border-radius: 10px;
 }
 
 .selector {

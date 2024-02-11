@@ -8,7 +8,7 @@
         </div>
         <div class="chat-actions">
           <input class="text" v-model="userQuestion" />
-          <button class="chat-button" type="submit" @click.prevent="askChatGPT">
+          <button class="chat-button" type="submit" @click.prevent="askRiversurfAssistant">
             <img class="chat-send-img" src="@/assets/message-in-a-bottle.png" />
           </button>
         </div>
@@ -40,7 +40,7 @@ export default {
     generateUUID() {
       return self.crypto.randomUUID(); // funktioniert nur via https oder local
     },
-    async askChatGPT() {
+    async askRiversurfAssistant() {
       try {
         this.messages.push(this.userQuestion);
 

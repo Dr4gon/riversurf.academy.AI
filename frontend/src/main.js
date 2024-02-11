@@ -2,6 +2,7 @@
 import './assets/main.css';
 import './assets/normalize.css';
 import './assets/SURFNSMILE.jpg';
+import './assets/message-in-a-bottle.png';
 
 import { setupCalendar } from 'v-calendar';
 

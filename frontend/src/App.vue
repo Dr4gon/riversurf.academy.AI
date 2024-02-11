@@ -1,34 +1,10 @@
 <script setup>
-// import Swiper bundle with all modules installed
-import { register } from 'swiper/element/bundle';
-
-// import styles bundle
-import 'swiper/css/bundle';
-
-// init Swiper:
-register();
-
-import Swiper from 'swiper';
 import WelcomeView from '@/views/WelcomeView.vue';
 import ConvincerView from '@/views/ConvincerView.vue';
 import AboutView from '@/views/AboutView.vue';
 import ContactView from '@/views/ContactView.vue';
 import BoardSelectorView from '@/views/BoardSelectorView.vue';
 import NeoSelectorView from '@/views/NeoSelectorView.vue';
-
-const swiper = new Swiper('.swiper', {
-  effect: 'creative',
-  creativeEffect: {
-    prev: {
-      // will set `translateZ(-400px)` on previous slides
-      translate: [0, 0, -400],
-    },
-    next: {
-      // will set `translateX(100%)` on next slides
-      translate: ['100%', 0, 0],
-    },
-  },
-});
 
 // turn your phone
 import { ref, onMounted, onUnmounted } from 'vue';
@@ -52,23 +28,9 @@ onUnmounted(() => {
 
 <template>
   <div class="main-container">
-    <swiper-container class="swiper" grab-cursor="true">
-      <!-- <swiper-slide>
-        <BoardSelectorView />
-      </swiper-slide>
-      <swiper-slide>
-        <NeoSelectorView />
-      </swiper-slide>
-      <swiper-slide> -->
+    <div class="stay">
       <WelcomeView />
-      <!-- </swiper-slide>
-      <swiper-slide>
-        <ConvincerView />
-      </swiper-slide>
-      <swiper-slide>
-        <SalesView />
-      </swiper-slide> -->
-    </swiper-container>
+    </div>
   </div>
   <div class="containedBubbles">
     <!-- Changes of the bubble number only works in concert with changing the css bubble number as well -->
@@ -124,6 +86,11 @@ onUnmounted(() => {
   100% {
     transform: translate(-50%, 0%) rotateZ(360deg);
   }
+}
+
+.stay {
+  position: relative;
+  z-index: 1;
 }
 
 .containedBubbles {

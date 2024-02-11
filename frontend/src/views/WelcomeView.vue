@@ -12,16 +12,6 @@
             <img class="chat-send-img" src="@/assets/message-in-a-bottle.png" />
           </button>
         </div>
-
-        <!-- <p>
-          <label class="center">OR</label>
-        </p> -->
-
-        <!-- <p>
-          <label>Upload a video for feedback</label>
-          <input type="file" accept="video/*" />
-          <button>Upload</button>
-        </p> -->
       </form>
     </div>
   </div>

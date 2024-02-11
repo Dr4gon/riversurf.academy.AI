@@ -3,7 +3,7 @@
     <div class="view view-layout">
       <form class="chat-window">
         <div class="chat-text">
-          <span class="chat-message">{{ answer }}</span>
+          <span v-if="answer" class="chat-message">{{ answer }}</span>
         </div>
         <div class="chat-actions">
           <input class="text" v-model="userQuestion" placeholder="What's your question about riversurfing?" />

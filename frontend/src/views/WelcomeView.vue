@@ -2,7 +2,9 @@
   <div class="container">
     <div class="view view-layout">
       <form class="chat-window">
-        <textarea disabled class="chat-text">{{ answer }}</textarea>
+        <div class="chat-text">
+          <span class="chat-message">{{ answer }}</span>
+        </div>
         <div class="chat-actions">
           <input class="text" v-model="userQuestion" placeholder="What's your question about riversurfing?" />
           <button class="chat-button" type="submit" @click.prevent="askChatGPT">
@@ -87,7 +89,15 @@ p {
   margin-right: 5px;
   border-radius: 10px 10px 0 0;
   width: inherit;
-  height: 94%;
+  height: 95%;
+}
+
+.chat-message {
+  background-color: var(--water-color);
+  display: flex;
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
 }
 
 .chat-actions {

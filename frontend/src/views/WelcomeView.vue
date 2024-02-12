@@ -28,18 +28,8 @@ export default {
       messages: [],
     };
   },
-  created() {
-    this.checkAndSetUUID();
-  },
+
   methods: {
-    checkAndSetUUID() {
-      if (!localStorage.getItem('userIdentifier')) {
-        localStorage.setItem('userIdentifier', this.generateUUID());
-      }
-    },
-    generateUUID() {
-      return self.crypto.randomUUID(); // funktioniert nur via https oder local
-    },
     async askRiversurfAssistant() {
       try {
         this.messages.push(this.userQuestion);

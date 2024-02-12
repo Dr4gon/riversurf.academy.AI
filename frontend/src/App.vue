@@ -1,7 +1,29 @@
-<script setup>
+<script>
 import WelcomeView from '@/views/WelcomeView.vue';
 import AboutView from '@/views/AboutView.vue';
 import ContactView from '@/views/ContactView.vue';
+
+export default {
+  name: 'App',
+  components: {
+    WelcomeView,
+    AboutView,
+    ContactView,
+  },
+  created() {
+    this.checkAndSetUUID();
+  },
+  methods: {
+    checkAndSetUUID() {
+      if (!localStorage.getItem('userIdentifier')) {
+        localStorage.setItem('userIdentifier', this.generateUUID());
+      }
+    },
+    generateUUID() {
+      return self.crypto.randomUUID(); // only works via https or locally
+    },
+  },
+};
 </script>
 
 <template>

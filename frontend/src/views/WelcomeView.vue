@@ -4,11 +4,11 @@
       <form class="chat-window">
         <div class="chat-text">
           <span class="chat-message">Welche Frage hast du zum Riversurfen?</span>
-          <span v-for="message in messages" class="chat-message">{{ message }}</span>
+          <span v-for="message in this.messages" class="chat-message">{{ message }}</span>
         </div>
         <div class="chat-actions">
           <input class="text" v-model="userQuestion" />
-          <button class="chat-button" type="submit" @click.prevent="askRiversurfAssistant">
+          <button class="chat-button" type="submit" @click.prevent="doAskRiversurfAssistant">
             <img class="chat-send-img" src="@/assets/message-in-a-bottle.png" />
           </button>
         </div>
@@ -18,34 +18,24 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { messageStore } from '../stores/message-store';
+import { mapState, mapActions } from 'pinia';
 
 export default {
   name: 'WelcomeView',
   data() {
     return {
       userQuestion: '',
-      messages: [],
     };
   },
-
+  computed: {
+    ...mapState(messageStore, ['messages']),
+  },
   methods: {
-    async askRiversurfAssistant() {
-      try {
-        this.messages.push(this.userQuestion);
-
-        const uuid = localStorage.getItem('userIdentifier');
-        const response = await axios.post(import.meta.env.VITE_BACKEND_URL + '/api/request', {
-          text: this.userQuestion,
-          uuid: uuid,
-        });
-
-        this.userQuestion = '';
-        this.messages.push(response.data.reply);
-      } catch (error) {
-        console.error('Fehler beim Senden der Anfrage:', error);
-        this.messages.push(`Fehler: ${error.message}`);
-      }
+    ...mapActions(messageStore, ['askRiversurfAssistant']),
+    doAskRiversurfAssistant() {
+      this.askRiversurfAssistant(this.userQuestion);
+      this.userQuestion = '';
     },
   },
 };

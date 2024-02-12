@@ -1,0 +1,28 @@
+import { defineStore } from 'pinia';
+import axios from 'axios';
+
+axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
+
+export const messageStore = defineStore('messages', {
+  state: () => ({
+    messages: [],
+  }),
+  actions: {
+    async askRiversurfAssistant(userQuestion) {
+      try {
+        this.messages.push(userQuestion);
+
+        const uuid = localStorage.getItem('userIdentifier');
+        const response = await axios.post(import.meta.env.VITE_BACKEND_URL + '/api/request', {
+          text: userQuestion,
+          uuid: uuid,
+        });
+
+        this.messages.push(response.data.reply);
+      } catch (error) {
+        console.error('Fehler beim Senden der Anfrage:', error);
+        this.messages.push(`Fehler: ${error.message}`);
+      }
+    },
+  },
+});

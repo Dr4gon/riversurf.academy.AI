@@ -3,8 +3,10 @@
     <div class="view view-layout">
       <form class="chat-window">
         <div class="chat-text">
-          <span class="chat-message">Welche Frage hast du zum Riversurfen?</span>
-          <span v-for="message in this.messages" class="chat-message">{{ message }}</span>
+          <div v-for="message in this.messages">
+            <span v-if="message.sender === 'user'" class="chat-message chat-message-user">{{ message.content }}</span>
+            <span v-else class="chat-message chat-message-assistant">{{ message.content }}</span>
+          </div>
         </div>
         <div class="chat-actions">
           <input class="text" v-model="userQuestion" />
@@ -68,13 +70,22 @@ p {
 }
 
 .chat-message {
-  background-color: var(--water-color);
   display: flex;
   border-radius: 5px;
   padding: 5px;
   color: white;
   margin-bottom: 5px;
   width: fit-content;
+}
+
+.chat-message-assistant {
+  float: right;
+  background-color: var(--underwater-color);
+}
+
+.chat-message-user {
+  float: left;
+  background-color: var(--water-color);
 }
 
 .chat-actions {

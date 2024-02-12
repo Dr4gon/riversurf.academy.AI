@@ -5,12 +5,12 @@ axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
 
 export const messageStore = defineStore('messages', {
   state: () => ({
-    messages: [],
+    messages: [{ sender: 'assistant', content: 'Welche Frage zum Riversurfen hast du?' }],
   }),
   actions: {
     async askRiversurfAssistant(userQuestion) {
       try {
-        this.messages.push(userQuestion);
+        this.messages.push({ sender: 'user', content: userQuestion });
 
         const uuid = localStorage.getItem('userIdentifier');
         const response = await axios.post(import.meta.env.VITE_BACKEND_URL + '/api/request', {
@@ -18,7 +18,7 @@ export const messageStore = defineStore('messages', {
           uuid: uuid,
         });
 
-        this.messages.push(response.data.reply);
+        this.messages.push({ sender: 'assistant', content: response.data.reply });
       } catch (error) {
         console.error('Fehler beim Senden der Anfrage:', error);
         this.messages.push(`Fehler: ${error.message}`);

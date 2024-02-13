@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="view view-layout">
+    <div class="view">
       <form class="chat-window">
         <div class="chat-text">
           <div v-for="message in this.messages">

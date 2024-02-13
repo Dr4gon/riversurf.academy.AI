@@ -79,7 +79,7 @@ p {
   padding: 5px;
   color: white;
   margin-bottom: 5px;
-  width: fit-content;
+  max-width: 75%;
 }
 
 .chat-message-maincolor {

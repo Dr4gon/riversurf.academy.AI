@@ -125,4 +125,26 @@ p {
   height: 2vh;
   display: flex;
 }
+
+/* Scroll bar stylings */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--lightestgrey);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 </style>

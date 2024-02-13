@@ -5,10 +5,10 @@
         <div class="chat-text">
           <div v-for="message in this.messages">
             <div v-if="message.sender === 'user'" class="chat-message-user">
-              <span class="chat-message">{{ message.content }}</span>
+              <span class="chat-message chat-message-maincolor">{{ message.content }}</span>
             </div>
             <div v-else class="chat-message-assistant">
-              <span class="chat-message">{{ message.content }}</span>
+              <span class="chat-message chat-message-secondarycolor">{{ message.content }}</span>
             </div>
           </div>
         </div>
@@ -80,7 +80,14 @@ p {
   color: white;
   margin-bottom: 5px;
   width: fit-content;
+}
+
+.chat-message-maincolor {
   background-color: var(--water-color);
+}
+
+.chat-message-secondarycolor {
+  background-color: var(--underwater-color);
 }
 
 .chat-message-assistant {

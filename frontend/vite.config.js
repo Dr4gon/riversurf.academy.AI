@@ -23,4 +23,9 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  server: {
+    watch: {
+      usePolling: true, // Activate HMR for windoof https://inspector.dev/how-to-make-vite-hot-module-replacement-work-on-windows/
+    },
+  },
 });

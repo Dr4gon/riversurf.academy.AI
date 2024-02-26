@@ -8,7 +8,7 @@ export const messageStore = defineStore('messages', {
     messages: [
       {
         sender: 'assistant',
-        content: 'Hey, ich bin eine Surfassistent im Training. Welche Frage zum Riversurfen hast du?',
+        content: 'Hey, ich bin ein Surfassistent im Training. Welche Frage zum Riversurfen hast du?',
       },
     ],
   }),

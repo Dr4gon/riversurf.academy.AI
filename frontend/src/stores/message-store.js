@@ -5,7 +5,12 @@ axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
 
 export const messageStore = defineStore('messages', {
   state: () => ({
-    messages: [{ sender: 'assistant', content: 'Welche Frage zum Riversurfen hast du?' }],
+    messages: [
+      {
+        sender: 'assistant',
+        content: 'Hey, ich bin eine Surfassistent im Training. Welche Frage zum Riversurfen hast du?',
+      },
+    ],
   }),
   actions: {
     async askRiversurfAssistant(userQuestion) {

@@ -11,6 +11,9 @@
               <span class="chat-message chat-message-secondarycolor">{{ message.content }}</span>
             </div>
           </div>
+          <div v-if="this.processing" class="chat-message-assistant">
+            <div class="dot-stretching"></div>
+          </div>
         </div>
         <div class="chat-actions">
           <input class="text" v-model="userQuestion" />
@@ -35,7 +38,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(messageStore, ['messages']),
+    ...mapState(messageStore, ['messages', 'processing']),
   },
   methods: {
     ...mapActions(messageStore, ['askRiversurfAssistant']),
@@ -146,5 +149,85 @@ p {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+/* Taken from https://codepen.io/nzbin/pen/GGrXbp */
+
+/**
+ * ==============================================
+ * Dot Stretching
+ * ==============================================
+ */
+.dot-stretching {
+  margin-left: 25px;
+  margin-top: 10px;
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--underwater-color);
+  color: var(--underwater-color);
+  transform: scale(1.25, 1.25);
+  animation: dot-stretching 2s infinite ease-in;
+}
+.dot-stretching::before,
+.dot-stretching::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+.dot-stretching::before {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--underwater-color);
+  color: var(--underwater-color);
+  animation: dot-stretching-before 2s infinite ease-in;
+}
+.dot-stretching::after {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--underwater-color);
+  color: var(--underwater-color);
+  animation: dot-stretching-after 2s infinite ease-in;
+}
+
+@keyframes dot-stretching {
+  0% {
+    transform: scale(1.25, 1.25);
+  }
+  50%,
+  60% {
+    transform: scale(0.8, 0.8);
+  }
+  100% {
+    transform: scale(1.25, 1.25);
+  }
+}
+@keyframes dot-stretching-before {
+  0% {
+    transform: translate(0) scale(0.7, 0.7);
+  }
+  50%,
+  60% {
+    transform: translate(-20px) scale(1, 1);
+  }
+  100% {
+    transform: translate(0) scale(0.7, 0.7);
+  }
+}
+@keyframes dot-stretching-after {
+  0% {
+    transform: translate(0) scale(0.7, 0.7);
+  }
+  50%,
+  60% {
+    transform: translate(20px) scale(1, 1);
+  }
+  100% {
+    transform: translate(0) scale(0.7, 0.7);
+  }
 }
 </style>

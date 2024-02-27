@@ -18,12 +18,27 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ message: 'Kein Text zur Verarbeitung bereitgestellt' });
     }
 
+    const previousMessages = await openAiModel.find({ contentUserUUID: uuid });
+
+    userContext = [];
+    previousMessages.forEach(message => {
+      userContext.push({
+        role: 'user',
+        content: message.contentUser,
+      });
+      userContext.push({
+        role: 'assistant',
+        content: message.contentResponse,
+      });
+    });
+
     const response = await openai.chat.completions.create({
       messages: [
         {
           role: 'system',
           content: process.env.SYSTEM_CONTENT,
         },
+        ...userContext,
         {
           role: 'user',
           content: text,

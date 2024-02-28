@@ -31,7 +31,7 @@ export const messageStore = defineStore('messages', {
       } catch (error) {
         this.processing = false;
         console.error('Fehler beim Senden der Anfrage:', error);
-        this.messages.push(`Fehler: ${error.message}`);
+        this.messages.push({ sender: 'assistent', content: `Fehler: ${error.message}` });
       }
     },
   },

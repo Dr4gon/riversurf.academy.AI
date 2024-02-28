@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const contactRouter = require('./routes/contact');
 const openAiRequest = require('./routes/apiRequest');
-const databaseConection = require('./routes/databaseConection');
+const ConversationService = require('./routes/conversation-service');
 
 const app = express();
 const port = 3000;
@@ -27,4 +27,4 @@ start();
 
 app.use('/contact', contactRouter);
 app.use('/api/request', openAiRequest);
-app.use('/admin/conversation', databaseConection);
+app.use('/admin/conversation', ConversationService);

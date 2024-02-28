@@ -5,7 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 const contactRouter = require('./routes/contact');
-const openAiRequest = require('./routes/apiRequest');
+const OpenAIService = require('./routes/openai-service');
 const ConversationService = require('./routes/conversation-service');
 
 const app = express();
@@ -26,5 +26,5 @@ const start = async () => {
 start();
 
 app.use('/contact', contactRouter);
-app.use('/api/openai', openAiRequest);
+app.use('/api/openai', OpenAIService);
 app.use('/admin/conversation', ConversationService);

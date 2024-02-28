@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const openAiSchema = new mongoose.Schema({
+const OpenAIDataSchema = new mongoose.Schema({
   contentSystem: {
     type: String,
     required: true,
@@ -27,6 +27,7 @@ const openAiSchema = new mongoose.Schema({
   },
 });
 
-const openAiModel = mongoose.model('openAi', openAiSchema);
+class OpenAIData {}
 
-module.exports = { openAiModel };
+OpenAIDataSchema.loadClass(OpenAIData);
+module.exports = mongoose.model('OpenAIData', OpenAIDataSchema);

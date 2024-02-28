@@ -1,6 +1,6 @@
 const express = require('express');
 const { OpenAI } = require('openai');
-const { openAiModel } = require('../models/openAiModel');
+const OpenAIData = require('../models/open-ai-data');
 
 const router = express.Router();
 
@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ message: 'Kein Text zur Verarbeitung bereitgestellt' });
     }
 
-    const previousMessages = await openAiModel.find({ contentUserUUID: uuid });
+    const previousMessages = await OpenAIData.find({ contentUserUUID: uuid });
 
     userContext = [];
     previousMessages.forEach(message => {
@@ -52,7 +52,7 @@ router.post('/', async (req, res) => {
 
     res.json({ reply: generatedText });
 
-    const newEntry = new openAiModel({
+    const newEntry = new OpenAIData({
       contentSystem: process.env.SYSTEM_CONTENT,
       contentUser: text,
       contentResponse: generatedText,

@@ -27,4 +27,4 @@ start();
 
 app.use('/contact', contactRouter);
 app.use('/api/request', openAiRequest);
-app.use('/data', databaseConection);
+app.use('/admin/conversation', databaseConection);

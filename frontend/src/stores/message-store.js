@@ -21,7 +21,7 @@ export const messageStore = defineStore('messages', {
 
         const uuid = localStorage.getItem('userIdentifier');
         this.processing = true;
-        const response = await axios.post(import.meta.env.VITE_BACKEND_URL + '/api/request', {
+        const response = await axios.post(import.meta.env.VITE_BACKEND_URL + '/api/openai', {
           text: userQuestion,
           uuid: uuid,
         });

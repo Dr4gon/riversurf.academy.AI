@@ -26,5 +26,5 @@ const start = async () => {
 start();
 
 app.use('/contact', contactRouter);
-app.use('/api/request', openAiRequest);
+app.use('/api/openai', openAiRequest);
 app.use('/admin/conversation', ConversationService);

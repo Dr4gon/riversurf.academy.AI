@@ -9,7 +9,7 @@ export const messageStore = defineStore('messages', {
       {
         sender: 'assistant',
         content:
-          'Hey, ich bin dein Surfassistent und lerne durch die Gespräche mit dir. Welche Frage zum Riversurfen hast du?',
+          'Servus, ich heiße Karl - ja, wirklich - und bin dein Surfassistent. Welche Frage zum Riversurfen hast du?',
       },
     ],
     processing: false,

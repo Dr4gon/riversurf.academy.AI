@@ -5,7 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 const contactRouter = require('./routes/contact');
-const OpenAIService = require('./routes/openai-service');
+const OpenAIService = require('./routes/open-ai-service');
 const ConversationService = require('./routes/conversation-service');
 
 const app = express();

@@ -5,7 +5,7 @@ const OpenAIData = require('../models/open-ai-data');
 const router = express.Router();
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // Your key must be saved in the root folder in an .env file. This is what the .env file should look like OPENAI_API_KEY=yourKey
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 router.post('/', async (req, res) => {

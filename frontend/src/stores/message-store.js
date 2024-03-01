@@ -8,8 +8,7 @@ export const messageStore = defineStore('messages', {
     messages: [
       {
         sender: 'assistant',
-        content:
-          'Servus, ich heiße Karl - ja, wirklich - und bin dein Surfassistent. Welche Frage zum Riversurfen hast du?',
+        content: import.meta.env.VITE_WELCOME_MSG,
       },
     ],
     processing: false,

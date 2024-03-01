@@ -2,6 +2,9 @@ const express = require('express');
 const { OpenAI } = require('openai');
 const OpenAIData = require('../models/open-ai-data');
 
+const path = require('path');
+const fs = require('fs');
+
 const router = express.Router();
 
 const openai = new OpenAI({
@@ -32,12 +35,16 @@ router.post('/', async (req, res) => {
       });
     });
 
+    const trainingdata = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../assets/trainingdata.json')));
+    console.log(trainingdata.messages);
+
     const response = await openai.chat.completions.create({
       messages: [
         {
           role: 'system',
           content: process.env.SYSTEM_CONTENT,
         },
+        ...trainingdata.messages,
         ...userContext,
         {
           role: 'user',

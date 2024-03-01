@@ -9,10 +9,10 @@ const openai = new OpenAI({
 });
 
 router.post('/', async (req, res) => {
-  console.log('Anfrage wurde gestellt!');
-
   try {
     const { text, uuid } = req.body;
+
+    console.log(`Request from ${uuid} with text: ${text} is processed.`);
 
     if (!text) {
       return res.status(400).json({ message: 'Kein Text zur Verarbeitung bereitgestellt' });

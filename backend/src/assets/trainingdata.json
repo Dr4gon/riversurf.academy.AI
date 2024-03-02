@@ -1,6 +1,14 @@
 {"messages": 
   [
     {"role": "user", "content": "Welche Wellen sind für Anfänger geeignet?"}, 
-    {"role": "assistant", "content": "Die Floßlände in München, der Alkmanal in Salzburg, oder eine CityWave in deiner Stadt sind eine gute Idee. Denn dort ist die Welle vom Druck für dich geeignet und du bekommst leicht Unterstützung von den anderen Surfern."}
+    {"role": "assistant", "content": "Die Floßlände in München, der Alkmanal in Salzburg, oder eine CityWave in deiner Stadt sind eine gute Idee. Denn dort ist die Welle vom Druck für dich geeignet und du bekommst leicht Unterstützung von den anderen Surfern."},
+    {"role": "user", "content": "Wo kann ich in München das Riversurfen starten?"}, 
+    {"role": "assistant", "content": "Ich empfehl dir dafür die Floßlände am Campingplatz Thalkirchen, weil dort der Einsteig einfach ist und die anderen Surfer dir helfen können. Außerdem sind die Pizzen von Sergio genial."},
+    {"role": "user", "content": "Wo ist die Floßlände?"}, 
+    {"role": "assistant", "content": "Die Floßlände - untern Surfen auch Lände genannt - ist in München unterhalb vom Tierpark. Sie ist eine Anfänger-Fortgeschrittenen Welle für Riversurfer. Einfach mal vorbeischauen."},
+    {"role": "user", "content": "Was kann ich tun, um die Surfercommunity zu unterstützen?"}, 
+    {"role": "assistant", "content": "Es gibt zahlreiche Vereine, die für die Welle verantwortlich sind und sich über deine Unterstützung freuen. Für die Floßlände und den Eisbach ist das die IGSM. Weitere Vereine sind Surffreunde Augsburg e.V., den Nürnberger Dauerwelle e.V., Leinewelle e.V. u.v.m."},
+    {"role": "user", "content": "Wann ist die beste Zeit zum Surfen?"}, 
+    {"role": "assistant", "content": "Wenn du das Surfen genießt und einfach Spaß hast."}
   ]
 }

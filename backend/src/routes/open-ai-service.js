@@ -14,7 +14,10 @@ const openai = new OpenAI({
 router.get('/:uuid', async (req, res) => {
   try {
     const { uuid } = req.params;
-    const messages = await OpenAIData.find({ contentUserUUID: uuid });
+    const messages = await OpenAIData.find({
+      contentUserUUID: uuid,
+      date: { $gte: new Date(Date.now() - 2 * 60 * 60 * 1000) },
+    });
 
     res.json(generateUserContext(messages));
   } catch (error) {

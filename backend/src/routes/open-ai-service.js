@@ -11,6 +11,18 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+router.get('/:uuid', async (req, res) => {
+  try {
+    const { uuid } = req.params;
+    const messages = await OpenAIData.find({ contentUserUUID: uuid });
+
+    res.json(generateUserContext(messages));
+  } catch (error) {
+    console.error('Fehler beim Laden der Nachrichten:', error);
+    res.sendStatus(500).json({ message: 'Interner Serverfehler' });
+  }
+});
+
 router.post('/', async (req, res) => {
   try {
     const { text, uuid } = req.body;
@@ -23,17 +35,7 @@ router.post('/', async (req, res) => {
 
     const previousMessages = await OpenAIData.find({ contentUserUUID: uuid });
 
-    userContext = [];
-    previousMessages.forEach(message => {
-      userContext.push({
-        role: 'user',
-        content: message.contentUser,
-      });
-      userContext.push({
-        role: 'assistant',
-        content: message.contentResponse,
-      });
-    });
+    userContext = generateUserContext(previousMessages);
 
     const trainingdata = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../assets/trainingdata.json')));
     // console.log(trainingdata.messages);
@@ -74,5 +76,22 @@ router.post('/', async (req, res) => {
     res.status(500).json({ message: 'Interner Serverfehler' });
   }
 });
+
+function generateUserContext(previousMessages) {
+  userContext = [];
+
+  previousMessages.forEach(message => {
+    userContext.push({
+      role: 'user',
+      content: message.contentUser,
+    });
+    userContext.push({
+      role: 'assistant',
+      content: message.contentResponse,
+    });
+  });
+
+  return userContext;
+}
 
 module.exports = router;

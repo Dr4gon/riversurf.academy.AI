@@ -7,16 +7,26 @@ export const messageStore = defineStore('messages', {
   state: () => ({
     messages: [
       {
-        sender: 'assistant',
+        role: 'assistant',
         content: import.meta.env.VITE_WELCOME_MSG,
       },
     ],
     processing: false,
   }),
   actions: {
+    async loadMessageHistory() {
+      try {
+        const uuid = localStorage.getItem('userIdentifier');
+        const response = await axios.get(import.meta.env.VITE_BACKEND_URL + '/api/openai/' + uuid);
+        console.log('Nachrichten geladen:', response.data);
+        this.messages.push(...response.data);
+      } catch (error) {
+        console.error('Fehler beim Laden der Nachrichten:', error);
+      }
+    },
     async askRiversurfAssistant(userQuestion) {
       try {
-        this.messages.push({ sender: 'user', content: userQuestion });
+        this.messages.push({ role: 'user', content: userQuestion });
 
         const uuid = localStorage.getItem('userIdentifier');
         this.processing = true;
@@ -26,11 +36,11 @@ export const messageStore = defineStore('messages', {
         });
 
         this.processing = false;
-        this.messages.push({ sender: 'assistant', content: response.data.reply });
+        this.messages.push({ role: 'assistant', content: response.data.reply });
       } catch (error) {
         this.processing = false;
         console.error('Fehler beim Senden der Anfrage:', error);
-        this.messages.push({ sender: 'assistent', content: `Fehler: ${error.response.data.message}` });
+        this.messages.push({ role: 'assistent', content: `Fehler: ${error.response.data.message}` });
       }
     },
   },

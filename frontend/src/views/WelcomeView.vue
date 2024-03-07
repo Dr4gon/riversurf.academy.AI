@@ -4,7 +4,7 @@
       <form class="chat-window">
         <div class="chat-text">
           <div v-for="message in this.messages">
-            <div v-if="message.sender === 'user'" class="chat-message-user">
+            <div v-if="message.role === 'user'" class="chat-message-user">
               <span class="chat-message chat-message-maincolor">{{ message.content }}</span>
             </div>
             <div v-else class="chat-message-assistant">
@@ -37,11 +37,14 @@ export default {
       userQuestion: '',
     };
   },
+  mounted() {
+    this.loadMessageHistory();
+  },
   computed: {
     ...mapState(messageStore, ['messages', 'processing']),
   },
   methods: {
-    ...mapActions(messageStore, ['askRiversurfAssistant']),
+    ...mapActions(messageStore, ['askRiversurfAssistant', 'loadMessageHistory']),
     doAskRiversurfAssistant() {
       this.askRiversurfAssistant(this.userQuestion);
       this.userQuestion = '';

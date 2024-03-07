@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
     });
 
     const trainingdata = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../assets/trainingdata.json')));
-    console.log(trainingdata.messages);
+    // console.log(trainingdata.messages);
 
     const response = await openai.chat.completions.create({
       messages: [

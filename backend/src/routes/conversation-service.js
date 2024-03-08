@@ -9,9 +9,9 @@ router.get('/', async (req, res) => {
   return res.status(200).json(data);
 });
 
-router.get('/:id', async (req, res) => {
-  const { id } = req.params;
-  const data = await OpenAIData.findById(id);
+router.get('/:uuid', async (req, res) => {
+  const { uuid } = req.params;
+  const data = await OpenAIData.find({ contentUserUUID: uuid });
   return res.status(200).json(data);
 });
 
@@ -21,9 +21,9 @@ router.post('/', async (req, res) => {
   return res.status(201).json(insertedOpenAi);
 });
 
-router.delete('/:id', async (req, res) => {
-  const { id } = req.params;
-  const deletedOpenAi = await OpenAIData.findByIdAndDelete(id);
+router.delete('/:uuid', async (req, res) => {
+  const { uuid } = req.params;
+  const deletedOpenAi = await OpenAIData.deleteMany({ contentUserUUID: uuid });
   return res.status(200).json(deletedOpenAi);
 });
 

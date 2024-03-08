@@ -1,3 +1,7 @@
-test('Test whether jest is running properly', () => {
-  expect(1).toBe(1);
+const request = require('supertest');
+const app = require('../src/index');
+
+test(`Send chat message and verify it's storage`, async () => {
+  await request(app).post('/api/openai').send({ text: 'Test', uuid: 'Test-UUID' }).expect(200);
+  const response = await request(app).get('/api/openai/Test-UUID').expect(200);
 });

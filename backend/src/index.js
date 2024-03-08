@@ -28,3 +28,5 @@ start();
 app.use('/contact', contactRouter);
 app.use('/api/openai', OpenAIService);
 app.use('/admin/conversation', ConversationService);
+
+module.exports = app;

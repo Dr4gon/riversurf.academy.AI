@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage --verbose",
+    "test:watch": "jest --watchAll",
     "serve": "node src/index.js",
     "standalone": "nodemon --legacy-watch src/index.js",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",

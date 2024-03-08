@@ -3,7 +3,7 @@
   "version": "0.4.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage --verbose",
     "serve": "node src/index.js",
     "standalone": "nodemon --legacy-watch src/index.js",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",

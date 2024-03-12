@@ -37,7 +37,11 @@ export const messageStore = defineStore('messages', {
         });
 
         this.processing = false;
-        this.messages.push({ role: 'assistant', content: response.data.reply });
+        this.messages.push({
+          role: 'assistant',
+          content: response.data.reply,
+          useful: true,
+        });
       } catch (error) {
         this.processing = false;
         console.error('Fehler beim Senden der Anfrage:', error);

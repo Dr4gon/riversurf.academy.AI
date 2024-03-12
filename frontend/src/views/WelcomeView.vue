@@ -11,7 +11,13 @@
               <div class="chat-message chat-message-secondarycolor">
                 <span>{{ message.content }}</span>
                 <div class="tooltip">
-                  <img class="chat-message-downvote" src="@/assets/poop.png" />
+                  <img
+                    @click="this.markUnuseful(this.messages.indexOf(message))"
+                    v-if="message.useful"
+                    class="chat-message-downvote-deactivated"
+                    src="@/assets/poop.png"
+                  />
+                  <img @click="this.markUseful(this.messages.indexOf(message))" v-else src="@/assets/poop.png" />
                   <span class="tooltiptext">Falls dir diese Antwort nicht hilft, einmal hier klicken</span>
                 </div>
               </div>
@@ -50,7 +56,7 @@ export default {
     ...mapState(messageStore, ['messages', 'processing']),
   },
   methods: {
-    ...mapActions(messageStore, ['askRiversurfAssistant', 'loadMessageHistory']),
+    ...mapActions(messageStore, ['askRiversurfAssistant', 'loadMessageHistory', 'markUseful', 'markUnuseful']),
     doAskRiversurfAssistant() {
       this.askRiversurfAssistant(this.userQuestion);
       this.userQuestion = '';
@@ -114,16 +120,10 @@ p {
 }
 /* From https://stackoverflow.com/questions/609273/convert-an-image-to-grayscale-in-html-css */
 
-.chat-message-downvote {
+.chat-message-downvote-deactivated {
   filter: gray; /* IE6-9 */
   -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
   filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
-}
-
-/* Disable grayscale on hover */
-.chat-message-downvote:hover {
-  -webkit-filter: grayscale(0);
-  filter: none;
 }
 
 /** Adapted from here: https://www.w3schools.com/css/tryit.asp?filename=trycss_tooltip_right */

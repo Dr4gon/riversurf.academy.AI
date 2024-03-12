@@ -9,6 +9,7 @@ export const messageStore = defineStore('messages', {
       {
         role: 'assistant',
         content: import.meta.env.VITE_WELCOME_MSG,
+        useful: true,
       },
     ],
     processing: false,
@@ -42,6 +43,14 @@ export const messageStore = defineStore('messages', {
         console.error('Fehler beim Senden der Anfrage:', error);
         this.messages.push({ role: 'assistent', content: `Fehler: ${error.response.data.message}` });
       }
+    },
+    async markUnuseful(index) {
+      // console.log('Mark as unuseful:', index);
+      this.messages[index].useful = false;
+    },
+    async markUseful(index) {
+      // console.log('Mark as useful:', index);
+      this.messages[index].useful = true;
     },
   },
 });

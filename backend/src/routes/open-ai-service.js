@@ -71,6 +71,7 @@ router.post('/', async (req, res) => {
       contentModel: process.env.AI_MODEL,
       contentMaxToken: parseInt(process.env.MAX_TOKEN, 10),
       contentUserUUID: uuid,
+      contentResponseUseful: true,
     });
 
     await newEntry.save();
@@ -91,6 +92,7 @@ function generateUserContext(previousMessages) {
     userContext.push({
       role: 'assistant',
       content: message.contentResponse,
+      useful: message.contentResponseUseful,
     });
   });
 

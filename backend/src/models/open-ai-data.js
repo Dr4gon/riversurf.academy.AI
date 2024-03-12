@@ -25,6 +25,10 @@ const OpenAIDataSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  contentResponseUseful: {
+    type: Boolean,
+    required: true,
+  },
   date: {
     type: Date,
     default: Date.now,

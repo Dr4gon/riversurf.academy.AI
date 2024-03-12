@@ -177,7 +177,7 @@ p {
 }
 
 .chat-send-img {
-  height: 2vh;
+  width: 20px;
   display: flex;
 }
 

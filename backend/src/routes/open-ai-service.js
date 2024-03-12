@@ -19,7 +19,7 @@ router.get('/:uuid', async (req, res) => {
       date: { $gte: new Date(Date.now() - 2 * 60 * 60 * 1000) },
     });
 
-    res.json(generateUserContext(messages));
+    res.json(generateUserContext(messages, false));
   } catch (error) {
     console.error('Fehler beim Laden der Nachrichten:', error);
     res.sendStatus(500).json({ message: 'Interner Serverfehler' });
@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
 
     const previousMessages = await OpenAIData.find({ contentUserUUID: uuid });
 
-    userContext = generateUserContext(previousMessages);
+    userContext = generateUserContext(previousMessages, true);
 
     const trainingdata = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../assets/trainingdata.json')));
     // console.log(trainingdata.messages);
@@ -81,7 +81,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-function generateUserContext(previousMessages) {
+function generateUserContext(previousMessages, isRequest) {
   userContext = [];
 
   previousMessages.forEach(message => {
@@ -89,11 +89,18 @@ function generateUserContext(previousMessages) {
       role: 'user',
       content: message.contentUser,
     });
-    userContext.push({
-      role: 'assistant',
-      content: message.contentResponse,
-      useful: message.contentResponseUseful,
-    });
+    if (isRequest)
+      userContext.push({
+        role: 'assistant',
+        content: message.contentResponse,
+      });
+    else {
+      userContext.push({
+        role: 'assistant',
+        content: message.contentResponse,
+        useful: message.contentResponseUseful,
+      });
+    }
   });
 
   return userContext;

@@ -11,7 +11,7 @@
               <div class="chat-message chat-message-secondarycolor">
                 <span>{{ message.content }}</span>
                 <div class="tooltip">
-                  <img src="@/assets/poop.png" />
+                  <img class="chat-message-downvote" src="@/assets/poop.png" />
                   <span class="tooltiptext">Falls dir diese Antwort nicht hilft, einmal hier klicken</span>
                 </div>
               </div>
@@ -114,14 +114,14 @@ p {
 }
 /* From https://stackoverflow.com/questions/609273/convert-an-image-to-grayscale-in-html-css */
 
-img {
+.chat-message-downvote {
   filter: gray; /* IE6-9 */
   -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
   filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
 }
 
 /* Disable grayscale on hover */
-img:hover {
+.chat-message-downvote:hover {
   -webkit-filter: grayscale(0);
   filter: none;
 }

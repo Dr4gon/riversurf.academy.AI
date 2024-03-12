@@ -112,6 +112,19 @@ p {
 .chat-message-assistant img {
   width: 20px;
 }
+/* From https://stackoverflow.com/questions/609273/convert-an-image-to-grayscale-in-html-css */
+
+img {
+  filter: gray; /* IE6-9 */
+  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+  filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+}
+
+/* Disable grayscale on hover */
+img:hover {
+  -webkit-filter: grayscale(0);
+  filter: none;
+}
 
 /** Adapted from here: https://www.w3schools.com/css/tryit.asp?filename=trycss_tooltip_right */
 .tooltip {

@@ -10,8 +10,9 @@
             <div v-else class="chat-message-assistant">
               <div class="chat-message chat-message-secondarycolor">
                 <span>{{ message.content }}</span>
-                <div>
-                  <img alt="Falls diese Nachricht dir nicht hilft, einmal hier klicken" src="@/assets/poop.png" />
+                <div class="tooltip">
+                  <img src="@/assets/poop.png" />
+                  <span class="tooltiptext">Falls dir diese Antwort nicht hilft, einmal hier klicken</span>
                 </div>
               </div>
             </div>
@@ -110,6 +111,31 @@ p {
 
 .chat-message-assistant img {
   width: 20px;
+}
+
+/** Adapted from here: https://www.w3schools.com/css/tryit.asp?filename=trycss_tooltip_right */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  max-width: 75%;
+  background-color: #fcd232;
+  color: #ba6b46;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
 .chat-message-user {

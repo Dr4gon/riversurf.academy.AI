@@ -8,7 +8,12 @@
               <span class="chat-message chat-message-maincolor">{{ message.content }}</span>
             </div>
             <div v-else class="chat-message-assistant">
-              <span class="chat-message chat-message-secondarycolor">{{ message.content }}</span>
+              <div class="chat-message chat-message-secondarycolor">
+                <span>{{ message.content }}</span>
+                <div>
+                  <img alt="Falls diese Nachricht dir nicht hilft, einmal hier klicken" src="@/assets/poop.png" />
+                </div>
+              </div>
             </div>
           </div>
           <div v-if="this.processing" class="chat-message-assistant">
@@ -82,6 +87,7 @@ p {
 
 .chat-message {
   display: flex;
+  flex-direction: column; /* Needed for the poop button */
   border-radius: 5px;
   padding: 5px;
   color: white;
@@ -100,6 +106,10 @@ p {
 .chat-message-assistant {
   display: flex;
   justify-content: flex-start;
+}
+
+.chat-message-assistant img {
+  width: 20px;
 }
 
 .chat-message-user {

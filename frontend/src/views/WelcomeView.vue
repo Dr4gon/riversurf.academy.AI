@@ -147,7 +147,7 @@ p {
   top: -5px;
 }
 
-.tooltip:active .tooltiptext {
+.tooltip:hover .tooltiptext {
   visibility: visible;
 }
 

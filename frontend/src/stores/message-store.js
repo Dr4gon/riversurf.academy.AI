@@ -57,9 +57,9 @@ export const messageStore = defineStore('messages', {
     async toggleUseful(index, useful) {
       this.messages[index].useful = useful;
       const uuid = localStorage.getItem('userIdentifier');
-      const contentUser = this.messages[index - 1].content;
+      const response = this.messages[index].content;
       await axios.put(import.meta.env.VITE_BACKEND_URL + '/api/openai/' + uuid, {
-        contentUser: contentUser,
+        response: response,
         useful: useful,
       });
     },

@@ -24,12 +24,10 @@ router.get('/:uuid', async (req, res) => {
 });
 
 router.put('/:uuid', async (req, res) => {
-  console.log('Mark message:', req.body);
   const { uuid } = req.params;
-  const { contentUser, useful } = req.body;
+  const { response, useful } = req.body;
   const messages = await findUserMsgs(uuid);
-  let message = messages.find(message => message.contentUser === contentUser);
-  console.log('Message:', message);
+  let message = messages.find(message => message.contentResponse === response);
   message.contentResponseUseful = useful;
   await message.save();
   res.sendStatus(200);

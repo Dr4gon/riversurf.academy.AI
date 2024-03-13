@@ -49,21 +49,18 @@ export const messageStore = defineStore('messages', {
       }
     },
     async markUnuseful(index) {
-      this.messages[index].useful = false;
-      const uuid = localStorage.getItem('userIdentifier');
-      const contentUser = this.messages[index - 1].content;
-      await axios.put(import.meta.env.VITE_BACKEND_URL + '/api/openai/' + uuid, {
-        contentUser: contentUser,
-        useful: false,
-      });
+      this.toggleUseful(index, false);
     },
     async markUseful(index) {
-      this.messages[index].useful = true;
+      this.toggleUseful(index, true);
+    },
+    async toggleUseful(index, useful) {
+      this.messages[index].useful = useful;
       const uuid = localStorage.getItem('userIdentifier');
       const contentUser = this.messages[index - 1].content;
       await axios.put(import.meta.env.VITE_BACKEND_URL + '/api/openai/' + uuid, {
         contentUser: contentUser,
-        useful: true,
+        useful: useful,
       });
     },
   },

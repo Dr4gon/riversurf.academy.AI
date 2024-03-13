@@ -43,7 +43,10 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ message: 'Kein Text zur Verarbeitung bereitgestellt' });
     }
 
-    const previousMessages = await OpenAIData.find({ contentUserUUID: uuid });
+    const previousMessages = await OpenAIData.find({
+      contentUserUUID: uuid,
+      contentResponseUseful: true,
+    });
 
     userContext = generateUserContext(previousMessages, true);
 

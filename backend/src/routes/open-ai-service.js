@@ -14,16 +14,22 @@ const openai = new OpenAI({
 router.get('/:uuid', async (req, res) => {
   try {
     const { uuid } = req.params;
-    const messages = await OpenAIData.find({
-      contentUserUUID: uuid,
-      date: { $gte: new Date(Date.now() - 2 * 60 * 60 * 1000) },
-    });
+    const messages = await findUserMsgs(uuid);
 
     res.json(generateUserContext(messages, false));
   } catch (error) {
     console.error('Fehler beim Laden der Nachrichten:', error);
     res.sendStatus(500).json({ message: 'Interner Serverfehler' });
   }
+});
+
+router.put('/:uuid', async (req, res) => {
+  const { uuid } = req.params;
+  const { index, useful } = req.body;
+  const messages = await findUserMsgs(uuid);
+  messages[index].contentResponseUseful = useful;
+  await messages[index].save();
+  res.sendStatus(200);
 });
 
 router.post('/', async (req, res) => {
@@ -80,6 +86,14 @@ router.post('/', async (req, res) => {
     res.status(500).json({ message: 'Interner Serverfehler' });
   }
 });
+
+async function findUserMsgs(uuid) {
+  const messages = await OpenAIData.find({
+    contentUserUUID: uuid,
+    date: { $gte: new Date(Date.now() - 2 * 60 * 60 * 1000) },
+  });
+  return messages;
+}
 
 function generateUserContext(previousMessages, isRequest) {
   userContext = [];

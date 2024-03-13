@@ -50,11 +50,19 @@ export const messageStore = defineStore('messages', {
     },
     async markUnuseful(index) {
       // console.log('Mark as unuseful:', index);
-      this.messages[index].useful = false;
+      const uuid = localStorage.getItem('userIdentifier');
+      await axios.put(import.meta.env.VITE_BACKEND_URL + '/api/openai/' + uuid, {
+        index: index,
+        useful: false,
+      });
     },
     async markUseful(index) {
       // console.log('Mark as useful:', index);
-      this.messages[index].useful = true;
+      const uuid = localStorage.getItem('userIdentifier');
+      await axios.put(import.meta.env.VITE_BACKEND_URL + '/api/openai/' + uuid, {
+        index: index,
+        useful: true,
+      });
     },
   },
 });

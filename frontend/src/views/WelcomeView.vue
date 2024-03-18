@@ -3,6 +3,11 @@
     <div class="view">
       <form class="chat-window">
         <div class="chat-text">
+          <div class="chat-message-assistant">
+            <div class="chat-message chat-message-secondarycolor">
+              <span>{{ this.initialMessage }}</span>
+            </div>
+          </div>
           <div v-for="message in this.messages">
             <div v-if="message.role === 'user'" class="chat-message-user">
               <span class="chat-message chat-message-maincolor">{{ message.content }}</span>
@@ -47,6 +52,7 @@ export default {
   data() {
     return {
       userQuestion: '',
+      initialMessage: import.meta.env.VITE_WELCOME_MSG,
     };
   },
   mounted() {

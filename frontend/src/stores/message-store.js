@@ -5,13 +5,7 @@ axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
 
 export const messageStore = defineStore('messages', {
   state: () => ({
-    messages: [
-      {
-        role: 'assistant',
-        content: import.meta.env.VITE_WELCOME_MSG,
-        useful: true,
-      },
-    ],
+    messages: [],
     processing: false,
   }),
   actions: {

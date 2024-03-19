@@ -51,7 +51,7 @@ router.post('/', async (req, res) => {
     userContext = generateUserContext(previousMessages, true);
 
     const trainingdata = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../assets/trainingdata.json')));
-    // console.log(trainingdata.messages);
+    const taskdata = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../assets/taskdata.json')));
 
     const response = await openai.chat.completions.create({
       messages: [
@@ -59,6 +59,7 @@ router.post('/', async (req, res) => {
           role: 'system',
           content: process.env.SYSTEM_CONTENT,
         },
+        ...taskdata.messages,
         ...trainingdata.messages,
         ...userContext,
         {

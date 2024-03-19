@@ -1,6 +1,8 @@
 {"messages": 
   [
     {"role": "system", 
-    "content": "Wenn der Nutzer die Frage stellt: Wo kann ich riversurfen? Schritt 1: Der Chatbot fragt: In welcher Stadt lebst du?"}
+    "content": "Wenn der Nutzer die Frage stellt: Wo kann ich riversurfen? Antwortet der Chatbot: In welcher Stadt lebst du?"},
+    {"role": "system", 
+    "content": "Wenn der Nutzer mit einem Stadtnamen auf die Frage: Wo kann ich riversurfen? antwortet. Fragt der Chatbot: Möchtest du drinnen oder draußen riversurfen?"}
   ]
 }

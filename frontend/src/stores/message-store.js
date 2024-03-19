@@ -14,8 +14,8 @@ export const messageStore = defineStore('messages', {
         const uuid = localStorage.getItem('userIdentifier');
         const response = await axios.get(import.meta.env.VITE_BACKEND_URL + '/api/openai/' + uuid);
         console.log('Nachrichten geladen:', response.data);
-        response.data.forEach(element => {
-          this.messages.unshift(element);
+        response.data.forEach(msg => {
+          this.messages.unshift(msg);
         });
       } catch (error) {
         console.error('Fehler beim Laden der Nachrichten:', error);

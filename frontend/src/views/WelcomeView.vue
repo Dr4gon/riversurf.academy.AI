@@ -180,6 +180,7 @@ p {
   border-radius: 0 0 5px 0;
   border: none;
   background-color: #ffffff;
+  padding: 0; /* Safari fix to restore full size of image within */
 }
 
 .chat-send-img {

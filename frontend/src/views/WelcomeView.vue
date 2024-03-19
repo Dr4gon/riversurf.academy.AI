@@ -3,33 +3,37 @@
     <div class="view">
       <form class="chat-window">
         <div class="chat-text">
-          <div class="chat-message-assistant">
-            <div class="chat-message chat-message-secondarycolor">
-              <span>{{ this.initialMessage }}</span>
+          <div class="chat-message-autoscroll">
+            <div v-if="this.processing" class="chat-message-assistant">
+              <div class="dot-stretching"></div>
             </div>
-          </div>
-          <div v-for="message in this.messages">
-            <div v-if="message.role === 'user'" class="chat-message-user">
-              <span class="chat-message chat-message-maincolor">{{ message.content }}</span>
-            </div>
-            <div v-else class="chat-message-assistant">
-              <div class="chat-message chat-message-secondarycolor">
-                <span>{{ message.content }}</span>
-                <div class="tooltip">
-                  <img
-                    @click="this.markUnuseful(this.messages.indexOf(message))"
-                    v-if="message.useful"
-                    class="chat-message-downvote-deactivated"
-                    src="@/assets/poop.png"
-                  />
-                  <img @click="this.markUseful(this.messages.indexOf(message))" v-else src="@/assets/poop.png" />
-                  <span class="tooltiptext">Falls dir diese Antwort nicht hilft, einmal hier klicken</span>
+
+            <div v-for="message in this.messages">
+              <div v-if="message.role === 'user'" class="chat-message-user">
+                <span class="chat-message chat-message-maincolor">{{ message.content }}</span>
+              </div>
+              <div v-else class="chat-message-assistant">
+                <div class="chat-message chat-message-secondarycolor">
+                  <span>{{ message.content }}</span>
+                  <div class="tooltip">
+                    <img
+                      @click="this.markUnuseful(this.messages.indexOf(message))"
+                      v-if="message.useful"
+                      class="chat-message-downvote-deactivated"
+                      src="@/assets/poop.png"
+                    />
+                    <img @click="this.markUseful(this.messages.indexOf(message))" v-else src="@/assets/poop.png" />
+                    <span class="tooltiptext">Falls dir diese Antwort nicht hilft, einmal hier klicken</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div v-if="this.processing" class="chat-message-assistant">
-            <div class="dot-stretching"></div>
+
+            <div class="chat-message-assistant">
+              <div class="chat-message chat-message-secondarycolor">
+                <span>{{ this.initialMessage }}</span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="chat-actions">
@@ -108,6 +112,12 @@ p {
   max-width: 75%;
 }
 
+.chat-message-autoscroll {
+  overflow: auto;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+}
 .chat-message-maincolor {
   background-color: var(--water-color);
 }

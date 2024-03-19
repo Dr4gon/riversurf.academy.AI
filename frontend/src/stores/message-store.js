@@ -21,7 +21,7 @@ export const messageStore = defineStore('messages', {
     },
     async askRiversurfAssistant(userQuestion) {
       try {
-        this.messages.push({ role: 'user', content: userQuestion });
+        this.messages.unshift({ role: 'user', content: userQuestion });
 
         const uuid = localStorage.getItem('userIdentifier');
         this.processing = true;
@@ -31,7 +31,7 @@ export const messageStore = defineStore('messages', {
         });
 
         this.processing = false;
-        this.messages.push({
+        this.messages.unshift({
           role: 'assistant',
           content: response.data.reply,
           useful: true,
@@ -39,7 +39,7 @@ export const messageStore = defineStore('messages', {
       } catch (error) {
         this.processing = false;
         console.error('Fehler beim Senden der Anfrage:', error);
-        this.messages.push({ role: 'assistent', content: `Fehler: ${error.response.data.message}` });
+        this.messages.unshift({ role: 'assistent', content: `Fehler: ${error.response.data.message}` });
       }
     },
     async markUnuseful(index) {

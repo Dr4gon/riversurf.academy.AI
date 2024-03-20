@@ -24,11 +24,6 @@ const router = createRouter({
       component: () => import(/* @vite-ignore */ `${COMPONENT_PATH}ContactView.vue`),
     },
     {
-      path: '/sales',
-      name: 'sales',
-      component: () => import(/* @vite-ignore */ `${COMPONENT_PATH}SalesView.vue`),
-    },
-    {
       path: '/about',
       name: 'about',
       component: () => import(/* @vite-ignore */ `${COMPONENT_PATH}AboutView.vue`),

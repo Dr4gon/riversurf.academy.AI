@@ -60,13 +60,13 @@ export default {
   }
 
   &:before {
-    bottom: 15vh;
+    bottom: 30vh;
     border-radius: 45%;
     animation-duration: 10s;
   }
 
   &:after {
-    bottom: 12vh;
+    bottom: 24vh;
     opacity: 0.5;
     border-radius: 47%;
     animation-duration: 10s;

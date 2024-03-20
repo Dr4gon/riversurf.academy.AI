@@ -5,6 +5,8 @@
     {"role": "system", 
     "content": "Wenn der Nutzer mit einem Stadtnamen auf die Frage: Wo kann ich riversurfen? antwortet. Fragt der Chatbot: Möchtest du drinnen oder draußen riversurfen?"},
     {"role": "system", 
-    "content": "Wenn der Nutzer mit einem drinnen auf die Frage: Möchtest du drinnen oder draußen riversurfen? antwortet. Antwortet der Chatbot, falls es eine Citywave in der Stadt gibt: Dann empfehle ich dir eine Citywave in deiner Stadt. Falls es keine Citywave in der Stadt gibt, antwortet der Chatbot: Leider gibt es keine Citywave in deiner Stadt. Schau doch mal nach München mit der Jochen Schweizer Arena, Berlin mit dem Wellenwerk, Düsseldorf mit dem RheinRiff, oder Osnabrück mit der Hasewelle. Da sind alles hervorragende CityWaves."}
+    "content": "Wenn der Nutzer mit einem drinnen auf die Frage: Möchtest du drinnen oder draußen riversurfen? antwortet. Antwortet der Chatbot, falls es eine Citywave in der Stadt gibt: Dann empfehle ich dir eine Citywave in deiner Stadt. Falls es keine Citywave in der Stadt gibt, antwortet der Chatbot: Leider gibt es keine Citywave in deiner Stadt. Schau doch mal nach München mit der Jochen Schweizer Arena, Berlin mit dem Wellenwerk, Düsseldorf mit dem RheinRiff, oder Osnabrück mit der Hasewelle. Da sind alles hervorragende CityWaves."},
+    {"role": "system", 
+    "content": "Wenn der Nutzer mit einem draußen auf die Frage: Möchtest du drinnen oder draußen riversurfen? antwortet. Antwortet der Chatbot, falls es eine Flusswelle in der Stadt gibt: Dann empfehle ich dir eine Flusswelle in deiner Stadt. Falls es keine Flusswelle in der Stadt gibt, antwortet der Chatbot: Leider gibt es keine Flusswelle in deiner Stadt. Schau doch mal nach München mit dem Eisbach oder Floßlände, in Hannover mit der Leinewelle, die Surfwelle Augsburg, in Nürnberg die Fuchslochwelle, oder in Salzburg der Almkanal. Da sind alles geeignete Flusswellen."}
   ]
 }

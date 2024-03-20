@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="view">
+    <div class="chat-view">
       <form class="chat-window">
         <div class="chat-text">
           <div class="chat-message-autoscroll">
@@ -76,6 +76,16 @@ export default {
 </script>
 
 <style scoped>
+.chat-view {
+  background-color: rgba(128, 128, 128, 0.5);
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  height: 74vh;
+  width: 85vw;
+  border-radius: 10px 10px 0 0;
+}
+
 input {
   width: inherit;
   border-radius: 0 0 0 5px;
@@ -98,7 +108,7 @@ p {
   margin-right: 5px;
   border-radius: 10px 10px 0 0;
   width: inherit;
-  height: 95%;
+  height: 99%;
   overflow: auto; /* Add scrollbar, when needed */
 }
 
@@ -174,9 +184,6 @@ p {
 
 .chat-actions {
   display: inline-flex;
-  margin-bottom: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
   width: inherit;
 }
 

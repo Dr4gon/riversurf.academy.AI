@@ -322,8 +322,8 @@ p {
 }
 
 .arrow {
-  width: 10px;
-  height: 40px;
+  width: 7px;
+  height: 32px;
   background: white;
   border-radius: 5px;
   margin: 6px;

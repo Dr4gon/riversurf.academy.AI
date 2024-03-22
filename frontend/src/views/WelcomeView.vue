@@ -44,6 +44,11 @@
         </div>
       </form>
     </div>
+
+    <div class="arrow-container">
+      <span class="arrow arrow-left"></span>
+      <span class="arrow arrow-right"></span>
+    </div>
   </div>
 </template>
 
@@ -304,6 +309,44 @@ p {
   }
   100% {
     transform: translate(0) scale(0.7, 0.7);
+  }
+}
+
+/* Down arrow from https://codepen.io/l-e-e/pen/MWogXNb */
+.arrow-container {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow {
+  width: 10px;
+  height: 40px;
+  background: white;
+  border-radius: 5px;
+  margin: 6px;
+  animation: move 1.1s infinite ease-in-out;
+}
+
+.arrow-left {
+  transform: rotate(-45deg);
+}
+
+.arrow-right {
+  transform: rotate(45deg);
+}
+
+@keyframes move {
+  0% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: 100px;
+  }
+  100% {
+    margin-top: 0;
   }
 }
 </style>

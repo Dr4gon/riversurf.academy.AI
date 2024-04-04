@@ -7,21 +7,21 @@
   <div class="containedBubbles">
     <!-- Changes of the bubble number only works in concert with changing the css bubble number as well -->
     <div class="bubble" v-for="n in 50"></div>
-    <AboutView />
+    <VideoView />
     <ContactView />
   </div>
 </template>
 
 <script>
 import WelcomeView from '@/views/WelcomeView.vue';
-import AboutView from '@/views/AboutView.vue';
+import VideoView from '@/views/VideoView.vue';
 import ContactView from '@/views/ContactView.vue';
 
 export default {
   name: 'App',
   components: {
     WelcomeView,
-    AboutView,
+    VideoView,
     ContactView,
   },
   created() {

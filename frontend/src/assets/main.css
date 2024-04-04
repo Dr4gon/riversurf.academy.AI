@@ -48,7 +48,8 @@ video {
   background-color: rgba(128, 128, 128, 0.5);
   margin: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-direction: column;
   height: 74vh;
   width: 85vw;
   border-radius: 10px;

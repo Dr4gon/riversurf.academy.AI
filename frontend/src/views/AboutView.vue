@@ -33,6 +33,7 @@ export default {
 
 <style scoped>
 .video-upload {
+  display: flex;
   flex-direction: column;
   justify-content: start;
   padding: 10px;

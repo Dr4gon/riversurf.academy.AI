@@ -2,7 +2,7 @@
   <div class="container about-background">
     <div class="view">
       <div class="video-upload">
-        <h2>Empfohlen durch Empfehlungen</h2>
+        <h3>Empfohlen durch Empfehlungen</h3>
         <div class="testimonials">
           <img class="testimonial-img" src="@/assets/surfer-girl.png" />
           <p>Vroni: "De Long ist mega gut die Kleinigkeiten zu entdecken und mich dadruch weiterzubringen."</p>
@@ -10,7 +10,7 @@
         <audio controls src="src/assets/possibilities.mp3"></audio>
       </div>
       <form class="video-upload">
-        <h2>Lade dein Surf-Video für persönliches Feedback hoch</h2>
+        <h3>Lade dein Surf-Video für persönliches Feedback hoch</h3>
         <input type="text" placeholder="Wie heißt du?" v-model="name" />
         <input type="text" placeholder="Was willst du lernen?" v-model="goal" />
         <input type="text" placeholder="Wie ist deine Mailadresse?" v-model="email" />

@@ -1,6 +1,14 @@
 <template>
   <div class="container about-background">
     <div class="view">
+      <div class="video-upload">
+        <h2>Empfohlen durch Empfehlungen</h2>
+        <div class="testimonials">
+          <img class="testimonial-img" src="@/assets/surfer-girl.png" />
+          <p>Vroni: "De Long ist mega gut die Kleinigkeiten zu entdecken und mich dadruch weiterzubringen."</p>
+        </div>
+        <audio controls src="src/assets/possibilities.mp3"></audio>
+      </div>
       <form class="video-upload">
         <h2>Lade dein Surf-Video für persönliches Feedback hoch</h2>
         <input type="text" placeholder="Wie heißt du?" v-model="name" />
@@ -53,6 +61,17 @@ button {
   flex-direction: column;
   justify-content: start;
   padding: 10px;
+}
+
+.testimonials {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  margin-bottom: 5px;
+}
+
+.testimonial-img {
+  width: 30vw;
 }
 
 .about-background {

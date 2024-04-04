@@ -1,14 +1,28 @@
 <template>
   <div class="container about-background">
-    <div class="view video-upload">
-      <h2>Lade dein Surf-Video für persönliches Feedback hoch</h2>
-      <input type="file" accept="video/*" />
-      <button>Upload</button>
+    <div class="view">
+      <form class="video-upload">
+        <h2>Lade dein Surf-Video für persönliches Feedback hoch</h2>
+        <input type="text" placeholder="Wie heißt du?" />
+        <input type="text" placeholder="Was willst du lernen?" />
+        <input type="text" placeholder="Wie ist deine Mailadresse?" />
+        <input type="file" accept="video/*" />
+        <button type="submit" @click.prevent="doUpload">Upload</button>
+      </form>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script>
+export default {
+  name: 'AboutView',
+  methods: {
+    doUpload() {
+      console.log('Upload video');
+    },
+  },
+};
+</script>
 
 <style scoped>
 .video-upload {

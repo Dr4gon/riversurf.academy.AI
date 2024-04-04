@@ -2,7 +2,6 @@
   <div class="container about-background">
     <div class="view video-upload">
       <h2>Lade dein Surf-Video für persönliches Feedback hoch</h2>
-      <label>Upload a video for feedback</label>
       <input type="file" accept="video/*" />
       <button>Upload</button>
     </div>

@@ -32,6 +32,22 @@ export default {
 </script>
 
 <style scoped>
+input {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid var(--water-color);
+}
+
+button {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid var(--water-color);
+  background-color: var(--water-color);
+  color: black;
+}
+
 .video-upload {
   display: flex;
   flex-direction: column;

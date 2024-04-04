@@ -3,9 +3,9 @@
     <div class="view">
       <form class="video-upload">
         <h2>Lade dein Surf-Video für persönliches Feedback hoch</h2>
-        <input type="text" placeholder="Wie heißt du?" />
-        <input type="text" placeholder="Was willst du lernen?" />
-        <input type="text" placeholder="Wie ist deine Mailadresse?" />
+        <input type="text" placeholder="Wie heißt du?" v-model="name" />
+        <input type="text" placeholder="Was willst du lernen?" v-model="goal" />
+        <input type="text" placeholder="Wie ist deine Mailadresse?" v-model="email" />
         <input type="file" accept="video/*" />
         <button type="submit" @click.prevent="doUpload">Upload</button>
       </form>
@@ -16,6 +16,13 @@
 <script>
 export default {
   name: 'AboutView',
+  data() {
+    return {
+      name: '',
+      goal: '',
+      email: '',
+    };
+  },
   methods: {
     doUpload() {
       console.log('Upload video');

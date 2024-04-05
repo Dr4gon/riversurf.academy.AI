@@ -90,7 +90,8 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .testimonials {
@@ -109,7 +110,6 @@ button {
 .list {
   display: flex;
   gap: 8px;
-  padding: 16px;
   list-style: none;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;

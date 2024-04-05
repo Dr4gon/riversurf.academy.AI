@@ -61,7 +61,6 @@ button {
   flex-direction: column;
   justify-content: start;
   padding: 10px;
-  height: 50%;
 }
 
 .testimonials {

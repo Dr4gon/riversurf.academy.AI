@@ -3,11 +3,41 @@
     <div class="view">
       <div class="video-upload">
         <h3>Empfohlen durch Empfehlungen</h3>
-        <div class="testimonials">
-          <img class="testimonial-img" src="@/assets/surfer-girl.png" />
-          <p>Vroni: "De Long ist mega gut die Kleinigkeiten zu entdecken und mich dadruch weiterzubringen."</p>
-        </div>
-        <audio controls src="src/assets/possibilities.mp3"></audio>
+        <ul class="list">
+          <li class="item">
+            <div class="content">
+              <div class="testimonials">
+                <img class="testimonial-img" src="@/assets/surfer-girl.png" />
+                <p>Vroni: "De Long ist mega gut die Kleinigkeiten zu entdecken und mich dadurch weiterzubringen."</p>
+              </div>
+              <audio controls src="src/assets/possibilities.mp3"></audio>
+            </div>
+          </li>
+          <li class="item">
+            <div class="content">
+              <div class="testimonials">
+                <img class="testimonial-img" src="@/assets/surfer-boy.png" />
+                <p>
+                  Basti: "Surfen macht super viel Spaß. De Long ermutigt mich dabei dran zu bleiben und die Frustmomente
+                  gut zu überwinden."
+                </p>
+              </div>
+              <audio controls src="src/assets/possibilities.mp3"></audio>
+            </div>
+          </li>
+          <li class="item">
+            <div class="content">
+              <div class="testimonials">
+                <img class="testimonial-img" src="@/assets/surfer-girl.png" />
+                <p>
+                  Vicky: "Der Coach verrät mir immer wieder Tipps und Tricks, damit mir das Surfen Spaß macht. Dafür
+                  gibt's ne Kaffee oben druff."
+                </p>
+              </div>
+              <audio controls src="src/assets/possibilities.mp3"></audio>
+            </div>
+          </li>
+        </ul>
       </div>
       <form class="video-upload">
         <h3>Lade dein Surf-Video für persönliches Feedback hoch</h3>
@@ -72,6 +102,30 @@ button {
 
 .testimonial-img {
   width: 30vw;
+}
+
+/* Adapted from https://www.nieknijland.nl/blog/make-a-responsive-carousel-with-just-css */
+
+.list {
+  display: flex;
+  gap: 8px;
+  padding: 16px;
+  list-style: none;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+.item {
+  flex-shrink: 0;
+  width: 78vw;
+  scroll-snap-align: center;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .about-background {

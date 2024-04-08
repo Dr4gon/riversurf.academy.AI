@@ -44,7 +44,7 @@
         <input type="text" placeholder="Wie heißt du?" v-model="name" />
         <input type="text" placeholder="Was willst du lernen?" v-model="goal" />
         <input type="text" placeholder="Wie ist deine Mailadresse?" v-model="email" />
-        <input type="file" accept="video/*" />
+        <input id="video" type="file" accept="video/*" />
         <button type="submit" @click.prevent="doUpload">Upload</button>
       </form>
     </div>
@@ -52,6 +52,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'AboutView',
   data() {
@@ -62,8 +64,16 @@ export default {
     };
   },
   methods: {
-    doUpload() {
+    async doUpload() {
       console.log('Upload video');
+
+      let video = document.getElementById('video').files[0];
+      let formData = new FormData();
+
+      formData.append('video', video);
+      const response = await axios.post(import.meta.env.VITE_BACKEND_URL + '/upload/video', {
+        body: formData,
+      });
     },
   },
 };

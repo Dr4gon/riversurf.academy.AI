@@ -123,6 +123,16 @@ button {
   list-style: none;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
+
+  /* Hide scrollbar in Firefox */
+  scrollbar-width: none;
+
+  /* Hide scrollbar in IE and Edge */
+  -ms-overflow-style: none;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
 }
 
 .item {

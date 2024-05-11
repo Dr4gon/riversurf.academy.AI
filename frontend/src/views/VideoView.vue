@@ -3,8 +3,8 @@
     <div class="view">
       <div class="video-upload">
         <h3>Empfohlen durch Empfehlungen</h3>
-        <ul class="list">
-          <li class="item">
+        <div class="items">
+          <div class="item">
             <div class="content">
               <div class="testimonials">
                 <img class="testimonial-img" src="@/assets/surfer-girl.png" />
@@ -12,8 +12,8 @@
               </div>
               <audio controls src="src/assets/possibilities.mp3"></audio>
             </div>
-          </li>
-          <li class="item">
+          </div>
+          <div class="item">
             <div class="content">
               <div class="testimonials">
                 <img class="testimonial-img" src="@/assets/surfer-boy.png" />
@@ -24,8 +24,8 @@
               </div>
               <audio controls src="src/assets/possibilities.mp3"></audio>
             </div>
-          </li>
-          <li class="item">
+          </div>
+          <div class="item">
             <div class="content">
               <div class="testimonials">
                 <img class="testimonial-img" src="@/assets/surfer-girl.png" />
@@ -36,8 +36,8 @@
               </div>
               <audio controls src="src/assets/possibilities.mp3"></audio>
             </div>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
       <form class="video-upload">
         <h3>Lade dein Surf-Video für persönliches Feedback hoch</h3>
@@ -62,6 +62,66 @@ export default {
       goal: '',
       email: '',
     };
+  },
+  mounted() {
+    // https://stackoverflow.com/questions/59008427/add-easing-smooth-scroll-to-click-and-drag-with-js
+    const slider = document.querySelector('.items');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener('mousedown', e => {
+      isDown = true;
+      slider.classList.add('active');
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+      cancelMomentumTracking();
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      slider.classList.remove('active');
+    });
+
+    slider.addEventListener('mouseup', () => {
+      isDown = false;
+      slider.classList.remove('active');
+      beginMomentumTracking();
+    });
+
+    slider.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 3; //scroll-fast
+      var prevScrollLeft = slider.scrollLeft;
+      slider.scrollLeft = scrollLeft - walk;
+      velX = slider.scrollLeft - prevScrollLeft;
+    });
+
+    // Momentum
+
+    var velX = 0;
+    var momentumID;
+
+    slider.addEventListener('wheel', e => {
+      cancelMomentumTracking();
+    });
+
+    function beginMomentumTracking() {
+      cancelMomentumTracking();
+      momentumID = requestAnimationFrame(momentumLoop);
+    }
+    function cancelMomentumTracking() {
+      cancelAnimationFrame(momentumID);
+    }
+    function momentumLoop() {
+      slider.scrollLeft += velX;
+      velX *= 0.95;
+      if (Math.abs(velX) > 0.5) {
+        momentumID = requestAnimationFrame(momentumLoop);
+      }
+    }
   },
   methods: {
     async doUpload() {
@@ -115,13 +175,9 @@ button {
   width: 30vw;
 }
 
-/* Adapted from https://www.nieknijland.nl/blog/make-a-responsive-carousel-with-just-css */
-
-.list {
+.items {
   display: flex;
   gap: 8px;
-  list-style: none;
-  overflow-x: scroll;
   scroll-snap-type: x mandatory;
 
   /* Hide scrollbar in Firefox */
@@ -129,16 +185,30 @@ button {
 
   /* Hide scrollbar in IE and Edge */
   -ms-overflow-style: none;
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+  transition: all 0.2s;
+  transform: scale(0.98);
+  will-change: transform;
+  user-select: none;
+  cursor: pointer;
 }
 
-.list::-webkit-scrollbar {
+.items::-webkit-scrollbar {
   display: none;
+}
+
+.items.active {
+  background: var(--water-color);
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+  transform: scale(1);
 }
 
 .item {
   flex-shrink: 0;
-  width: 78vw;
-  scroll-snap-align: center;
+  width: 100%;
 }
 
 .content {

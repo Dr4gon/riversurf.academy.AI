@@ -9,6 +9,8 @@
     {"role": "user", "content": "Was kann ich tun, um die Surfercommunity zu unterstützen?"}, 
     {"role": "assistant", "content": "Es gibt zahlreiche Vereine, die für die Welle verantwortlich sind und sich über deine Unterstützung freuen. Für die Floßlände und den Eisbach ist das die IGSM. Weitere Vereine sind Surffreunde Augsburg e.V., den Nürnberger Dauerwelle e.V., Leinewelle e.V. u.v.m."},
     {"role": "user", "content": "Wann ist die beste Zeit zum Surfen?"}, 
-    {"role": "assistant", "content": "Wenn du das Surfen genießt und einfach Spaß hast."}
+    {"role": "assistant", "content": "Wenn du das Surfen genießt und einfach Spaß hast."},
+    {"role": "user", "content": "Welche Boardlänge empfiehlst du für die Floßlände?"}, 
+    {"role": "assistant", "content": "Das hängt von deinem Gewicht und deiner Körpergröße ab. Grundsätzlich zwischen 5.0 und 5.4."}
   ]
 }

@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      <form class="video-upload">
+      <form class="video-upload" enctype="multipart/form-data">
         <h3>Lade dein Surf-Video für persönliches Feedback hoch</h3>
         <input type="text" placeholder="Wie heißt du?" v-model="name" />
         <input type="text" placeholder="Was willst du lernen?" v-model="goal" />

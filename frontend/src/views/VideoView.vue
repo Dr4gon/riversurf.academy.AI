@@ -133,7 +133,7 @@ export default {
 
       form.append('video', video);
       const response = await axios.post(import.meta.env.VITE_BACKEND_URL + '/upload/video', form, {
-        headers: form.getHeaders ? form.getHeaders() : { 'Content-Type': 'multipart/form-data' },
+        headers: form.getHeaders ? form.getHeaders() : { 'Content-Type': 'multipart/form-data' }, // Apparently the browser switches to window.FormData which has no headers -> https://stackoverflow.com/questions/54682225/form-data-axios-unable-to-get-headers-from-formdata-error-getheaders-is-not
       });
     },
   },

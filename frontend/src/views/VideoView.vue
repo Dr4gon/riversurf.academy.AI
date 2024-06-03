@@ -44,7 +44,7 @@
         <input type="text" placeholder="Wie heißt du?" v-model="name" />
         <input type="text" placeholder="Was willst du lernen?" v-model="goal" />
         <input type="text" placeholder="Wie ist deine Mailadresse?" v-model="email" />
-        <input id="video" type="file" accept="video/*" name="video" />
+        <input id="video" type="file" accept="video/*" />
         <button type="submit" @click.prevent="doUpload">Upload</button>
       </form>
     </div>

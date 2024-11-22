@@ -53,7 +53,7 @@
 
 <script>
 import axios from 'axios';
-import FormData from 'form-data';
+import FormData, { from } from 'form-data';
 
 export default {
   name: 'AboutView',
@@ -130,6 +130,9 @@ export default {
 
       let video = document.getElementById('video').files[0];
       let form = new FormData();
+      form.append('name', this.name);
+      form.append('goal', this.goal);
+      form.append('email', this.email);
 
       form.append('video', video);
       const response = await axios.post(import.meta.env.VITE_BACKEND_URL + '/upload/video', form, {

@@ -14,4 +14,4 @@ ADD vitest.config.js /app/vitest.config.js
 
 ADD src /app/src
 
-CMD ["npm","run","standalone"] // default command
+CMD ["npm","run","standalone"]

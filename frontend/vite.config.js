@@ -27,6 +27,6 @@ export default defineConfig({
     watch: {
       usePolling: true, // Activate HMR for windoof https://inspector.dev/how-to-make-vite-hot-module-replacement-work-on-windows/
     },
-    allowedHosts: true // add new attribute that came with bumping the dependencies due to security fix
+    allowedHosts: ['riversurf.academy'],
   },
 });

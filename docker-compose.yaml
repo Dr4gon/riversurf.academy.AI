@@ -27,9 +27,6 @@ services:
     build:
       context: frontend
       dockerfile: Dockerfile
-    prod:
-      context: backend
-      dockerfile: Dockerfile.production
     env_file: # use the .env file to set environment variables
       - ./frontend/.env  
     ports:
@@ -41,9 +38,6 @@ services:
     image: frontend
     build:
       context: frontend
-      dockerfile: Dockerfile.production
-    prod:
-      context: backend
       dockerfile: Dockerfile.production
     env_file: # use the .env file to set environment variables
       - ./frontend/.env  

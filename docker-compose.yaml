@@ -4,7 +4,15 @@ services:
     build:
       context: backend
       dockerfile: Dockerfile
-    prod:
+    ports: # expose port 3000 to the outside world, so that we can actually access it
+      - 3000:3000
+    env_file: # use the .env file to set environment variables
+      - ./backend/.env
+    volumes:
+      - ./backend/src:/app/src
+  backend-prod:
+    image: backend
+    build:
       context: backend
       dockerfile: Dockerfile.production
     ports: # expose port 3000 to the outside world, so that we can actually access it
@@ -19,6 +27,21 @@ services:
     build:
       context: frontend
       dockerfile: Dockerfile
+    prod:
+      context: backend
+      dockerfile: Dockerfile.production
+    env_file: # use the .env file to set environment variables
+      - ./frontend/.env  
+    ports:
+      - 5173:5173
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+  frontend-prod:
+    image: frontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile.production
     prod:
       context: backend
       dockerfile: Dockerfile.production

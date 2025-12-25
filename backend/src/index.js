@@ -12,6 +12,7 @@ const UploadService = require('./routes/upload-service');
 
 const app = express();
 const port = 3000;
+const reverseProxyHost= '0.0.0.0';
 
 app.use(
   helmet({
@@ -38,7 +39,7 @@ app.use(cors());
 const start = async () => {
   try {
     await mongoose.connect(`${process.env.MONGODB}`);
-    app.listen(3000, () => console.log(`Server started on port ${port}`));
+    app.listen(port, reverseProxyHost, () => console.log(`Server started with ip ${reverseProxyHost} on port ${port}`));
   } catch (error) {
     console.error(error);
   }

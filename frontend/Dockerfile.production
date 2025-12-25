@@ -2,16 +2,16 @@ FROM node:lts-alpine3.22
 
 WORKDIR /app
 
-ADD package.json package-lock.json ./
+COPY package.json package-lock.json ./
 
 RUN npm install
 
-ADD .eslintrc.cjs /app/.eslintrc.cjs
-ADD .prettierrc.json /app/.prettierrc.json
-ADD index.html /app/index.html
-ADD vite.config.js /app/vite.config.js
-ADD vitest.config.js /app/vitest.config.js
+COPY .eslintrc.cjs /app/.eslintrc.cjs
+COPY .prettierrc.json /app/.prettierrc.json
+COPY index.html /app/index.html
+COPY vite.config.js /app/vite.config.js
+COPY vitest.config.js /app/vitest.config.js
 
-ADD src /app/src
+COPY src /app/src
 
 CMD ["npm","run","standalone"]

@@ -38,7 +38,7 @@ app.use(cors());
 const start = async () => {
   try {
     await mongoose.connect(`${process.env.MONGODB}`);
-    app.listen(3000, () => console.log(`Server started on port ${port}`));
+    app.listen(port, () => console.log(`Server started on port ${port}`));
   } catch (error) {
     console.error(error);
   }

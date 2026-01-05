@@ -4,11 +4,11 @@ RUN npm install -g nodemon
 
 WORKDIR /app
 
-ADD package.json package-lock.json ./
+COPY package.json package-lock.json ./
 
 RUN npm install
 
-ADD src ./src
-ADD .env ./
+COPY src ./src
+COPY .env ./
 
 CMD ["npm","run","standalone"]
